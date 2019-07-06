@@ -32,7 +32,12 @@ namespace DataHolders
         //private DateTime? _dEndDate;
         //private string _vMultiAssistant;
         //private long _quaryCase;
-
+        private DateTime? _AppointmentDate;
+        public DateTime? AppointmentDate
+        {
+            get { return _AppointmentDate; }
+            set { _AppointmentDate = value; }
+        }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
