@@ -41,7 +41,36 @@ namespace SublimeCareCloud.Views
 
         private void SaveAppointment(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                dhAppointment ObjNewAppointment = (dhAppointment)this.AppointmentInfo.DataContext;
+                // cehck for patient
+                dhPatient ObjPatient = (dhPatient)this.PatientInformationGrid.DataContext;
+                if (ObjPatient.iPatid == 0 || ObjPatient.iPatid < 0)
+                {
+                    // need to save the patient first 
+                    MyViewModel.db.Patients.Add(ObjPatient);
+                    MyViewModel.db.SaveChanges();
+                    // set for patatient id
+                    ObjNewAppointment.IPatid = ObjPatient.iPatid;
+                }
 
+                // check for doctors
+                if (ObjNewAppointment != null)
+                {
+                    MyViewModel.db.Appointments.Add(ObjNewAppointment);
+                    MyViewModel.db.SaveChanges();
+                }
+
+                Globalized.SetMsg("AOC01", CustomClasses.MsgType.Info);
+                Globalized.ShowMsg(lblErrorMsg);
+            }
+            catch (Exception ex)
+            {
+                Globalized.SetMsg(ex.Message, CustomClasses.MsgType.Error);
+                Globalized.ShowMsg(lblErrorMsg);
+
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -52,14 +81,19 @@ namespace SublimeCareCloud.Views
             dbPatientSearch = new blPatSearch();
             srcDoctore.DataProvider = this.dbDoctorSearch;
             srcPatient.DataProvider = this.dbPatientSearch;
-            BlPatient abc = new BlPatient();
-            dhPatient TestObj = new dhPatient();
-            TestObj.vFullName = "saqib Ali";
-            TestObj.vGender = "Male";
-            TestObj.iPatAge = 14;
-            TestObj.bActive = true;
-            
-            abc.AddNewPatient(TestObj);
+
+
+            //BlPatient abc = new BlPatient();
+            //dhPatient TestObj = new dhPatient();
+            //TestObj.vFullName = "saqib Ali";
+            //TestObj.vGender = "Male";
+            //TestObj.iPatAge = 14;
+            //TestObj.bActive = true;
+
+            //abc.AddNewPatient(TestObj);
+
+            this.AppointmentInfo.DataContext = new dhAppointment();
+            this.PatientInformationGrid.DataContext = new dhPatient();
 
         }
 
@@ -76,6 +110,9 @@ namespace SublimeCareCloud.Views
                 if(objDoc != null)
                 {
                     this.DoctorInformationGrid.DataContext = objDoc;
+                    ((dhAppointment)this.AppointmentInfo.DataContext).IDocid = objDoc.IDocid;
+                    ((dhAppointment)this.AppointmentInfo.DataContext).IPayment_Due = objDoc.IPatient_Fee;
+
                 }
             }
 
@@ -94,6 +131,7 @@ namespace SublimeCareCloud.Views
                 if (objPat != null)
                 {
                     this.PatientInformationGrid.DataContext = objPat;
+                    ((dhAppointment)this.AppointmentInfo.DataContext).IPatid = objPat.iPatid;
                 }
             }
         }

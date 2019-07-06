@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="blAccount.cs" />
+    <Compile Include="blAppointment.cs" />
     <Compile Include="blAppPreference.cs">
       <SubType>Code</SubType>
     </Compile>

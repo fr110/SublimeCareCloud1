@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:auto="clr-namespace:FeserWard.Controls;assembly=IntelliBox"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
 
              xmlns:local="clr-namespace:SublimeCareCloud.Views"
              Loaded="UserControl_Loaded"
@@ -38,7 +39,7 @@
                     </Grid.RowDefinitions>
                     <Label x:Name="lblErrorMsg" Content="Label" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Top"   Height="26" Visibility="Hidden" />
                 </Grid>
-                
+
                 <Grid x:Name="MainGrid" HorizontalAlignment="Left" VerticalAlignment="Top"   >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="350*" />
@@ -62,7 +63,6 @@
                         </Grid.RowDefinitions>
                         <Label Content="Doctor" Grid.Column="0" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Center" Height="26" 
                        Width="61" Visibility="Hidden" TabIndex="1"/>
-                        <TextBox x:Name="iPartyIDTextBox" Grid.Column="1" HorizontalAlignment="Stretch"   Grid.Row="1" Text="{Binding IPartyID, Mode=OneWay}" VerticalAlignment="Center" Width="120" Visibility="Hidden"/>
 
 
                         <Label Content="Search Doctor *:"  HorizontalAlignment="Left"  
@@ -71,9 +71,6 @@
 
                         <!--<TextBlock Grid.Row="3" Grid.Column="2" 
                                        Text="{Binding ElementName=InvestigationList, Path=DisplayTextFromHighlightedItem}" />-->
-                        <TextBox 
-                                       Text="{Binding ElementName=srcDoctore, Path=SelectedValue, Mode=OneWay, NotifyOnTargetUpdated=True}" 
-                                       x:Name="txtIDocID" Visibility="Hidden" TargetUpdated="TxtIDocID_TargetUpdated"   />
                         <auto:Intellibox
             			x:Name="srcDoctore"
             			ResultsHeight="150"
@@ -299,7 +296,7 @@
 
                             </GroupBox>
 
-                            
+
 
 
 
@@ -307,7 +304,8 @@
                         </Grid>
 
                     </Grid>
-                    <Grid x:Name="grid3" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Margin="5"     >
+                    <Grid  x:Name="AppointmentInfo" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                          Grid.Column="1" Grid.Row="2" Margin="5"    >
                         <Grid.ColumnDefinitions>
 
                             <ColumnDefinition Width="350*"/>
@@ -319,9 +317,18 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
+                        <TextBox 
+                                       Text="{Binding ElementName=srcDoctore, Path=SelectedValue, Mode=OneWay, NotifyOnTargetUpdated=True}" 
+                                       x:Name="txtIDocID" Visibility="Hidden" TargetUpdated="TxtIDocID_TargetUpdated"   />
+                        <TextBox 
+                                       Text="{Binding IDocid, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                                       x:Name="IDocid" Visibility="Hidden"   />
+                        <TextBox 
+                                       Text="{Binding IPatid, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                                       x:Name="IPatid" Visibility="Hidden"   />
 
                         <GroupBox Header="Financial Information" Grid.Column="0"  Grid.Row="2" 
-                                  x:Name="FinancialInformationGrid" Margin="0 31">
+                                  x:Name="Timing" >
                             <Grid HorizontalAlignment="Left"    >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" MinWidth="125"/>
@@ -331,25 +338,61 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
 
 
                                 </Grid.RowDefinitions>
 
-                                <Label Content="Due Payment" Grid.Row="0" Grid.Column="0" />
-                                <TextBox TabIndex="2" x:Name="IPayment_Due"  HorizontalAlignment="Stretch"  Grid.Row="0" Grid.Column="1"  
+                                <Label Content="Appointment Date" Grid.Row="0" Grid.Column="0" />
+                                <DatePicker TabIndex="2" x:Name="AppointmentDate"  HorizontalAlignment="Stretch"  Grid.Row="0" Grid.Column="1"  
+                         Text="{Binding AppointmentDate, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center" 
+                                            DisplayDateStart="{x:Static sys:DateTime.Now}"
+                                            />
+                                <Label Content="Time Date" Grid.Row="1" Grid.Column="0" />
+                                <!--<DatePicker TabIndex="2" x:Name="AppointmentTime"  HorizontalAlignment="Stretch"  Grid.Row="0" Grid.Column="1"  
+                         Text="{Binding AppointmentTime, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center"  />-->
+                                <materialDesign:TimePicker Is24Hours="True" 
+                                                           Grid.Row="1" Grid.Column="1"
+                                                           x:Name="PresetTimePicker"
+                                                           Text="{Binding VCheckup_Time, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                                                            />
+
+                                <Label Content="Session" Grid.Row="2" Grid.Column="0" />
+                                <ComboBox x:Name="ddSession" SelectedItem="{Binding Path=vGender, Mode=TwoWay}"
+                          Grid.Column="1" Grid.Row="2"
+                              VerticalAlignment="Center"
+                        HorizontalAlignment="Stretch" 
+                              >
+                                    <ComboBox.ItemsSource>
+                                        <x:Array Type="sys:String" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                            <sys:String>Morning</sys:String>
+                                            <sys:String>Evening</sys:String>
+                                        </x:Array>
+                                    </ComboBox.ItemsSource>
+                                </ComboBox>
+
+                                <Label Content="Due Payment" Grid.Row="3" Grid.Column="0" />
+                                <TextBox TabIndex="2" x:Name="IPayment_Due"  HorizontalAlignment="Stretch"  Grid.Row="3" Grid.Column="1"  
                          Text="{Binding IPayment_Due, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
                              VerticalAlignment="Center"  />
 
-                                <Label Content="Received Payment" Grid.Row="1" Grid.Column="0" />
-                                <TextBox TabIndex="2" x:Name="IPayment_Recieved"  HorizontalAlignment="Stretch"  Grid.Row="1" Grid.Column="2"  
+                                <Label Content="Received Payment" Grid.Row="4" Grid.Column="0" />
+                                <TextBox TabIndex="2" x:Name="IPayment_Recieved"  HorizontalAlignment="Stretch"  Grid.Row="4" Grid.Column="1"  
                          Text="{Binding IPayment_Recieved, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
                              VerticalAlignment="Center"  />
 
-                                <Label Content="Patient Balance" Grid.Row="2" Grid.Column="0" />
-                                <TextBox TabIndex="2" x:Name="IPatientBalance"  HorizontalAlignment="Stretch"  Grid.Row="2" Grid.Column="2"  
+                                <Label Content="Patient Balance" Grid.Row="5" Grid.Column="0" />
+                                <TextBox TabIndex="2" x:Name="IPatientBalance"  HorizontalAlignment="Stretch"  Grid.Row="5" Grid.Column="1"  
                          Text="{Binding IPatientBalance, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
                              VerticalAlignment="Center"  />
+
+
+
 
 
 
@@ -364,10 +407,11 @@
 
 
 
+
                     </Grid>
 
                 </Grid>
-                
+
                 <TextBox TabIndex="2" x:Name="iUpdate" Grid.Column="1" HorizontalAlignment="Stretch" Visibility="Hidden"   Grid.Row="2" 
                          Text="{Binding IUpdate, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" VerticalAlignment="Center" />
                 <TextBox TabIndex="2" x:Name="iPartyID" Grid.Column="1" HorizontalAlignment="Stretch" Visibility="Hidden"   Grid.Row="2" 

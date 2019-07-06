@@ -18,12 +18,19 @@ namespace DataHolders
         private string _vPatName;
         //private DateTime? _dDOB;
         private long _iPayment_Total;
-        private long _iPayment_Due;
+        private long? _iPayment_Due;
         private string _vCheckup_Time;
         //private DateTime? _dAppolongment_Date;
         //private String _cEvening_Morning;
         private String _vVisitType;
         private long _iToken_Number;
+        private string _ddSession;
+
+        public string ddSession
+        {
+            get { return _ddSession; }
+            set { _ddSession = value; }
+        }
         //private long _accNumber;
         private DateTime? _sysDate;
         //private Nullable<long> _iAssitantDocID;
@@ -38,6 +45,20 @@ namespace DataHolders
             get { return _AppointmentDate; }
             set { _AppointmentDate = value; }
         }
+
+        public dhAppointment()
+        {
+            this.AppointmentDate = DateTime.Now;
+            this.SysDate = DateTime.Now;
+        }
+        private DateTime? _AppointmentTime;
+
+        public DateTime? AppointmentTime
+        {
+            get { return _AppointmentTime; }
+            set { _AppointmentTime = value; }
+        }
+
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -88,7 +109,7 @@ namespace DataHolders
             set { _iPayment_Total = value; }
         }
 
-        public long IPayment_Due
+        public long? IPayment_Due
         {
             get { return _iPayment_Due; }
             set { _iPayment_Due = value; }

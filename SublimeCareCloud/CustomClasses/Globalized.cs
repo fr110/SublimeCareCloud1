@@ -112,7 +112,10 @@ namespace SublimeCareCloud
             // for account user of doctor
 
             {"M_D01DEC","Account Created By System for Doctor." },
-            {"M_D02DEC","Account Created By System for Doctor." }
+            {"M_D02DEC","Account Created By System for Doctor." },
+            // for appointment
+            {"AOC01", "Appointment Created By System for Doctor." }
+
 
         };
     }
