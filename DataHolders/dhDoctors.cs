@@ -469,6 +469,13 @@ namespace DataHolders
         }
         // creating relations with other entities 
 
+
+        private string _TokenStart;
+        public string TokenStart
+        {
+            get { return _TokenStart; }
+            set { _TokenStart = value; OnPropertyChanged("TokenStart"); }
+        }
         [NotMapped]
         public ObservableCollection<DocInvestigations> DocInvestigations { get; set; }
         //[NotMapped]

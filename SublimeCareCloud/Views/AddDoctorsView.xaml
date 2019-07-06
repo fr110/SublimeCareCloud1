@@ -110,7 +110,11 @@
                                     <TextBox TabIndex="2" x:Name="VfName"  HorizontalAlignment="Stretch"  Grid.Column="1"  Grid.Row="3"  
                          Text="{Binding VfName, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
                              VerticalAlignment="Center" />
-
+                                    
+                                    
+                                    <TextBox TabIndex="2" x:Name="TokenStart"  HorizontalAlignment="Stretch"  Grid.Column="1"  Grid.Row="3"  
+                         Text="{Binding TokenStart, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center" Visibility="Hidden" />
 
                                     <TextBlock x:Name="IDocid"  HorizontalAlignment="Right"  Grid.Column="1"  Grid.Row="3"  
                          Text="{Binding IDocid, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged,

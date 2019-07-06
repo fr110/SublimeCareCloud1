@@ -53,11 +53,6 @@ namespace DataHolders
         }
         private DateTime? _AppointmentTime;
 
-        public DateTime? AppointmentTime
-        {
-            get { return _AppointmentTime; }
-            set { _AppointmentTime = value; }
-        }
 
 
         [Key]
@@ -80,12 +75,15 @@ namespace DataHolders
             set { _iDocid = value; }
         }
 
+
+        [NotMapped]
         public string VDocName
         {
             get { return vDocName; }
             set { vDocName = value; }
         }
 
+        [NotMapped]
         public string VPatName
         {
             get { return _vPatName; }
@@ -148,6 +146,12 @@ namespace DataHolders
             set { _iToken_Number = value; }
         }
 
+        private string _FormatedTokenNumber;
+        public string FormatedTokenNumber
+        {
+            get { return _FormatedTokenNumber; }
+            set { _FormatedTokenNumber = value; }
+        }
 
         //public long IAccNumber
         //{

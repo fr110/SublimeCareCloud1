@@ -125,7 +125,17 @@ namespace BL
         //                            ).ToObservableCollection();
         //}
 
+        public Dictionary<long, string> GetNextToken(dhDoctors objDoc, dhAppointment objAppointment)
+        {
+            Dictionary<long, string> objDic = new Dictionary<long, string>();
 
+            // get the last tokannumber 
+            long LastAppID = db.Appointments.AsNoTracking().Where(x => x.IDocid == objDoc.IDocid).ToList().OrderByDescending(xx => xx.IAppid).FirstOrDefault().IToken_Number;
+            long NextAppID = LastAppID + 1;
+            string FormatedNextTokan = objDoc.TokenStart + NextAppID.ToString().PadLeft(5,'0');
+            objDic.Add(NextAppID, FormatedNextTokan);
+            return objDic;
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
         {

@@ -95,8 +95,13 @@ namespace SublimeCareCloud.Views
             try
             {
                 
-                if(objNewDoctor.IUpdate == 0 || objNewDoctor.IUpdate ==  null) { 
-                        MyViewModel.db.Doctors.Add(objNewDoctor);
+                if(objNewDoctor.IUpdate == 0 || objNewDoctor.IUpdate ==  null) {
+
+                    if (objNewDoctor.TokenStart == "" || objNewDoctor.TokenStart == null)
+                    { 
+                       objNewDoctor.TokenStart =  objNewDoctor.VfName.Substring(0, 2).ToUpper();
+                    }
+                    MyViewModel.db.Doctors.Add(objNewDoctor);
                         MyViewModel.db.SaveChanges();;
                     // for investigations
                     foreach (DocInvestigations item in objNewDoctor.DocInvestigations)
@@ -117,6 +122,10 @@ namespace SublimeCareCloud.Views
                 {
                     // dhDoctors temp =  MyViewModel.db.Doctors.Find(objNewDoctor.IDocid);
                     objNewDoctor = (dhDoctors)this.NewDoctorGrid.DataContext;
+                    if (objNewDoctor.TokenStart == "" || objNewDoctor.TokenStart == null )
+                    {
+                        objNewDoctor.TokenStart = objNewDoctor.VfName.Substring(0, 2).ToUpper();
+                    }
                     MyViewModel.db.Doctors.Attach(objNewDoctor);
                     //.State = EntityState.Added;
                     MyViewModel.db.Entry(objNewDoctor).State = EntityState.Modified;
