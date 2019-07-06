@@ -1,0 +1,415 @@
+﻿<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:xrd="clr-namespace:CodeReason.Reports.Document;assembly=CodeReason.Reports" 
+              xmlns:l="clr-namespace:ManagementAPP"
+              PageHeight="21.0cm" PageWidth="15cm" ColumnWidth="15cm">
+    <xrd:ReportProperties>
+        <xrd:ReportProperties.ReportName>SimpleReport</xrd:ReportProperties.ReportName>
+        <xrd:ReportProperties.ReportTitle>Production</xrd:ReportProperties.ReportTitle>
+    </xrd:ReportProperties>
+    <BlockUIContainer>
+        <!--<l:Invoice.InvoiceHeader/>-->
+    </BlockUIContainer>
+    <Section Padding="40,10,40,10" FontSize="12">
+        <Paragraph FontSize="30" FontWeight="Bold" TextAlignment="Right" >
+            <xrd:InlineContextValue PropertyName="ReportTitle" />
+        </Paragraph>
+        <xrd:SectionDataGroup DataGroupName="HeaderItem">
+            <Table CellSpacing="0" BorderBrush="White" BorderThickness="0">
+                <Table.Resources>
+                    <Style x:Key="ReportHeaderParty" TargetType="{x:Type TableRowGroup}">
+                        <Setter Property="FontFamily" Value="Arial" />
+                        <Setter Property="FontSize" Value="11px"/>
+                    </Style>
+
+                    <!-- Style for header/footer rows. -->
+                    <Style x:Key="ReportHeader" TargetType="{x:Type TableRowGroup}">
+                        <Setter Property="FontFamily" Value="Arial" />
+                        <Setter Property="FontSize" Value="11px"/>
+                    </Style>
+
+
+                    <!-- Style for data rows. -->
+                    <Style x:Key="dataRowStyle" TargetType="{x:Type TableRowGroup}">
+                        <Setter Property="FontSize" Value="10"/>
+                    </Style>
+
+                    <!-- Style for data cells. -->
+                    <Style TargetType="{x:Type TableCell}">
+                        <Setter Property="Padding" Value="0.1cm"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="FontSize" Value="10px"/>
+                        
+                    </Style>
+                </Table.Resources>
+                <Table.Columns>
+                    <TableColumn Width="*" />
+                    <TableColumn Width="*" />
+                    <TableColumn Width="2*" />
+                    <TableColumn Width="3*" />
+                </Table.Columns>
+                <TableRowGroup Style="{StaticResource ReportHeader}">
+                    <xrd:TableRowForDataTable TableName="dtPosProduction">
+                        <TableCell BorderBrush="White" BorderThickness="0">
+                            <Paragraph>
+
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell BorderBrush="White" BorderThickness="0">
+                            <Paragraph>
+                                <!--<xrd:InlineTableCellValue PropertyName="Position" />-->
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell BorderBrush="White" BorderThickness="0">
+                            <Paragraph TextAlignment="Right">
+                                <!--<xrd:InlineTableCellValue PropertyName="Position" />--> Date :
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell BorderBrush="White" BorderThickness="0">
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="dDate"/>
+                            </Paragraph>
+                        </TableCell>
+                    </xrd:TableRowForDataTable>
+                </TableRowGroup>
+                <TableRowGroup Style="{StaticResource ReportHeader}">
+                    <xrd:TableRowForDataTable TableName="dtPosProduction">
+                        <TableCell BorderBrush="White" BorderThickness="0" ColumnSpan="2">
+                            <Paragraph>
+                                <!--Customer ID : <xrd:InlineTableCellValue PropertyName="ipartyId" />-->
+                            </Paragraph>
+                        </TableCell>
+                        <!--<TableCell BorderBrush="White" BorderThickness="0">
+                            <Paragraph>
+                            
+                            </Paragraph>
+                        </TableCell>-->
+                        <TableCell BorderBrush="White" BorderThickness="0">
+                            <Paragraph TextAlignment="Right">
+                                <!--<xrd:InlineTableCellValue PropertyName="Position" />--> Production No :
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell BorderBrush="White" BorderThickness="0">
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="iProductionId"  />
+                            </Paragraph>
+                        </TableCell>
+                    </xrd:TableRowForDataTable>
+                </TableRowGroup>
+                <TableRowGroup Style="{StaticResource ReportHeaderParty}">
+                    <xrd:TableRowForDataTable TableName="dtPosPurchase">
+                        <TableCell BorderBrush="White" BorderThickness="0" >
+                            <Paragraph>
+                                
+                            </Paragraph>
+                        </TableCell>
+                      
+                    </xrd:TableRowForDataTable>
+                </TableRowGroup>
+            </Table>
+            <!--Party Area-->
+            
+            <!--<Paragraph>
+               
+                <xrd:InlineAggregateValue AggregateGroup="ItemCount" AggregateValueType="Count" EmptyValue="no" FontWeight="Bold" /> item positions with a total of
+                <xrd:InlineAggregateValue AggregateGroup="ItemCount" AggregateValueType="Sum" EmptyValue="0" FontWeight="Bold" /> items listed.
+            </Paragraph>-->
+        </xrd:SectionDataGroup>
+        
+        
+        <xrd:SectionDataGroup DataGroupName="ItemList">
+            
+            <Table CellSpacing="0" BorderBrush="White" BorderThickness="0">
+                <Table.Resources>
+                    <!-- Style for header/footer rows. -->
+                    <Style x:Key="headerFooterRowStyle" TargetType="{x:Type TableRowGroup}">
+                        <Setter Property="FontFamily" Value="Arial" />
+                        <Setter Property="FontSize" Value="10px"/>
+                        <Setter Property="Background" Value="LightGray"/>
+                    </Style>
+
+                    <!-- Style for data rows. -->
+                    <Style x:Key="dataRowStyle" TargetType="{x:Type TableRowGroup}">
+                        <Setter Property="FontSize" Value="11"/>
+                    </Style>
+
+                    <!-- Style for data cells. -->
+                    <Style TargetType="{x:Type TableCell}">
+                        <Setter Property="Padding" Value="0.07cm"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="BorderThickness" Value="0.01cm"/>
+                    </Style>
+                </Table.Resources>
+
+                <Table.Columns>
+                    <TableColumn Width="0.5*" />
+                    <TableColumn Width="3*" />
+                    <TableColumn Width="1*" />
+                    <TableColumn Width="1*" />
+                    <TableColumn Width="1*" />
+                </Table.Columns>
+                <TableRowGroup Style="{StaticResource headerFooterRowStyle}">
+                    <TableRow>
+                        <TableCell ColumnSpan="3">
+                            <Paragraph TextAlignment="Left">
+                                <Bold>Item Consumed</Bold>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                </TableRowGroup>
+                <TableRowGroup Style="{StaticResource headerFooterRowStyle}">
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph TextAlignment="Center">
+                                <Bold>Sr#</Bold>
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph TextAlignment="Left">
+                                <Bold>Name/Description</Bold>
+                            </Paragraph>
+                        </TableCell>
+                        <!--<TableCell>
+                            <Paragraph TextAlignment="Center">
+                                <Bold>Unit Price</Bold>
+                            </Paragraph>
+                        </TableCell>-->
+                        <TableCell>
+                            <Paragraph TextAlignment="Center">
+                                <Bold>Quantity</Bold>
+                            </Paragraph>
+                        </TableCell>
+                        <!--<TableCell>
+                            <Paragraph TextAlignment="Center">
+                                <Bold>Ammount</Bold>
+                            </Paragraph>
+                        </TableCell>-->
+                    </TableRow>
+                </TableRowGroup>
+                <TableRowGroup Style="{StaticResource dataRowStyle}">
+                    <xrd:TableRowForDataTable TableName="dtPosConsumeItem">
+                        <TableCell >
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="iSerialNumber" />
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="vItemName" /> - <xrd:InlineTableCellValue PropertyName="vDetailName" />
+                            </Paragraph>
+                        </TableCell>
+                        <!--<TableCell>
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="fUnitePrice" />
+                            </Paragraph>
+                        </TableCell>-->
+                        <TableCell>
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="iQuantity" />
+                            </Paragraph>
+                        </TableCell>
+                        <!--<TableCell>
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="fGrossAmount"/>
+                            </Paragraph>
+                        </TableCell>-->
+                    </xrd:TableRowForDataTable>
+                </TableRowGroup>
+            </Table>
+           
+        </xrd:SectionDataGroup>
+
+        <xrd:SectionDataGroup DataGroupName="ItemListProduced">
+
+            <Table CellSpacing="0" BorderBrush="White" BorderThickness="0">
+                <Table.Resources>
+                    <!-- Style for header/footer rows. -->
+                    <Style x:Key="headerFooterRowStyle" TargetType="{x:Type TableRowGroup}">
+                        <Setter Property="FontFamily" Value="Arial" />
+                        <Setter Property="FontSize" Value="10px"/>
+                        <Setter Property="Background" Value="LightGray"/>
+                    </Style>
+
+                    <!-- Style for data rows. -->
+                    <Style x:Key="dataRowStyle" TargetType="{x:Type TableRowGroup}">
+                        <Setter Property="FontSize" Value="11"/>
+                    </Style>
+
+                    <!-- Style for data cells. -->
+                    <Style TargetType="{x:Type TableCell}">
+                        <Setter Property="Padding" Value="0.07cm"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="BorderThickness" Value="0.01cm"/>
+                    </Style>
+                </Table.Resources>
+
+                <Table.Columns>
+                    <TableColumn Width="0.5*" />
+                    <TableColumn Width="3*" />
+                    <TableColumn Width="1*" />
+                    <TableColumn Width="1*" />
+                    <TableColumn Width="1*" />
+                </Table.Columns>
+                <TableRowGroup Style="{StaticResource headerFooterRowStyle}">
+                    <TableRow>
+                        <TableCell ColumnSpan="3">
+                            <Paragraph TextAlignment="Left">
+                                <Bold>Item Produced</Bold>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                </TableRowGroup>
+                <TableRowGroup Style="{StaticResource headerFooterRowStyle}">
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph TextAlignment="Center">
+                                <Bold>Sr#</Bold>
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph TextAlignment="Left">
+                                <Bold>Name/Description</Bold>
+                            </Paragraph>
+                        </TableCell>
+                        <!--<TableCell>
+                            <Paragraph TextAlignment="Center">
+                                <Bold>Unit Price</Bold>
+                            </Paragraph>
+                        </TableCell>-->
+                        <TableCell>
+                            <Paragraph TextAlignment="Center">
+                                <Bold>Quantity</Bold>
+                            </Paragraph>
+                        </TableCell>
+                        <!--<TableCell>
+                            <Paragraph TextAlignment="Center">
+                                <Bold>Ammount</Bold>
+                            </Paragraph>
+                        </TableCell>-->
+                    </TableRow>
+                </TableRowGroup>
+                <TableRowGroup Style="{StaticResource dataRowStyle}">
+                    <xrd:TableRowForDataTable TableName="dtPosProducedItem">
+                        <TableCell >
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="iSerialNumber" />
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="vItemName" /> -
+                                <xrd:InlineTableCellValue PropertyName="vDetailName" />
+                            </Paragraph>
+                        </TableCell>
+                        <!--<TableCell>
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="fUnitePrice" />
+                            </Paragraph>
+                        </TableCell>-->
+                        <TableCell>
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="iQuantity" />
+                            </Paragraph>
+                        </TableCell>
+                        <!--<TableCell>
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="fGrossAmount"/>
+                            </Paragraph>
+                        </TableCell>-->
+                    </xrd:TableRowForDataTable>
+                </TableRowGroup>
+            </Table>
+
+        </xrd:SectionDataGroup>
+    </Section>  
+    <!--<xrd:SectionReportFooter PageFooterHeight="18" Margin="55,0,0,0" >
+          
+                <Table CellSpacing="0" BorderBrush="White" BorderThickness="0">
+                <Table.Resources>
+                    <Style x:Key="ReportHeaderParty" TargetType="{x:Type TableRowGroup}">
+                        <Setter Property="FontFamily" Value="Arial" />
+                        <Setter Property="FontSize" Value="11px"/>
+                    </Style>
+
+         
+                    <Style x:Key="ReportHeader" TargetType="{x:Type TableRowGroup}">
+                        <Setter Property="FontFamily" Value="Arial" />
+                        <Setter Property="FontSize" Value="11px"/>
+                    </Style>
+
+
+
+                    <Style x:Key="dataRowStyle" TargetType="{x:Type TableRowGroup}">
+                        <Setter Property="FontSize" Value="11"/>
+                    </Style>
+
+       
+                    <Style TargetType="{x:Type TableCell}">
+                        <Setter Property="Padding" Value="0.1cm"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="FontSize" Value="11px"/>
+                        
+                    </Style>
+                </Table.Resources>
+                <Table.Columns>
+                    <TableColumn Width="18*" />
+                    <TableColumn Width="32*" />
+                    <TableColumn Width="18*" />
+                    <TableColumn Width="32*" />
+                </Table.Columns>
+     
+                <TableRowGroup Style="{StaticResource ReportHeader}">
+                    <xrd:TableRowForDataTable TableName="dtPosPurchase" >
+                        <TableCell BorderBrush="White" BorderThickness="0" >
+                            <Paragraph >
+                                Vehicle No:
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell BorderBrush="White" BorderThickness="0" >
+                            <Paragraph TextDecorations="UnderLine">
+                            <xrd:InlineTableCellValue PropertyName="vVehicleNo" />
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell BorderBrush="White" BorderThickness="0" >
+                            <Paragraph >
+                                Driver Name:
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell BorderBrush="White" BorderThickness="0" >
+                            <Paragraph TextDecorations="UnderLine"><xrd:InlineTableCellValue PropertyName="vDriverName" />
+                            </Paragraph>
+                        </TableCell>
+                    </xrd:TableRowForDataTable>
+                </TableRowGroup>
+                <TableRowGroup Style="{StaticResource ReportHeader}">
+                    <xrd:TableRowForDataTable TableName="dtPosPurchase">
+                        <TableCell BorderBrush="White" BorderThickness="0" >
+                            <Paragraph >
+                                Season:
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell BorderBrush="White" BorderThickness="0" >
+                            <Paragraph TextDecorations="UnderLine">
+                                <xrd:InlineTableCellValue PropertyName="vSeason" />
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell BorderBrush="White" BorderThickness="0" >
+                            <Paragraph>
+                                Receiver Name:
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell BorderBrush="White" BorderThickness="0" >
+                            <Paragraph TextDecorations="UnderLine">
+                                <xrd:InlineTableCellValue PropertyName="vReciverName" />
+                            </Paragraph>
+                        </TableCell>
+                    </xrd:TableRowForDataTable>
+                </TableRowGroup>
+            </Table>
+            Party Area-->
+    <xrd:SectionReportFooter PageFooterHeight="18" Margin="55,0,0,0" >
+        <Paragraph TextDecorations="OverLine" FontSize="14px">
+            Signature Stamp
+        </Paragraph>
+    </xrd:SectionReportFooter>
+</FlowDocument>

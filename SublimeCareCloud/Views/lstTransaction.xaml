@@ -1,0 +1,269 @@
+﻿<UserControl x:Class="SublimeCareCloud.Views.lstTransaction"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:dgx="clr-namespace:DataGridExtensions;assembly=DataGridExtensions"
+                          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+             xmlns:local="clr-namespace:SublimeCareCloud.Views"
+             mc:Ignorable="d" 
+              
+             d:DesignHeight="600" d:DesignWidth="950" Loaded="UserControl_Loaded_1">
+
+    <Grid Margin="10"  >
+
+        <StackPanel MinWidth="200">
+            <DockPanel DockPanel.Dock="Top"  HorizontalAlignment="Stretch"  VerticalAlignment="Top"  Background="#FFCACACA"  x:Name="Opreations" >
+                <StackPanel>
+                    <Grid HorizontalAlignment="Stretch" Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="95*"/>
+                      
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="37*"/>
+                    </Grid.RowDefinitions>
+                        
+                    <TextBlock Text="{Binding WinHeading, Mode=TwoWay, NotifyOnValidationError=True, 
+                        UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" FontSize="18" Margin="10" TextAlignment="Center" />
+                    <TextBlock x:Name="Itemd" Text="{Binding WinDetial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"/>
+                  
+
+                </Grid>
+                <Grid x:Name="AccountSearch" HorizontalAlignment="Left" Height="45" Margin="20,20,0,0" VerticalAlignment="Top" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="95"/>
+                        <ColumnDefinition Width="116"/>
+                        <ColumnDefinition Width="95"/>
+                        <ColumnDefinition Width="116"/>
+                        <ColumnDefinition Width="219*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="37*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="From Date:" HorizontalAlignment="Left" Margin="10,10,0,7"  VerticalAlignment="Top" Width="85"/>
+                    <DatePicker x:Name="ddateDatePicker" Grid.Column="1" 
+                            SelectedDate="{Binding DTransactionFromDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                VerticalAlignment="Center" Height="26"  TabIndex="1" />
+                    <DatePicker x:Name="ddateDatePicker_Copy" Grid.Column="3" HorizontalAlignment="Left" 
+                            SelectedDate="{Binding DTransactionToDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                VerticalAlignment="Center"  Width="116"  TabIndex="1" />
+
+                    <TextBlock x:Name="IAccountID" 
+                           Text="{Binding IAccountid, Mode=TwoWay, NotifyOnValidationError=True, 
+                        UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" 
+                               Margin="2,3,15,5"  Grid.Column="2" Visibility="Hidden" />
+                        <Label Content="To Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,7" Width="75"  Grid.Column="2" Grid.ColumnSpan="2"/>
+
+                    <TextBlock x:Name="BShowBlance" 
+                           Text="{Binding BShowBlance, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" Margin="2,3,64,5"  Grid.Column="2" Visibility="Hidden" />
+
+                        <Border  Grid.Row="1" Grid.Column="5" Margin="35,0,0,0" HorizontalAlignment="Right" >
+                            <StackPanel Orientation="Horizontal">
+                                <Button TabIndex="8" IsDefault="True"   HorizontalAlignment="Left"  x:Name="btnSaveAcc"
+                         Style="{StaticResource TopOpreatButton}" 
+                     Grid.Row="1" Margin="5,8" IsEnabled="{Binding CanSave}" Click="Button_Click_1" >
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                                        <materialDesign:PackIcon Kind="Search"  Width="18" Height="18" Margin="2,2" />
+                                        <TextBlock Text="Search"  HorizontalAlignment="Left" Margin="8,2"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button x:Name="ShowAccount" HorizontalAlignment="Left" VerticalAlignment="Top"   
+                                Margin="5,7" Click="Button_Click_2" TabIndex="9" 
+                                Style="{StaticResource TopOpreatButton}" 
+                               >
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                                        <materialDesign:PackIcon Kind="Close"  Width="18" Height="18" Margin="2,2" />
+                                        <TextBlock Text="Close"  HorizontalAlignment="Left" Margin="8,2"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                                    </StackPanel>
+
+                                </Button>
+
+
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                    <Grid HorizontalAlignment="Stretch" Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="95*"/>
+
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition MinHeight="37"/>
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="lblErrorMsg"  Padding="0,0,0,0"  Visibility="Hidden"/>
+
+                    </Grid>
+                </StackPanel>
+            </DockPanel>
+            
+            
+            
+            <DataGrid x:Name="Stock"  dgx:DataGridFilter.GlobalFilter="{Binding ExternalFilter}"
+                        dgx:DataGridFilter.IsAutoFilterEnabled="True"
+                        dgx:Tools.ApplyInitialSorting="True"
+                        dgx:DataGridFilter.FilterEvaluationDelay="0:0:0"
+                    	CanUserReorderColumns="False" 
+                        CanUserResizeColumns="False" 
+                        CanUserResizeRows="False"  
+                        CanUserSortColumns="False"
+                    	RowHeaderWidth="0" 
+                        ColumnHeaderHeight="NaN"  
+                        GridLinesVisibility="All"
+                    	AutoGenerateColumns="False"  
+                        MinWidth="900" 
+                        IsReadOnly="True"
+                        Focusable="False"
+                        CanUserAddRows="False" 
+                        CanUserDeleteRows="False"  
+                        Cursor="Hand" 
+                      Margin="0,15"
+                      FontSize="12"
+                      
+                      >
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <EventSetter Event="MouseDoubleClick" Handler="Stock_MouseDoubleClick"/>
+                    </Style>
+                    
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Entry Date"
+                                  Binding="{Binding DEntryDateTime, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="140"
+                                  dgx:DataGridFilterColumn.Template="{StaticResource     IntegerFilter}"
+                                  />
+                    <DataGridTextColumn Header="Transaction&#x0a;Date"
+                                  Binding="{Binding DTransactionDate,StringFormat=d, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="130"
+                                  dgx:DataGridFilterColumn.Template="{StaticResource IntegerFilter}"
+                                  />
+                    <DataGridTextColumn Header="Transaction&#x0a;Title"
+                                  Binding="{Binding VTranTitle, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="400*" 
+                                  dgx:DataGridFilterColumn.Template="{StaticResource {x:Static dgx:DataGridFilter.TextColumnFilterTemplateKey}}"
+                                        
+                                  >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextWrapping" Value="Wrap" />
+                                <Setter Property="Height" Value="auto" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                        <DataGridTextColumn.EditingElementStyle>
+                            <Style TargetType="TextBox">
+                                <Setter Property="TextWrapping" Value="Wrap" />
+                                <Setter Property="AcceptsReturn" Value="true" />
+                            </Style>
+                        </DataGridTextColumn.EditingElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Payment&#x0a;Mode"
+                                  Binding="{Binding VPaymentMode, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="70"
+                                  dgx:DataGridFilterColumn.IsFilterVisible="False"
+                                  />
+                    <DataGridTextColumn Header="Account&#x0a;No"
+                                  Binding="{Binding AccountName, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="130"
+                           
+                                  />
+
+                    <DataGridTextColumn Header="Dr"
+                                  Binding="{Binding Dr, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="65"
+                                   dgx:DataGridFilterColumn.IsFilterVisible="False"
+                                  />
+                    <DataGridTextColumn Header="Cr"
+                                  Binding="{Binding Cr, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="65"
+                                       dgx:DataGridFilterColumn.IsFilterVisible="False" 
+                                  />
+ 
+                </DataGrid.Columns>
+                <!--<DataGrid.Columns>
+                    <DataGridTemplateColumn  Width="110"  CanUserResize="False"  Header=" Entry Date" >
+                        <DataGridTemplateColumn.CellTemplate >
+                            <DataTemplate >
+                                <StackPanel CanHorizontallyScroll="True" >
+                                    <TextBlock  Text="{Binding DEntryDateTime, Mode=TwoWay, StringFormat=\{0:g\}, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}">
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    --><!--<DataGridTemplateColumn  Width="110" CanUserResize="False"  Header="Transaction Date" >
+                        <DataGridTemplateColumn.CellTemplate >
+                            <DataTemplate >
+                                <StackPanel CanHorizontallyScroll="True" >
+                                    <TextBlock  Text="{Binding DTransactionDate, Mode=TwoWay, StringFormat=\{0:d\}, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}">
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>--><!--
+
+                    <DataGridTemplateColumn  Width="*"  CanUserResize="False"  Header="Transaction Title" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate >
+                                --><!--<StackPanel CanHorizontallyScroll="True"  >--><!--
+                                <TextBlock  Text="{Binding VTranTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}" 
+                                                TextWrapping="Wrap" Height="Auto"/>
+
+                                --><!--</StackPanel>--><!--
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn  Width="100" CanUserResize="False"  Header="Payment Mode" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate >
+                                <StackPanel CanHorizontallyScroll="True" >
+                                    <TextBlock  Text="{Binding Payment Mode VPaymentMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  Width="100" CanUserResize="False"  Header="Account" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate >
+                                <StackPanel CanHorizontallyScroll="True" >
+                                    <TextBlock  Text="{Binding Account AccountName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Height="Auto" Style="{StaticResource cstmBlock}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn  Width="75" CanUserResize="False"  Header="Debit" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate >
+                                <StackPanel CanHorizontallyScroll="True" >
+                                    <TextBlock  Text="{Binding Dr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  Width="75" CanUserResize="False"  Header="Credit" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate >
+                                <StackPanel CanHorizontallyScroll="True" >
+                                    <TextBlock  Text="{Binding Cr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>-->
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</UserControl>
+

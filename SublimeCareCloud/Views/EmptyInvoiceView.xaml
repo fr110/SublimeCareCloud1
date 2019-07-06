@@ -1,0 +1,634 @@
+﻿<UserControl x:Class="SublimeCareCloud.Views.EmptyInvoiceView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:auto="clr-namespace:FeserWard.Controls;assembly=IntelliBox" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+             xmlns:dgx="clr-namespace:DataGridExtensions;assembly=DataGridExtensions"
+             xmlns:datamodel="clr-namespace:SublimeCareCloud"
+             xmlns:local="clr-namespace:SublimeCareCloud.Views"
+             xmlns:lvm="clr-namespace:SublimeCareCloud.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:commonWPF="clr-namespace:Rubenhak.Common.WPF;assembly=Rubenhak.Common.WPF"
+             mc:Ignorable="d" 
+             xmlns:CustomClasses="clr-namespace:SublimeCareCloud.CustomClasses"
+
+             MinHeight="250" MinWidth="500"  Loaded="UserControl_Loaded_1">
+    <UserControl.Resources>
+        <CustomClasses:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+    </UserControl.Resources>
+    <DockPanel HorizontalAlignment="Stretch" DataContext="{Binding GlobalDhObjec}" >
+        <DockPanel DockPanel.Dock="Right"  HorizontalAlignment="Stretch" Width="130"  VerticalAlignment="Top"  Background="#FFCACACA"  x:Name="Opreations" >
+            <Border Margin="5,5"   >
+                <StackPanel Orientation="Vertical">
+                    <!--<Button TabIndex="8" IsDefault="True"   HorizontalAlignment="Stretch"
+                         Style="{StaticResource TopOpreatButton}" 
+                    Click="SaveTheParty" Grid.Row="1" Margin="5,10" IsEnabled="{Binding CanSave}">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                            <materialDesign:PackIcon Kind="ContentSave"  Width="14" Height="14" Margin="2,2" />
+                            <TextBlock Text="Save"  HorizontalAlignment="Left" Margin="8,0"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                        </StackPanel>
+                    </Button>-->
+
+                    <Button x:Name="btnSave" Style="{StaticResource TopOpreatButton}"  
+                            HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="test_Click" Grid.Column="1" 
+                            Height="26">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                            <materialDesign:PackIcon Kind="ContentSave"  Width="14" Height="14" Margin="2,2" />
+                            <TextBlock Text="Finalize"  HorizontalAlignment="Left" Margin="8,0"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button  Style="{StaticResource TopOpreatButton}"  x:Name="btnDraft" HorizontalAlignment="Left"  
+                            VerticalAlignment="Top"  Click="btnDraft_Click_1"  Grid.Column="1" 
+                            Height="26" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                            <materialDesign:PackIcon Kind="ContentSave"  Width="14" Height="14" Margin="2,2" />
+                            <TextBlock Text="Save"  HorizontalAlignment="Left" Margin="8,0"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button  Style="{StaticResource TopOpreatButton}"  x:Name="btnPrint" HorizontalAlignment="Left"  
+                            VerticalAlignment="Top"  Click="btnDraft_Click_print"  Grid.Column="1" Height="26" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                            <materialDesign:PackIcon Kind="ContentSave"  Width="14" Height="14" Margin="2,2" />
+
+                            <TextBlock Text="Print"  HorizontalAlignment="Left" Margin="8,0"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button  Style="{StaticResource TopOpreatButton}"  HorizontalAlignment="Left" Margin="11,3,0,0" VerticalAlignment="Top" 
+                            Click="Button_Click_1" x:Name="btnCancel" Grid.Column="1" Height="26" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                            <materialDesign:PackIcon Kind="ContentSave"  Width="14" Height="14" Margin="2,2" />
+                            <TextBlock Text="Cancel"  HorizontalAlignment="Left" Margin="8,0"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Content="Cancel" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="140" x:Name="btnCnclInvoice" Grid.Column="1" Click="btnCnclInvoice_Click" Height="26"  Visibility="Hidden"/>
+                    <Button Content="Print" HorizontalAlignment="Left" Margin="164,6,0,0" VerticalAlignment="Top" Width="140" x:Name="btnPrintIt" Grid.Column="1" Click="test_Click"  Height="26" Visibility="Hidden"/>
+
+
+                </StackPanel>
+            </Border>
+
+
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+            <StackPanel HorizontalAlignment="Stretch" >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="27"  />
+                    </Grid.RowDefinitions>
+                    <Label x:Name="lblErrorMsg" Content="Label" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Top"   Height="26" Visibility="Hidden" />
+                </Grid>
+
+
+                <GroupBox x:Name="MainGroup" Grid.ColumnSpan="2">
+                    <GroupBox.Template>
+                        <ControlTemplate TargetType="{x:Type GroupBox}">
+                            <Grid SnapsToDevicePixels="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="6"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="6"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="6"/>
+                                </Grid.RowDefinitions>
+                                <Border BorderBrush="Transparent" BorderThickness="0" Background="{TemplateBinding Background}" Grid.ColumnSpan="4" Grid.Column="0" CornerRadius="4" Grid.Row="1" Grid.RowSpan="3"/>
+                                <Border BorderBrush="White" BorderThickness="0" Grid.ColumnSpan="4" CornerRadius="4" Grid.Row="1" Grid.RowSpan="3">
+                                    <Border.OpacityMask>
+                                        <MultiBinding ConverterParameter="7" UpdateSourceTrigger="Default">
+                                            <MultiBinding.Converter>
+                                                <BorderGapMaskConverter/>
+                                            </MultiBinding.Converter>
+                                            <Binding ElementName="Header" Path="ActualWidth"/>
+                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
+                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
+                                        </MultiBinding>
+                                    </Border.OpacityMask>
+                                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" CornerRadius="0">
+                                        <Border BorderBrush="White" BorderThickness="0" CornerRadius="0"/>
+                                    </Border>
+                                </Border>
+                                <Border x:Name="Header" Grid.Column="1" Padding="3,1,3,0" Grid.Row="0" Grid.RowSpan="2">
+                                    <ContentPresenter ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                                <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.Column="1" ContentStringFormat="{TemplateBinding ContentStringFormat}" Margin="{TemplateBinding Padding}" Grid.Row="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </GroupBox.Template>
+                    <Grid x:Name="MainContainer" HorizontalAlignment="Stretch"  VerticalAlignment="Top" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="511*"/>
+                            <ColumnDefinition Width="330*"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="86*"/>
+
+
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="1" Margin="20" Width="300" HorizontalAlignment="Right">
+
+
+                            <Expander x:Name="CostumerBox" 
+    HorizontalAlignment="Stretch"
+    Header="Customer">
+                                <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Width="280" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition  />
+                                        <RowDefinition  />
+                                        <RowDefinition  />
+                                        <RowDefinition  />
+                                        <RowDefinition  />
+                                        <RowDefinition  />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="27*"/>
+                                        <ColumnDefinition Width="43*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="Search:" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Width="69" Padding="0,4"  FontWeight="Bold" Margin="0,1"/>
+                                    <TextBlock Grid.Column="1"   Grid.Row="5" TargetUpdated="TextBlock_TargetUpdated_2" Margin="0,0,86,0" />
+                                    <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="79" Padding="0,4"  Grid.Row="2" Margin="0,1" />
+                                    <TextBox x:Name="vCostumerNameTextBox" HorizontalAlignment="Left"  
+            			Text="{Binding CostumerMobileNumber, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" 
+            			VerticalAlignment="Center" Width="153"   Grid.Row="3" Grid.Column="1" Margin="0,1" TabIndex="7"/>
+                                    <auto:Intellibox                       
+            			x:Name="Costumerlist"
+            			ResultsHeight="150"
+            			DisplayedValueBinding="{Binding CostumerBikeNumber}"
+            			SelectedValueBinding="{Binding CostumerID}" 
+            			ExplicitlyIncludeColumns="True"
+            			DataProvider="{Binding dbCostumerSearch, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}"
+                         SelectAllOnFocus="True" Focusable="True" TabIndex="4" Grid.Column="1" 
+                        KeyUp="Costumerlist_KeyUp" MaxHeight="25"  >
+                                        <auto:Intellibox.RowColorizer>
+                                            <auto:IntelliboxAlternateRowColorizer EvenRowBrush="#f2f2f2"  />
+                                        </auto:Intellibox.RowColorizer>
+                                        <auto:Intellibox.Template>
+                                            <ControlTemplate TargetType="{x:Type UserControl}">
+                                                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+            						Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                                                    <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" 
+            							ContentStringFormat="{TemplateBinding ContentStringFormat}"
+            							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+            							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+            							VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                        <ContentPresenter.Resources>
+                                                            <Style TargetType="{x:Type TextBlock}">
+                                                                <Setter Property="TextDecorations" Value="Underline" />
+                                                                <Setter Property="Background" Value="Red"/>
+                                                            </Style>
+                                                        </ContentPresenter.Resources>
+                                                    </ContentPresenter>
+                                                </Border>
+
+                                            </ControlTemplate>
+                                        </auto:Intellibox.Template>
+                                        <auto:Intellibox.Columns>
+                                            <auto:IntelliboxColumn DisplayMemberBinding="{Binding CostumerInfo}"
+            					Width="240"
+            					Header="Detail [ Name - Bike # - Mobile #]"/>
+
+                                            <auto:IntelliboxColumn DisplayMemberBinding="{Binding VCostumeradress}"
+            					Width="150"
+            					Header="Costumer Address" />
+                                        </auto:Intellibox.Columns>
+                                    </auto:Intellibox>
+                                    <Label Content="Mobile:" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="81" Padding="0,4" Grid.Row="3"  Margin="0,1"/>
+                                    <TextBox x:Name="vCostumermobileTextBox" Grid.Column="1" HorizontalAlignment="Left"  
+                             Text="{Binding CostumerName, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="153" Grid.Row="2" Margin="0,2" TabIndex="6" 
+                               />
+                                    <Label Content="Bike Number:" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="81" Padding="0,4"  Grid.Row="1" Margin="0,1"/>
+                                    <TextBox x:Name="txtCostumerMobileNumber" Grid.Column="1" HorizontalAlignment="Left"  
+                                 Text="{Binding CostumerBikeNumber, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}"
+                                 VerticalAlignment="Center" Width="86" Grid.Row="1" Margin="0,2" TabIndex="5" />
+                                    <Label Content="Meter Reading:" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="108" Padding="0,4" Grid.Row="4"  Margin="0,1" />
+                                    <Label Content="Bike Model:" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="98" Padding="0,4" Grid.Row="5"  Margin="0,1"/>
+                                    <TextBox x:Name="txtMeterReading" Grid.Column="1" HorizontalAlignment="Left"  
+                        	Text="{Binding MeterReading, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" 
+                                 VerticalAlignment="Center" Width="86" Grid.Row="4" Margin="0,2" TabIndex="8"   />
+                                    <TextBox x:Name="txtModelNumber" HorizontalAlignment="Left"  
+                        	Text="{Binding ModelNumber, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" 
+                                 VerticalAlignment="Bottom" Width="61" Grid.Row="5" Grid.Column="1" TabIndex="9"  />
+                                    <CheckBox x:Name="bFallow"  Content="Fallow" Grid.Column="1" Margin="91,5,10,4" Grid.Row="5" IsChecked="{Binding BFallowUp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </Grid>
+                            </Expander>
+                            
+                            
+                            <GroupBox Grid.Column="1" Header="Customer" HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Top"  MaxHeight="190">
+                             
+                            </GroupBox>
+
+                            <GroupBox x:Name="paymentBox"  Margin="0,15" Grid.Column="1" Header="Payment " HorizontalAlignment="Stretch"  >
+                                <Grid HorizontalAlignment="Left" Height="155"   VerticalAlignment="Top" Width="280">
+                                    <!--<auto:Intellibox
+                Width="200" Name="autoBox"
+                DataProvider="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=test}"
+                MaxResults="3"
+           Grid.Row="1" />-->
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition  Height="25"/>
+                                        <RowDefinition/>
+
+
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="27*"/>
+                                        <ColumnDefinition Width="43*"/>
+
+
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox x:Name="iDiscountPersentTextBox" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="153" TabIndex="12" 
+            			LostFocus="iDiscountPersentTextBox_LostFocus" KeyUp="iDiscountPersentTextBox_KeyUp" commonWPF:TextBoxMaskBehavior.Mask="Decimal"
+            			Text="{Binding IDiscountPersent, Mode=TwoWay, NotifyOnValidationError=true, TargetNullValue=0, UpdateSourceTrigger=LostFocus, ValidatesOnExceptions=true}" Grid.Row="2" Margin="0,4,0,24" Grid.RowSpan="2" />
+                                    <Label Content="Discount:" HorizontalAlignment="Left" VerticalAlignment="Center"   Grid.Row="2"  />
+                                    <TextBox x:Name="fPayAbleAmountTextBox" Grid.Column="1" HorizontalAlignment="Left"  
+            			Text="{Binding FPayAbleAmount, Mode=TwoWay, TargetNullValue=0, UpdateSourceTrigger=LostFocus}" 
+            			VerticalAlignment="Bottom" Width="154"  IsReadOnly="True" Grid.Row="3" IsTabStop="False" KeyUp="fPayAbleAmountTextBox_KeyUp" TabIndex="13" />
+                                    <Label Content="Payable:" HorizontalAlignment="Left" VerticalAlignment="Center"   Grid.Row="3" />
+                                    <TextBox x:Name="fAmmountRecivedTextBox" Grid.Column="1" HorizontalAlignment="Left" 
+            			Grid.Row="4" commonWPF:TextBoxMaskBehavior.Mask="Decimal"
+            			Text="{Binding FAmmountRecived, Mode=TwoWay, TargetNullValue=0, UpdateSourceTrigger=LostFocus}" 
+            			VerticalAlignment="Center" Width="153" KeyUp="fAmmountRecivedTextBox_KeyUp" 
+            			LostFocus="fAmmountRecivedTextBox_LostFocus" PreviewKeyDown="fAmmountRecivedTextBox_PreviewKeyDown" PreviewKeyUp="fAmmountRecivedTextBox_PreviewKeyUp" TabIndex="14" Margin="0,2,0,1" />
+                                    <Label x:Name="lblAmountPR" Content="Received:" HorizontalAlignment="Left"  Grid.Row="4" VerticalAlignment="Center"  />
+                                    <TextBox x:Name="vPaymentModTextBox" Grid.Column="1" HorizontalAlignment="Left"  Margin="181,1,-69,0" 
+            			Text="{Binding VPaymentMod, Mode=TwoWay, NotifyOnValidationError=True, TargetNullValue=Cash, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" 
+            			VerticalAlignment="Center" Width="60" Grid.Row="3" TabIndex="11" Visibility="Hidden"/>
+                                    <Label Content="Total:" HorizontalAlignment="Left"  VerticalAlignment="Center"  Grid.Row="1"/>
+                                    <TextBox x:Name="ammountwithDeliveryexpense" Grid.Column="1" HorizontalAlignment="Left" 
+            			 VerticalAlignment="Bottom" 
+            			Width="154" KeyUp="ftotalamountTextBox_KeyUp" IsReadOnly="True" 
+            			Text="{Binding AmountwithDExpense, Mode=TwoWay, NotifyOnValidationError=True, TargetNullValue=0, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" IsTabStop="False" Visibility="Hidden" Grid.Row="1" 
+                     />
+                                    <Label Content="Balance:" HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Center"  />
+                                    <TextBox x:Name="fBlance" HorizontalAlignment="Left"  Grid.Row="5" 
+            			Text="{Binding FBalance, Mode=TwoWay, NotifyOnValidationError=true, TargetNullValue=0, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}"
+            			VerticalAlignment="Center" Width="153" Grid.Column="1" IsReadOnly="True" IsTabStop="False" KeyUp="fBlance_KeyUp" Margin="0,4" TabIndex="15"
+                     />
+                                    <Label Content="Amount:" HorizontalAlignment="Left" Margin="0,343,0,29" VerticalAlignment="Center"  Width="82" Padding="0,4" Grid.Column="1" Visibility="Hidden" Height="23"/>
+                                    <TextBox x:Name="txtFServices" Grid.Column="1" HorizontalAlignment="Left"  
+                    	Text="{Binding FServices, Mode=TwoWay, TargetNullValue=0, UpdateSourceTrigger=LostFocus}" 
+                    	VerticalAlignment="Bottom" Width="154" IsTabStop="False" KeyUp="txtFServices_KeyUp" LostFocus="txtFServices_LostFocus" TabIndex="11"  />
+                                    <Label Content="Services:" HorizontalAlignment="Left"  VerticalAlignment="Center"   />
+                                    <TextBox x:Name="ftotalamountTextBox" HorizontalAlignment="Left" 
+                        	VerticalAlignment="Center" Width="100" KeyUp="ftotalamountTextBox_KeyUp" 
+                        	IsReadOnly="True" 
+                        	Text="{Binding Ftotalamount, Mode=TwoWay, NotifyOnValidationError=True, TargetNullValue=0, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" 
+                                 Grid.Column="1" Grid.Row="1" Margin="0,1,0,2" TabIndex="10"/>
+                                    <TextBox x:Name="fFGrossPurchasePriceTextBox" HorizontalAlignment="Left" 
+                        	VerticalAlignment="Center" Width="48" 
+                        	IsReadOnly="True" 
+                        	Text="{Binding FGrossPurchasePrice, Mode=TwoWay, NotifyOnValidationError=True, TargetNullValue=0, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" 
+                                 Grid.Column="1" Grid.Row="1" Margin="105,1,0,2" Visibility="Hidden" />
+
+                                </Grid>
+                            </GroupBox>
+
+
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" >
+                        <Grid HorizontalAlignment="Stretch"   VerticalAlignment="Top" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition/>
+
+
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="113*"/>
+                                <ColumnDefinition Width="Auto" MinWidth="135"/>
+                                <ColumnDefinition Width="108*"/>
+                                <ColumnDefinition Width="Auto" MinWidth="135"/>
+
+
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Date:" HorizontalAlignment="Left" Margin="0,0,0,5" VerticalAlignment="Center"  Width="43" Padding="0,4" Grid.Column="2"/>
+                            <DatePicker x:Name="ddateDatePicker" 
+                                DisplayDateStart="{x:Static sys:DateTime.Now}" DisplayDateEnd="{x:Static sys:DateTime.Now}" 
+                                Grid.Column="3" HorizontalAlignment="Left" Margin="0,0,0,26" 
+                                
+                                SelectedDate="{Binding Ddate, Mode=TwoWay, NotifyOnValidationError=true, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, StringFormat=\{0:dd/MM/yyyy hh:mm:ss\}, ValidatesOnExceptions=true}"
+                                VerticalAlignment="Center" Height="28" Width="120" 
+                                Padding="0,4" TabIndex="1" IsHitTestVisible="True" Grid.RowSpan="2" />
+
+
+                            <TextBox x:Name="txtCostumerID" Grid.Column="3" HorizontalAlignment="Left"  Margin="1,0,0,3" 
+            		Text="{Binding CostumerID, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" IsReadOnly="True" Visibility="Hidden"/>
+                            <TextBlock Grid.Column="3" HorizontalAlignment="Left" Margin="6,12,0,0" TextWrapping="Wrap" Text="{Binding SelectedValue}" VerticalAlignment="Top" Height="16" Width="0" Grid.RowSpan="2"/>
+                            <TextBlock Grid.Column="3" x:Name="ISaleid" HorizontalAlignment="Left" Margin="0,11,0,0" TextWrapping="Wrap" Text="{Binding ISaleid, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" VerticalAlignment="Top" Visibility="Hidden" Height="16" Width="0"/>
+                            <Label Content="Technician 1:" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="103" Padding="0,4"  Grid.Row="1" Margin="0,1,0,2"/>
+
+                            <Label Content="Technician 2:" HorizontalAlignment="Left"  VerticalAlignment="Center"  Width="103" Padding="0,4"  Grid.Row="1" Grid.Column="2" Margin="0,1,0,2"/>
+                            <auto:Intellibox 
+            			x:Name="Electrition"
+            			ResultsHeight="150"
+            			DisplayedValueBinding="{Binding VEmpfName}"
+            			SelectedValueBinding="{Binding VEmpfName}" 
+            			ExplicitlyIncludeColumns="True"
+            			DataProvider="{Binding dbEmployeeSearch, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}" 
+                        SelectAllOnFocus="True" Focusable="True" TabIndex="2" Grid.Column="1"  Grid.Row="1" MaxHeight="20" Margin="0,0,13,0"  >
+                                <auto:Intellibox.RowColorizer>
+                                    <auto:IntelliboxAlternateRowColorizer EvenRowBrush="#f2f2f2"  />
+                                </auto:Intellibox.RowColorizer>
+                                <auto:Intellibox.Template>
+                                    <ControlTemplate TargetType="{x:Type UserControl}">
+                                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+            						Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+
+                                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" 
+            							ContentStringFormat="{TemplateBinding ContentStringFormat}"
+            							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+            							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+            							VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                <ContentPresenter.Resources>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="TextDecorations" Value="Underline" />
+                                                        <Setter Property="Background" Value="Red"/>
+                                                    </Style>
+                                                </ContentPresenter.Resources>
+                                            </ContentPresenter>
+                                        </Border>
+
+                                    </ControlTemplate>
+                                </auto:Intellibox.Template>
+                                <auto:Intellibox.Columns>
+
+                                    <auto:IntelliboxColumn DisplayMemberBinding="{Binding VEmployeeInfo}"
+            					Width="415"
+            					Header="Employee Name" />
+
+                                </auto:Intellibox.Columns>
+                            </auto:Intellibox>
+                            <TextBlock x:Name="IEmpid" Text="{Binding SelectedValue, ElementName=Employeelist, Mode=TwoWay, NotifyOnTargetUpdated=True}" Margin="0,3,101,5"  Grid.Column="2" Visibility="Hidden" />
+                            <TextBox  HorizontalAlignment="Left"  Margin="2,0,0,0" x:Name="txtVFirstElectricianName"
+                             Text="{Binding VFirstElectricianName, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}"
+                             TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Grid.Column="1" Grid.Row="1" Visibility="Hidden"/>
+                            <TextBox Grid.Column="3" HorizontalAlignment="Left"  Margin="0,1,0,0" x:Name="txtVSecElectricianName"
+                             TextWrapping="Wrap" Text="{Binding VSecElectricianName, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="100" Grid.Row="1" Visibility="Hidden"/>
+                            <auto:Intellibox 
+                    	x:Name="Electrition2"
+                    	ResultsHeight="150"
+                    	DisplayedValueBinding="{Binding VEmpfName}"
+                    	SelectedValueBinding="{Binding VEmpfName}" 
+                    	ExplicitlyIncludeColumns="True"
+                    	DataProvider="{Binding dbEmployeeSearch, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}" 
+                    	SelectAllOnFocus="True" Focusable="True" TabIndex="3" Grid.Column="3"  MaxHeight="20"  Margin="0,1,15,3" Grid.Row="1"  >
+                                <auto:Intellibox.RowColorizer>
+                                    <auto:IntelliboxAlternateRowColorizer EvenRowBrush="#f2f2f2"  />
+                                </auto:Intellibox.RowColorizer>
+                                <auto:Intellibox.Template>
+                                    <ControlTemplate TargetType="{x:Type UserControl}">
+                                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+                    				Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+
+                                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" 
+                    					ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                    					HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                    					SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                    					VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                <ContentPresenter.Resources>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="TextDecorations" Value="Underline" />
+                                                        <Setter Property="Background" Value="Red"/>
+                                                    </Style>
+                                                </ContentPresenter.Resources>
+                                            </ContentPresenter>
+                                        </Border>
+
+                                    </ControlTemplate>
+                                </auto:Intellibox.Template>
+                                <auto:Intellibox.Columns>
+
+                                    <auto:IntelliboxColumn DisplayMemberBinding="{Binding VEmployeeInfo}"
+                    			Width="415"
+                    			Header="Employee Name" />
+
+                                </auto:Intellibox.Columns>
+                            </auto:Intellibox>
+                            <!--<TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,2,0,0" 
+                    	Text="{Binding LiftNumber, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}"
+
+                    HorizontalAlignment="Left" Margin="2,104,0,0" VerticalAlignment="Top" Height="290" Width="auto" 
+            		AutoGenerateColumns="False"  CanUserReorderColumns="False" CanUserResizeColumns="False" 
+            		CanUserResizeRows="False" CanUserSortColumns="False" 
+            		CanUserAddRows="False" KeyDown="grdItems_KeyDown" TabIndex="11" SelectionChanged="grdItems_SelectionChanged"  
+            		PreviewKeyUp="grdItems_PreviewKeyUp" RowHeaderWidth="0" ColumnHeaderHeight="NaN" FontFamily="Arial" GridLinesVisibility="All"
+
+                            
+                    	TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>-->
+                        </Grid>
+                        <DataGrid x:Name="grdItems" 
+                        VerticalAlignment="Top" MinHeight="200"  Height="{Binding Source={x:Static datamodel:WSetting.GridHeight}}"
+                        dgx:DataGridFilter.GlobalFilter="{Binding ExternalFilter}"
+                        dgx:DataGridFilter.IsAutoFilterEnabled="True"
+                        dgx:Tools.ApplyInitialSorting="True"
+                        dgx:DataGridFilter.FilterEvaluationDelay="0:0:0"
+                    	CanUserReorderColumns="False" 
+                        CanUserResizeColumns="False" 
+                        CanUserResizeRows="False"  
+                    	RowHeaderWidth="0" 
+                        ColumnHeaderHeight="NaN"  
+                        GridLinesVisibility="All"
+                    	AutoGenerateColumns="False"  
+                        IsReadOnly="True"
+                        Focusable="False"
+                    	CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False" Cursor="Hand"  
+                        KeyDown="grdItems_KeyDown" TabIndex="11" SelectionChanged="grdItems_SelectionChanged"  
+            		PreviewKeyUp="grdItems_PreviewKeyUp"  >
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding BooleanPropertyOnObjectBoundToRow}" Value="False">
+                                            <Setter Property="Background" Value="Red"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn   Width="40" CanUserResize="False" Header="#"  >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate >
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock  Text="{Binding ISerialNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="20" />
+                                                <TextBlock  Text="{Binding ISaleItemid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="20"  Visibility="Hidden" />
+                                                <TextBlock  Text="{Binding FUnitPurchasePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="20"  Visibility="Hidden" />
+
+                                                <TextBlock  Text="{Binding FGrossPurchasePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="20"  Visibility="Hidden" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn  Width="*" CanUserResize="False" Header="Item Name"  >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate >
+                                            <TextBlock  Text="{Binding VItemName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="Auto" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn  Width="55" CanUserResize="False" Header="U. Price" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel >
+                                                <!--IsEnabled="{Binding ConverterParameter=BIsEditAbleInInvoice, Converter={StaticResource InverseBooleanConverter}, Mode=OneWay}" IsReadOnly="{Binding BIsEditAbleInInvoice, ConverterParameter=BIsEditAbleInInvoice, Converter={StaticResource InverseBooleanConverter}}"   -->
+                                                <!--<TextBlock  Text="{Binding FUnitePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="45" 
+                                                    Visibility="{Binding BIsEditAbleInInvoice, ConverterParameter=BIsEditAbleInInvoice, Converter={StaticResource BooleanToVisibilityConverter}}"   />-->
+
+
+                                                    <!--<TextBlock  Text="{Binding FUnitPurchasePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="20"  Visibility="Visible" />-->
+
+                                                    <TextBox HorizontalAlignment="Left" 
+                                    		TextWrapping="Wrap" Text="{Binding FUnitePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="45" 
+                                                 commonWPF:TextBoxMaskBehavior.Mask="Decimal" 
+                                                  IsEnabled="{Binding ConverterParameter=BIsEditAbleInInvoice, Converter={StaticResource InverseBooleanConverter}, Mode=OneWay}" 
+                                           />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="60"  CanUserResize="False" Header="Quantity" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox  Text="{Binding IQuantity, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="52"
+            							Style="{StaticResource cstmTxtBox}" LostFocus="TextBox_LostFocus_1" KeyUp="TextBox_KeyUp_1" />
+
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="ItemStock"  IsReadOnly="True" CanUserResize="False" Header="Stock" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.Style>
+                                                    <Style>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding StockStatus}" Value="Not Available">
+                                                                <Setter Property="Panel.Background" Value="Red"/>
+
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding StockStatus}" Value="Available">
+                                                                <Setter Property="Panel.Background" Value="Green"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Grid.Style>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding StockStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                    <TextBlock  HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top"  Text="{Binding ICurrantStock, Mode=TwoWay, StringFormat=(\{0\}), UpdateSourceTrigger=PropertyChanged}" Margin="4,0,0,0"  Grid.Column="1" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                    <!--<DataTemplate>
+                                    <TextBlock   Width="50" Text="{Binding IStockOut, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>-->
+
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn  Width="60" CanUserResize="False" Header="Amount" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock   Width="50" Text="{Binding FGrossAmount, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"  />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="ItemRemove"  Width="35" IsReadOnly="True" CanUserResize="False" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="btnDelete" Content=" " Click="btnDelete_Click" Width="16" Height="16" BorderThickness="0" Cursor="Hand" >
+                                                <Button.Background>
+                                                    <ImageBrush ImageSource="../../images/delete_icon.png"/>
+                                                </Button.Background>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn  Width="10" IsReadOnly="True" CanUserResize="False" Visibility="Hidden">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox  Text="{Binding IItemID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="10" IsReadOnly="True"  />
+
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Grid x:Name="Item_Grid" HorizontalAlignment="Left" Height="27" Margin="15,120,0,0" VerticalAlignment="Top" Width="476" Visibility="Hidden" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="99*"/>
+                                <ColumnDefinition Width="445*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="28*"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="Search Item:" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="69" Height="15" FontWeight="Bold" Margin="0,7,0,0" />
+
+
+
+                            <TextBox x:Name="fUnitPrice" HorizontalAlignment="Left" Margin="25,0,0,0" 
+                         TextWrapping="Wrap" VerticalAlignment="Top" Width="14" Text="{Binding FUnitePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TabIndex="8" Visibility="Hidden"/>
+                            <TextBox x:Name="fAmount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="15" Text="{Binding FGrossAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TabIndex="10" Margin="9,0,0,0" Visibility="Hidden" Grid.Column="1"/>
+                            <TextBox x:Name="iItemID" HorizontalAlignment="Left" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Text="{Binding IItemID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Visibility="Hidden" Grid.Column="1"/>
+                            <TextBox x:Name="FUnitPurchasePrice" HorizontalAlignment="Left" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" 
+                             Text="{Binding FUnitPurchasePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Visibility="Hidden" Grid.Column="1"/>
+
+                            <TextBox x:Name="FGrossPurchasePrice" HorizontalAlignment="Left" Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" 
+                             Text="{Binding FGrossPurchasePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Visibility="Hidden" Grid.Column="1"/>
+                            <TextBox x:Name="vItemName" HorizontalAlignment="Left" Margin="44,-2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Text="{Binding VItemName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Visibility="Hidden" Grid.Column="1"/>
+                            <TextBox x:Name="iQuantity" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="15" Text="{Binding IQuantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="iQuantity_TextChanged" KeyUp="iQuantity_KeyUp" TabIndex="9" Margin="4,0,0,0" Visibility="Hidden" Grid.Column="1"/>
+
+                            <TextBox x:Name="StockStatus" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="15" Text="{Binding StockStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  TabIndex="9" Margin="4,0,0,0"  Grid.Column="1" Visibility="Hidden"/>
+                            <TextBox x:Name="ICurrantStock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="15" Text="{Binding ICurrantStock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  TabIndex="9" Margin="4,0,0,0"  Grid.Column="1" Visibility="Hidden"/>
+
+                            <TextBox x:Name="BIsEditAbleInInvoice" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="15" 
+                		Text="{Binding BIsEditAbleInInvoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  TabIndex="9" Margin="4,0,0,0"  Grid.Column="1" Visibility="Hidden"/>
+
+                            <TextBox x:Name="ItemBarCode" Grid.Column="1" HorizontalAlignment="Left"  Margin="4.281,3,0,0" TextWrapping="Wrap" 
+                             Text="" VerticalAlignment="Top" Width="321" TextChanged="TextBox_TextChanged_1" KeyDown="ItemBarCode_KeyDown" LostFocus="ItemBarCode_LostFocus" PreviewKeyUp="ItemBarCode_PreviewKeyUp"/>
+                            <!--<Button x:Name="addItem" Content=" " Grid.Column="4" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="29" Grid.Row="1" Click="addItem_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/images/add.png" Stretch="None"/>
+                    </Button.Background>
+                </Button>-->
+                        </Grid>
+
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <TextBox TabIndex="2" x:Name="iUpdate" Grid.Column="1" HorizontalAlignment="Stretch" Visibility="Hidden"   Grid.Row="2" 
+                         Text="{Binding IUpdate, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" VerticalAlignment="Center" />
+                <TextBox TabIndex="2" x:Name="iPartyID" Grid.Column="1" HorizontalAlignment="Stretch" Visibility="Hidden"   Grid.Row="2" 
+                         Text="{Binding IPartyID, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" VerticalAlignment="Center" />
+
+            </StackPanel>
+
+
+        </DockPanel>
+
+
+    </DockPanel>
+</UserControl>

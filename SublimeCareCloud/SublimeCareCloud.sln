@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Binaries", "Binaries", "{E3D8DFD4-4299-4FE0-9BE8-0CB41F189489}"
+	ProjectSection(SolutionItems) = preProject
+		Binaries\Microsoft.Windows.Shell.dll = Binaries\Microsoft.Windows.Shell.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "License", "License", "{2AC3CC94-8119-4CDC-A01C-02455F8E8AF5}"
+	ProjectSection(SolutionItems) = preProject
+		License.Icons.txt = License.Icons.txt
+		License.RelativeAnimatingContentControl.txt = License.RelativeAnimatingContentControl.txt
+		License.txt = License.txt
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{B74B36EF-E37C-4A70-A9C8-C0715D593B67}"
+	ProjectSection(SolutionItems) = preProject
+		Build\Build.bat = Build\Build.bat
+		Build\ModernUI.msbuild = Build\ModernUI.msbuild
+		Build\ModernUI.WPF.nuspec = Build\ModernUI.WPF.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Binaries", "Binaries", "{14C3EC42-FD0C-4966-A684-AF2B1808A10A}"
+	ProjectSection(SolutionItems) = preProject
+		Build\Binaries\MSBuild.Community.Tasks.dll = Build\Binaries\MSBuild.Community.Tasks.dll
+		Build\Binaries\NuGet.exe = Build\Binaries\NuGet.exe
+		Build\Binaries\signvsix.exe = Build\Binaries\signvsix.exe
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataHolders", "DataHolders\DataHolders.csproj", "{EAE3D372-6246-475D-BC14-327EE02559A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SublimeCareCloud", "SublimeCareCloud\SublimeCareCloud.csproj", "{AD2D2EF3-5B12-46E2-B527-998413B84CF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{DFD4A128-F2E7-4964-80FE-04E7BC76DDA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBConfiguration", "DBConfiguration\DBConfiguration.csproj", "{F266EB65-7143-43B2-A540-BE13F03CEA78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{18D68E25-53A9-4BAF-9A20-20CE774FD9FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAE3D372-6246-475D-BC14-327EE02559A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE3D372-6246-475D-BC14-327EE02559A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE3D372-6246-475D-BC14-327EE02559A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE3D372-6246-475D-BC14-327EE02559A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD2D2EF3-5B12-46E2-B527-998413B84CF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2D2EF3-5B12-46E2-B527-998413B84CF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2D2EF3-5B12-46E2-B527-998413B84CF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2D2EF3-5B12-46E2-B527-998413B84CF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFD4A128-F2E7-4964-80FE-04E7BC76DDA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFD4A128-F2E7-4964-80FE-04E7BC76DDA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFD4A128-F2E7-4964-80FE-04E7BC76DDA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFD4A128-F2E7-4964-80FE-04E7BC76DDA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F266EB65-7143-43B2-A540-BE13F03CEA78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F266EB65-7143-43B2-A540-BE13F03CEA78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F266EB65-7143-43B2-A540-BE13F03CEA78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F266EB65-7143-43B2-A540-BE13F03CEA78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18D68E25-53A9-4BAF-9A20-20CE774FD9FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18D68E25-53A9-4BAF-9A20-20CE774FD9FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18D68E25-53A9-4BAF-9A20-20CE774FD9FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18D68E25-53A9-4BAF-9A20-20CE774FD9FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14C3EC42-FD0C-4966-A684-AF2B1808A10A} = {B74B36EF-E37C-4A70-A9C8-C0715D593B67}
+	EndGlobalSection
+EndGlobal

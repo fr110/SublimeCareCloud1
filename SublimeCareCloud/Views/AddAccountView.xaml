@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="SublimeCareCloud.Views.AddAccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SublimeCareCloud.Views"
+             xmlns:lvm="clr-namespace:SublimeCareCloud.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d" 
+            >
+
+    <DockPanel HorizontalAlignment="Stretch"  >
+        <StackPanel>
+            <DockPanel DockPanel.Dock="Top"  HorizontalAlignment="Stretch"  VerticalAlignment="Top"  Background="#FFCACACA"  x:Name="Opreations" >
+                <Border Margin="10,5"   >
+                    <StackPanel Orientation="Horizontal">
+                        <Button TabIndex="8" IsDefault="True"   HorizontalAlignment="Left"  x:Name="btnSaveAcc"
+                         Style="{StaticResource TopOpreatButton}" 
+                     Grid.Row="1" Margin="5,10" IsEnabled="{Binding CanSave}" Click="Button_Click_1" >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                                <materialDesign:PackIcon Kind="ContentSave"  Width="18" Height="18" Margin="2,2" />
+                                <TextBlock Text="Save"  HorizontalAlignment="Left" Margin="8,2"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                            </StackPanel>
+                        </Button>
+                        <!--<Button  HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Top"   TabIndex="8"
+                                 Style="{StaticResource TopOpreatButton}" >
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                                <materialDesign:PackIcon Kind="StopCircle"  Width="18" Height="18" Margin="2,2" />
+                                <TextBlock Text="Cancel"  HorizontalAlignment="Left" Margin="8,2"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                            </StackPanel>
+
+                        </Button>-->
+                        <!--<Button Content="Save Account" HorizontalAlignment="Left" Margin="5,10" VerticalAlignment="Top" Width="113" Height="26" 
+                                Click="Button_Click_1" TabIndex="7"
+                                Style="{StaticResource TopOpreatButton}" 
+                                >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                                <materialDesign:PackIcon Kind="ContentSave"  Width="18" Height="18" Margin="2,2" />
+                                <TextBlock Text="Cancel"  HorizontalAlignment="Left" Margin="8,2"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                            </StackPanel>
+                        </Button>-->
+                        <Button x:Name="ShowAccount" HorizontalAlignment="Left" VerticalAlignment="Top"   
+                                Margin="5,10" Click="ShowAccount_Click" TabIndex="9" 
+                                Style="{StaticResource TopOpreatButton}" 
+                               >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                                <materialDesign:PackIcon Kind="BookOpen"  Width="18" Height="18" Margin="2,2" />
+                                <TextBlock Text="Account Detail"  HorizontalAlignment="Left" Margin="8,2"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                            </StackPanel>
+
+                        </Button>
+
+
+                    </StackPanel>
+                </Border>
+
+
+            </DockPanel>
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"  />
+                </Grid.RowDefinitions>
+                <Label x:Name="lblErrorMsg" Content="Label" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Top"   Height="26" Visibility="Hidden" />
+            </Grid>
+            
+            <ScrollViewer Height="450">
+                <DockPanel>
+                    <Grid x:Name="AccountGrid" DataContext="{Binding objTodisplay}" >
+
+                        <StackPanel MinWidth="200">
+                            <TextBlock Text="Account Definition"   />
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="24*"/>
+                                    <RowDefinition Height="205*"/>
+                                </Grid.RowDefinitions>
+                                <Grid x:Name="AccountDt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="894" Height="284"  Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" MinWidth="152"/>
+                                        <ColumnDefinition Width="Auto" MinWidth="492"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="103"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30" />
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBox x:Name="iAccountidTextBox" Grid.Column="1" HorizontalAlignment="Left"  Margin="4,0,0,0" Grid.Row="0" 
+            			Text="{Binding iAccountid, Mode=OneWay}" VerticalAlignment="Center" Width="120" Visibility="Hidden"/>
+                                    <Label Content="Account Name:*" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="26" Width="91"/>
+                                    <TextBox x:Name="accountNameTextBox" Grid.Column="1" HorizontalAlignment="Left"  
+            			Text="{Binding AccountName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="272" TabIndex="1"/>
+                                    <Label Content="Account Number:*" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center" Width="117"/>
+                                    <TextBox x:Name="vAccountNoTextBox" Grid.Column="1" HorizontalAlignment="Left"   Grid.Row="1" 
+            			Text="{Binding VAccountNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                             VerticalAlignment="Center" Width="272" TabIndex="2"/>
+                                    <Label Content="Account Description:" HorizontalAlignment="Left" Margin="0,0,0,4" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="117"/>
+                                    <TextBox x:Name="vAccountDescTextBox" Grid.Column="1" HorizontalAlignment="Left"  Margin="0,0,0,6" Grid.Row="2" 
+            			Text="{Binding VAccountDesc, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="272" TabIndex="3"/>
+                                    <Label Content="Account Comments:" HorizontalAlignment="Left" Margin="0,4,0,73" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="117"/>
+                                    <TextBox x:Name="vAccountCommentsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="96" Margin="0,4,0,3" Grid.Row="3"
+            			Text="{Binding VAccountComments, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="272" TabIndex="4"/>
+                                    <CheckBox x:Name="bEditableCheckBox" Content="Is Editable" HorizontalAlignment="Left" 
+            			IsChecked="{Binding BEditable, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="6,0,0,8" Grid.Row="6" VerticalAlignment="Center" Height="22" Width="120" Grid.Column="1" Visibility="Hidden"/>
+                                    <Label Content="i Finace Type:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,28,0,14" Grid.Row="5" VerticalAlignment="Center" Visibility="Hidden" Height="26" Width="81" Grid.RowSpan="2"/>
+                                    <TextBox x:Name="iFinaceTypeTextBox" Grid.Column="1" HorizontalAlignment="Left"  Margin="4,30,0,14" Grid.Row="5" 
+            			Text="{Binding IFinaceType, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Visibility="Hidden" Grid.RowSpan="2"/>
+
+                                    <ComboBox x:Name="vAccountType"  Foreground="Black"
+            			HorizontalAlignment="Left"   Grid.Row="4"
+            			VerticalAlignment="Center" Width="272"
+            	        DisplayMemberPath="VFinaceType"
+                        SelectedValuePath="IFinaceType"
+                                              
+                        SelectedValue="{Binding Path=IFinaceType, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+            			Grid.Column="1"  TabIndex="5"  />
+
+
+                                    <Label Content="i Module ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,20,0,-16" Grid.Row="6" VerticalAlignment="Center" Visibility="Hidden" Height="26" Width="75"/>
+                                    <TextBox x:Name="iModuleIDTextBox" Grid.Column="1" HorizontalAlignment="Left"  Margin="4,20,0,-14" Grid.Row="6" 
+            			Text="{Binding iModuleID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Visibility="Hidden"/>
+                                    <Label Content="i Module FK ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,23,0,19" Grid.Row="5" VerticalAlignment="Center" Visibility="Hidden" Height="26" Width="91" Grid.RowSpan="2"/>
+                                    <TextBox x:Name="iModuleFK_IDTextBox" Grid.Column="1" HorizontalAlignment="Left"  Margin="4,25,0,19" Grid.Row="5" Text="{Binding iModuleFK_ID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Visibility="Hidden" Grid.RowSpan="2"/>
+                                    <CheckBox x:Name="bNominalCheckBox" Content="Nominal [ Nominal accounts are the accounts that report revenues, expenses, gains and losses ]" Grid.Column="1" HorizontalAlignment="Left" 
+            			IsChecked="{Binding BNominal, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="0,1,0,13" Grid.Row="5" VerticalAlignment="Center"  Width="595" Grid.ColumnSpan="2" TabIndex="6"/>
+                                    <Label Content="Account Type:" HorizontalAlignment="Left" Margin="0,0,0,5" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="117"/>
+                                    <Label Content="All fields Marked with ' * ' are required." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,36,0,0" Grid.Row="5" Grid.RowSpan="2" Grid.Column="1"/>
+                                </Grid>
+                               
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </DockPanel>
+            </ScrollViewer>
+            
+        </StackPanel>
+    </DockPanel>
+    
+</UserControl>

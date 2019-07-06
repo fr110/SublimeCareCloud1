@@ -1,0 +1,181 @@
+﻿<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:xrd="clr-namespace:CodeReason.Reports.Document;assembly=CodeReason.Reports" 
+              PageHeight="29.7cm" PageWidth="21cm" ColumnWidth="21cm">
+    <xrd:ReportProperties>
+        <!--<xrd:ReportProperties.ReportName>SimpleReport</xrd:ReportProperties.ReportName>
+        <xrd:ReportProperties.ReportTitle>Invoice</xrd:ReportProperties.ReportTitle>-->
+
+    </xrd:ReportProperties>
+    <xrd:SectionReportHeader PageHeaderHeight="6" Padding="10,10,10,0" FontSize="12" >
+        <Table CellSpacing="0">
+            <Table.Columns>
+                <TableColumn Width="*" />
+                <TableColumn Width="*" />
+            </Table.Columns>
+            <TableRowGroup Style="{StaticResource dataRowStyle}">
+                <xrd:TableRowForDataTable TableName="dtAppPreference">
+                    <TableCell  BorderThickness="0" BorderBrush="black" TextAlignment="Center">
+                        <Paragraph Style="{StaticResource ReportHead}">
+                            <xrd:InlineTableCellValue PropertyName="vCompanyName" />
+                        </Paragraph>
+                    </TableCell>
+                </xrd:TableRowForDataTable>
+            </TableRowGroup>
+            <TableRowGroup Style="{StaticResource dataRowStyle}">
+                <xrd:TableRowForDataTable TableName="dtAppPreference">
+                    <TableCell  BorderThickness="0" BorderBrush="black" TextAlignment="Center">
+                        <Paragraph>
+                            <xrd:InlineTableCellValue PropertyName="vHeaderAdress"/>
+                        </Paragraph>
+                    </TableCell>
+                </xrd:TableRowForDataTable>
+            </TableRowGroup>
+
+            <TableRowGroup Style="{StaticResource dataRowStyle}">
+                <xrd:TableRowForDataTable TableName="dtAppPreference">
+                    <TableCell  BorderThickness="0" BorderBrush="black" TextAlignment="Center">
+                        <Paragraph>
+                            <xrd:InlineTableCellValue PropertyName="VCompanyMobile"/>
+                        </Paragraph>
+                    </TableCell>
+                </xrd:TableRowForDataTable>
+            </TableRowGroup>
+        </Table>
+    </xrd:SectionReportHeader>
+    <Section Padding="40,5,40,5" FontSize="12" >
+        <xrd:SectionDataGroup DataGroupName="HeaderItem" BorderThickness="0,1" BorderBrush="Black">
+            <Table CellSpacing="0" BorderBrush="black" BorderThickness="0">
+                <Table.Columns>
+                    <TableColumn Width="*" />
+                    <TableColumn Width="*" />
+                    <TableColumn Width="2*" />
+                    <TableColumn Width="3*" />
+                </Table.Columns>
+                <TableRowGroup Style="{StaticResource ReportHeader}">
+                    <TableRow>
+                        <TableCell BorderBrush="black" BorderThickness="0" ColumnSpan="4">
+                            <Paragraph>
+                                <xrd:InlineDocumentValue PropertyName="ReportDisc" />
+                            </Paragraph>
+                        </TableCell>
+
+                    </TableRow>
+                    <TableRow>
+
+                        <TableCell BorderBrush="black" BorderThickness="0" ColumnSpan="4" TextAlignment="Right">
+                            <Paragraph>
+                                Report is Generated on
+                                <xrd:InlineDocumentValue PropertyName="PrintDate" />
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                </TableRowGroup>
+
+            </Table>
+        </xrd:SectionDataGroup>
+        <xrd:SectionDataGroup DataGroupName="ItemList">
+            <Table CellSpacing="0" BorderBrush="black" BorderThickness="0">
+                <Table.Columns>
+                    <TableColumn Width="2*" />
+                    <TableColumn Width="1*" />
+                    <TableColumn Width="0.75*" />
+                    <TableColumn Width="0.75*" />
+                </Table.Columns>
+                <TableRowGroup Style="{StaticResource headerFooterRowStyle}">
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph TextAlignment="Left" >
+                                <Bold>Account Name - Account Code</Bold>
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph TextAlignment="Center">
+                                <Bold>Account Nature</Bold>
+                            </Paragraph>
+                        </TableCell>
+                        
+                        <TableCell>
+                            <Paragraph TextAlignment="Center">
+                                <Bold>Dr</Bold>
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph TextAlignment="Center">
+                                <Bold>Cr</Bold>
+                            </Paragraph>
+                        </TableCell>
+                        
+
+                    </TableRow>
+                </TableRowGroup>
+                <TableRowGroup Style="{StaticResource dataRowStyle}">
+                    <xrd:TableRowForDataTable TableName="TrialBalance">
+                        <TableCell >
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="AccountName" /> - <xrd:InlineTableCellValue PropertyName="vAccountNo" /> 
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="vFinaceType" />
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="Dr" />
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <xrd:InlineTableCellValue PropertyName="Cr" />
+                            </Paragraph>
+                        </TableCell>
+                        
+                        
+
+                    </xrd:TableRowForDataTable>
+                </TableRowGroup>
+
+
+            </Table>
+
+        </xrd:SectionDataGroup>
+
+
+    </Section>
+    <xrd:SectionReportFooter PageFooterHeight="3" Padding="10,0,10,13" FontSize="10" FontFamily="Arial" >
+        <Table CellSpacing="0">
+            <Table.Columns>
+                <TableColumn Width="*" />
+                <TableColumn Width="*" />
+            </Table.Columns>
+
+            <TableRowGroup>
+                <xrd:TableRowForDataTable TableName="dtPosSaleInovice">
+                    <TableCell BorderThickness="0" >
+                        <Paragraph>
+                            Powered By:  Euro i Technologies  -  Cell: 0321-7619596
+                        </Paragraph>
+                    </TableCell>
+                    <TableCell BorderBrush="black" BorderThickness="0">
+                        <Paragraph TextAlignment="Right">
+                            Page
+                            <xrd:InlineContextValue PropertyName="PageNumber" FontWeight="Bold" /> of
+                            <xrd:InlineContextValue PropertyName="PageCount" FontWeight="Bold" /> - Trial Balance Report
+                        </Paragraph>
+
+                    </TableCell>
+                </xrd:TableRowForDataTable>
+            </TableRowGroup>
+
+        </Table>
+    </xrd:SectionReportFooter>
+    <!--<xrd:SectionReportFooter PageFooterHeight="18" Margin="55,0,0,0" >-->
+    <!--Party Area-->
+    <!--<Paragraph>
+                <xrd:InlineAggregateValue AggregateGroup="ItemCount" AggregateValueType="Count" EmptyValue="no" FontWeight="Bold" /> item positions with a total of
+                <xrd:InlineAggregateValue AggregateGroup="ItemCount" AggregateValueType="Sum" EmptyValue="0" FontWeight="Bold" /> items listed.
+            </Paragraph>-->
+    <!--</xrd:SectionReportFooter>-->
+</FlowDocument>

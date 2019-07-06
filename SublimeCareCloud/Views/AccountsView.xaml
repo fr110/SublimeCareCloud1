@@ -1,0 +1,190 @@
+﻿<UserControl x:Class="SublimeCareCloud.Views.AccountsView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+     
+             xmlns:local="clr-namespace:SublimeCareCloud.Views"
+             xmlns:lvm="clr-namespace:SublimeCareCloud.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:cal="http://www.caliburnproject.org"
+             
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:dgx="clr-namespace:DataGridExtensions;assembly=DataGridExtensions"
+             xmlns:datamodel="clr-namespace:SublimeCareCloud"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Initialized="AccountControl_Initialized_1" Loaded="AccountControl_Loaded_1"
+             mc:Ignorable="d" 
+             MinHeight="450" MinWidth="950"
+           >
+    <Grid >
+
+        <TabControl Name="tabDynamic" ItemsSource="{Binding}" Background="Transparent" SelectionChanged="tabDynamic_SelectionChanged">
+            <TabControl.Resources>
+                <DataTemplate x:Key="TabHeader" DataType="TabItem">
+                    <DockPanel>
+                        <Button Name="btnDelete" Style="{StaticResource DellBtn}" Click="btnDelete_Click" DockPanel.Dock="Right" Margin="5,0,0,0" Padding="0" 
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=Name}" BorderThickness="0">
+                            <materialDesign:PackIcon Kind="Close" Foreground="Black" Background="White"  Width="14" Height="14" Margin="2,2" />
+                        </Button>
+                        <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=TabItem }, Path=Header}" Margin="8,0"  HorizontalAlignment="Left"/>
+                    </DockPanel>
+                </DataTemplate>
+
+            </TabControl.Resources>
+            <TabItem Header="Accounts List" Name="AccountTab">
+                <StackPanel>
+                    <Label x:Name="lblErrorMsg" Content="Label" HorizontalAlignment="Left" Margin="10,15,10,0" VerticalAlignment="Top" Width="700"  Height="26" Visibility="Hidden" />
+                    <!--<GroupBox Header="Search Account" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="59" Width="877">
+                        <Grid x:Name="AccountSearchBox" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Top" Width="834" Margin="10,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110*"/>
+                                <ColumnDefinition Width="138*"/>
+                                <ColumnDefinition Width="96*"/>
+                                <ColumnDefinition Width="141*"/>
+                                <ColumnDefinition Width="68*"/>
+                                <ColumnDefinition Width="158*"/>
+                                <ColumnDefinition Width="123*"/>
+
+
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+
+                            </Grid.RowDefinitions>
+                            <Label Content="Account Name:" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top" Width="91" Height="21" RenderTransformOrigin="0.2,0.333"/>
+                            <TextBlock x:Name="AccountsID" Text="{Binding ElementName=AccountList, Path=SelectedValue, Mode=TwoWay, NotifyOnTargetUpdated=True}" Margin="0,3,106,5"  Grid.Column="6" Visibility="Hidden" />
+
+                            <Button Content="Search" Grid.Column="6" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="98"  Height="26" Click="Button_Click_2"/>
+                            <Button x:Name="showall" Content="Show All" HorizontalAlignment="Left" Margin="120,2,-95,0" VerticalAlignment="Top" Width="98" Grid.Column="6"  Height="26" Click="showall_Click" Visibility="Hidden"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,4,0,0" TextWrapping="Wrap"
+                             Text="{Binding AccountName , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="120"/>
+                            <Label Content="Account No:" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="76" Height="21" Grid.Column="2"/>
+                            <TextBox Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="0,4,0,0" TextWrapping="Wrap"
+                    	Text="{Binding VAccountNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="120" />
+                        </Grid>
+                    </GroupBox >-->
+
+                    <DataGrid x:Name="AccountList" 
+                              VerticalAlignment="Top" MinHeight="200"  Height="{Binding Source={x:Static datamodel:WSetting.GridHeight}}"
+                        dgx:DataGridFilter.GlobalFilter="{Binding ExternalFilter}"
+                        dgx:DataGridFilter.IsAutoFilterEnabled="True"
+                        dgx:Tools.ApplyInitialSorting="True"
+                        dgx:DataGridFilter.FilterEvaluationDelay="0:0:0"
+                    	CanUserReorderColumns="False" 
+                        CanUserResizeColumns="False" 
+                        CanUserResizeRows="False"  
+                    	RowHeaderWidth="0" 
+                        ColumnHeaderHeight="NaN"  
+                        GridLinesVisibility="All"
+                    	AutoGenerateColumns="False"  
+                        IsReadOnly="True"
+                        Focusable="False"
+                    	CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False" Cursor="Hand"   >
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <EventSetter Event="Control.MouseDoubleClick" Handler="Account_MouseDoubleClick"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Accounts  ID"
+                                  Binding="{Binding IAccountid, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="15*"
+                                  dgx:DataGridFilterColumn.Template="{StaticResource IntegerFilter}"
+                                  />
+                            <DataGridTextColumn Header="Accounts Name  "
+                                  Binding="{Binding AccountName, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="25*"
+                                  />
+                            <DataGridTextColumn Header="Accounts No  "
+                                  Binding="{Binding VAccountNo, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="25*"
+                                  />
+                            
+                            <DataGridTextColumn Header="Account Description"
+                                  Binding="{Binding VAccountDesc, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="25*"
+                                  />
+                            <DataGridTextColumn Header="Account Type"
+                                  Binding="{Binding VFinaceType, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="25*"
+                                  />
+                        </DataGrid.Columns>
+                        <!--<DataGrid.Columns>
+                            <DataGridTemplateColumn  Width="250" CanUserResize="False"  Header="Accounts Name">
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate >
+                                        <StackPanel Orientation="Horizontal" >
+                                            <TextBlock  Text="{Binding AccountName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="120"   CanUserResize="False"  Header="Account No">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate >
+                                        <StackPanel CanHorizontallyScroll="True" >
+                                            <TextBlock  Text="{Binding VAccountNo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Width="*" CanUserResize="False"  Header="Account Description">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate >
+                                        <StackPanel CanHorizontallyScroll="True" >
+                                            <TextBlock  Text="{Binding VAccountDesc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="180" CanUserResize="False"  Header="Account Type">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate >
+                                        <StackPanel CanHorizontallyScroll="True" >
+                                            <TextBlock  Text="{Binding VFinaceType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            --><!--<DataGridTemplateColumn Width="180" CanUserResize="False"  Header="ledger">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate >
+                                        <StackPanel CanHorizontallyScroll="True" >-->
+                            <!--<TextBlock  Text="{Binding VFinaceType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>-->
+                            <!--</StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>--><!--
+
+
+                        </DataGrid.Columns>-->
+                    </DataGrid>
+                    <Grid Height="25" Width="900" Margin="0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="420"/>
+                            <ColumnDefinition Width="480"/>
+                        </Grid.ColumnDefinitions>
+                        <!--<local:PaggingControl x:Name="pageControl" Grid.Row="1" Height="25"
+                        PreviewPageChange="pageControl_PreviewPageChange"
+                        PageChanged="pageControl_PageChanged" Grid.Column="1" Style="{DynamicResource PagingStyle}">
+                            <local:PaggingControl.PageSizes>
+                                <sys:UInt32>10</sys:UInt32>
+                                <sys:UInt32>20</sys:UInt32>
+                                <sys:UInt32>50</sys:UInt32>
+                                <sys:UInt32>100</sys:UInt32>
+                            </local:PaggingControl.PageSizes>
+                        </local:PaggingControl>-->
+                    </Grid>
+                </StackPanel>
+
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>

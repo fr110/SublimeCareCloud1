@@ -1,0 +1,660 @@
+﻿<UserControl x:Class="SublimeCareCloud.Views.AddDoctorsView"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SublimeCareCloud.Views"
+             xmlns:lvm="clr-namespace:SublimeCareCloud.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:auto="clr-namespace:FeserWard.Controls;assembly=IntelliBox"
+
+             xmlns:dgx="clr-namespace:DataGridExtensions;assembly=DataGridExtensions"
+             xmlns:datamodel="clr-namespace:SublimeCareCloud"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded" >
+
+
+    <DockPanel HorizontalAlignment="Stretch"  >
+        <StackPanel>
+        <DockPanel DockPanel.Dock="Top"  HorizontalAlignment="Stretch"  VerticalAlignment="Top"  Background="#FFCACACA"  x:Name="Opreations" >
+            <Border Margin="10,5"   >
+                <StackPanel Orientation="Horizontal">
+                    <Button TabIndex="8" IsDefault="True"   HorizontalAlignment="Stretch"  x:Name="btnSaveDoctor"
+                         Style="{StaticResource TopOpreatButton}" 
+                     Grid.Row="1" Margin="5,10" IsEnabled="{Binding CanSave}" Click="BtnSaveDoctor_Click">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                            <materialDesign:PackIcon Kind="ContentSave"  Width="14" Height="14" Margin="2,2" />
+                            <TextBlock Text="Save"  HorizontalAlignment="Left" Margin="8,0"
+                              FontWeight="Normal" FontStyle="Normal" TextDecorations="{x:Null}"/>
+                        </StackPanel>
+                    </Button>
+
+
+                </StackPanel>
+            </Border>
+
+
+        </DockPanel>
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"  />
+            </Grid.RowDefinitions>
+            <Label x:Name="lblErrorMsg" Content="Label" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Top"   Height="26" Visibility="Hidden" />
+        </Grid>
+            <ScrollViewer Height="450">
+                <DockPanel>
+
+                    <DockPanel DockPanel.Dock="Left" HorizontalAlignment="Left" x:Name="NewDoctorGrid" DataContext="{Binding ObjNewDoctor}"  >
+ 
+                        <DockPanel DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Top"  >
+                            <StackPanel>
+                                <!--<GroupBox Grid.Column="1" Header="Fee Detial" Margin="2 10" Padding="10" HorizontalAlignment="Stretch">-->
+                                    
+                                
+                                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top"   >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" MinWidth="140" MaxWidth="180"/>
+                                        <ColumnDefinition Width="220"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+
+
+                                    </Grid.RowDefinitions>
+                                    <!--<Label Content="i Party ID:" Grid.Column="0" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Center" Height="26" 
+                       Width="61" Visibility="Hidden" TabIndex="1"/>
+                    <TextBox x:Name="iPartyIDTextBox" Grid.Column="1" HorizontalAlignment="Stretch"   Grid.Row="1" Text="{Binding IPartyID, Mode=OneWay}" VerticalAlignment="Center" Width="120" Visibility="Hidden"/>-->
+                                    <Label Content="Suffix *:"  HorizontalAlignment="Left"   Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" />
+
+                                    <ComboBox SelectedItem="{Binding Path=VSuffix, Mode=TwoWay}"
+                               VerticalAlignment="Center"
+                        HorizontalAlignment="Stretch" 
+                              Grid.Column="1"  Grid.Row="1" >
+                                        <ComboBox.ItemsSource>
+                                            <x:Array Type="sys:String" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                                <sys:String>Mr</sys:String>
+                                                <sys:String>Mrs</sys:String>
+                                            </x:Array>
+                                        </ComboBox.ItemsSource>
+                                    </ComboBox>
+
+                                    <Label Content="Gender *:"  HorizontalAlignment="Left"   Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" />
+
+                                    <ComboBox x:Name="VGender" SelectedItem="{Binding Path=VGender, Mode=TwoWay}"
+                          Grid.Column="1" Grid.Row="2"
+                              VerticalAlignment="Center"
+                        HorizontalAlignment="Stretch" 
+                              >
+                                        <ComboBox.ItemsSource>
+                                            <x:Array Type="sys:String" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                                <sys:String>Male</sys:String>
+                                                <sys:String>Female</sys:String>
+                                            </x:Array>
+                                        </ComboBox.ItemsSource>
+                                    </ComboBox>
+
+                                    <Label Content="First Name *:"  HorizontalAlignment="Left"   Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" />
+                                    <TextBox TabIndex="2" x:Name="VfName"  HorizontalAlignment="Stretch"  Grid.Column="1"  Grid.Row="3"  
+                         Text="{Binding VfName, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center" />
+
+
+                                    <TextBlock x:Name="IDocid"  HorizontalAlignment="Right"  Grid.Column="1"  Grid.Row="3"  
+                         Text="{Binding IDocid, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged,
+                                ValidatesOnExceptions=true,ValidatesOnDataErrors=True}"  Visibility="Hidden"
+                             VerticalAlignment="Center" Width="15" />
+
+                                    <TextBlock x:Name="IUpdate"  HorizontalAlignment="Right"  Grid.Column="1"  Grid.Row="3"  
+                         Text="{Binding IUpdate, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged,
+                                ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center" Width="15" />
+
+                                    <Label Content="Last Name *:"  HorizontalAlignment="Left"   Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" />
+                                    <TextBox TabIndex="2" x:Name="VlName"  HorizontalAlignment="Stretch"  Grid.Column="1"  Grid.Row="4"  
+                         Text="{Binding VlName, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center" />
+
+                                    <Label Content="Father Name *:"  HorizontalAlignment="Left"   Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" />
+                                    <TextBox TabIndex="2" x:Name="VFatherName"  HorizontalAlignment="Stretch"  Grid.Column="1"  Grid.Row="5"  
+                         Text="{Binding VFatherName, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center" />
+
+                                    <Label Content="DOB *:"  HorizontalAlignment="Left"   Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" />
+                                    <!--<TextBox TabIndex="2" x:Name="DDOB"  HorizontalAlignment="Stretch"    
+                         Text="{Binding DDOB, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center" />-->
+                                    <DatePicker
+   Grid.Column="1"  Grid.Row="6" x:Name="DDOB"
+  materialDesign:HintAssist.Hint="Date of Birth"
+                         SelectedDate="{Binding DDOB, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                                    <Label Content="Joining Date *:"  HorizontalAlignment="Left"   Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" />
+                                    <DatePicker
+   Grid.Column="1" Grid.Row="7" x:Name="DJoingDate"
+ SelectedDate="{Binding DJoiningDate, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+  materialDesign:HintAssist.Hint="Joining Date"
+  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+
+                                    <Label Content="Specialization *:"  HorizontalAlignment="Left"   Grid.Column="0" Grid.Row="8" VerticalAlignment="Center" />
+                                    <ComboBox TabIndex="2" x:Name="ISpecializationId"  HorizontalAlignment="Stretch"  Grid.Column="1"  Grid.Row="8"  
+                               ItemsSource="{Binding Specialization}" 
+                          SelectedValue="{Binding Path=ISpecializationId, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                          DisplayMemberPath="vSpecializationName"
+                     SelectedValuePath="iSpecializationId "
+                             VerticalAlignment="Center" />
+
+
+
+
+
+
+                                    <Label Content="Mobile *:"  HorizontalAlignment="Left"   Grid.Column="0" Grid.Row="9" VerticalAlignment="Center" />
+                                    <TextBox TabIndex="2" x:Name="VMobile"  HorizontalAlignment="Stretch"  Grid.Column="1"  Grid.Row="9"  
+                         Text="{Binding VMobile, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center" />
+
+
+                                    <Label Content="Email *:"  HorizontalAlignment="Left"   Grid.Column="0" Grid.Row="10" VerticalAlignment="Center" />
+                                    <TextBox TabIndex="2" x:Name="VEmail"  HorizontalAlignment="Stretch"  Grid.Column="1"  Grid.Row="10"  
+                         Text="{Binding VEmail, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center" />
+
+
+                                    <Label Content="Active *:"  HorizontalAlignment="Left"   Grid.Column="0" Grid.Row="11" VerticalAlignment="Center" />
+                                    <CheckBox Grid.Column="1" Grid.Row="11"
+    Style="{StaticResource MaterialDesignCheckBox}"
+                                   IsChecked="{Binding  Path=BActive}">
+                                        Check
+                                    </CheckBox>
+
+
+                                    <TextBox TabIndex="2" x:Name="iUpdate" Grid.Column="1" HorizontalAlignment="Stretch" Visibility="Hidden"   Grid.Row="2" 
+                         Text="{Binding IUpdate, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" VerticalAlignment="Center" />
+                                    <TextBox TabIndex="2" x:Name="iPartyID" Grid.Column="1" HorizontalAlignment="Stretch" Visibility="Hidden"   Grid.Row="2" 
+                         Text="{Binding IPartyID, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" VerticalAlignment="Center" />
+
+                                    <!--materialDesign:HintAssist.Hint="Select City"-->
+                                </Grid>
+                                <!--</GroupBox>-->
+                               
+                            </StackPanel>
+                        </DockPanel>
+
+                        <DockPanel DockPanel.Dock="Right" Margin="15"  >
+                            <materialDesign:Card Width="400"
+  Background="{DynamicResource MaterialDesignBackground}">
+                                <StackPanel>
+                                    <Expander x:Name="exChargesShare"
+      HorizontalAlignment="Stretch"
+      Header="Charges / Share">
+                                        <StackPanel
+        Orientation="Vertical"
+        TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+        Margin="18,8,18,16">
+                                            <GroupBox Grid.Column="1" Header="Fee Detial" Margin="2 10" HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Top"  MaxHeight="190">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" MinWidth="80"/>
+                                                        <ColumnDefinition Width="Auto" MinWidth="200"/>
+
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Label Content="Visit Fee" Grid.Column="0" Grid.Row="0" />
+                                                    <TextBox  Grid.Column="1" Grid.Row="0"
+                                 Text="{Binding IPatient_Fee, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                                 />
+
+                                                    <Label Content="Revisit Fee" Grid.Column="0" Grid.Row="1" />
+                                                    <TextBox  Grid.Column="1" Grid.Row="1"
+                                 Text="{Binding IReturning_Patient_Fee, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                                 />
+                                                    <Label Content="Hospital Share (%)" Grid.Column="0" Grid.Row="2" />
+                                                    <TextBox  Grid.Column="1" Grid.Row="2"
+                                 Text="{Binding IHospital_Charges, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                                 />
+
+                                                    <Label Content="Token Limit" Grid.Column="0" Grid.Row="3" />
+                                                    <TextBox  Grid.Column="1" Grid.Row="3"
+                                 Text="{Binding IPatient_Token_Limit, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                                 />
+
+                                                </Grid>
+                                            </GroupBox>
+                                        </StackPanel>
+                                    </Expander>
+                                    <Border
+      Background="{DynamicResource MaterialDesignDivider}"
+      Height="1"
+      HorizontalAlignment="Stretch"
+      SnapsToDevicePixels="True" />
+                                    <Expander HorizontalAlignment="Stretch" Header="Investigations" x:Name="exInvestigations">
+                                        <StackPanel Orientation="Vertical" 
+                                                    TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                        Margin="15,8,15,16">
+                                            <Grid HorizontalAlignment="Stretch" Margin="0 5 0 10"  VerticalAlignment="Top" 
+                          x:Name="NewDoctorGrid1"   >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" MinWidth="50"/>
+                                                    <ColumnDefinition Width="Auto" MinWidth="50"/>
+
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+
+                                                    <RowDefinition Height="40"/>
+                                                    
+                                                </Grid.RowDefinitions>
+                                                <Label Content="Investigations *:"  HorizontalAlignment="Left"  
+                                               Grid.Column="0"  Grid.Row="0"   VerticalAlignment="Center" />
+
+                                                <TextBlock Grid.Column="0"  Visibility="Hidden"
+                                       Text="{Binding ElementName=InvestigationList, Path=SelectedValue, Mode=OneWay, NotifyOnTargetUpdated=True}" 
+                                       x:Name="txtIInvestigationID"  TargetUpdated="TxtIInvestigationID_TargetUpdated" />
+                                                <!--<TextBlock Grid.Row="3" Grid.Column="2" 
+                                       Text="{Binding ElementName=InvestigationList, Path=DisplayTextFromHighlightedItem}" />-->
+
+                                                <auto:Intellibox
+            			x:Name="InvestigationList"
+            			ResultsHeight="150"
+                        HorizontalAlignment="Stretch"  
+            			DisplayedValueBinding="{Binding VInvName}"
+            			SelectedValueBinding="{Binding IInvid}" 
+                        SelectedItem="{Binding SelectedItem}"
+                         SelectedValue="{Binding SelectedValue}"
+                            
+            			ExplicitlyIncludeColumns="True"
+                            
+            			DataProvider="{Binding dbInvestigation, Mode=TwoWay, 
+                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}" 
+                        KeyDown="InvestigationList_KeyUp"        
+                            TabIndex="7" Grid.Column="1"  Grid.Row="0"
+                
+                             >
+
+                                                    <!--PreviewKeyUp="Partylist_PreviewKeyUp"-->
+                                                    <auto:Intellibox.RowColorizer>
+                                                        <auto:IntelliboxAlternateRowColorizer EvenRowBrush="#f2f2f2"  />
+                                                    </auto:Intellibox.RowColorizer>
+                                                    <auto:Intellibox.Template>
+                                                        <ControlTemplate TargetType="{x:Type UserControl}">
+                                                            <Border Height="25" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+            						Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+
+                                                                <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" 
+            							ContentStringFormat="{TemplateBinding ContentStringFormat}"
+            							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+            							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+            							VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                                    <ContentPresenter.Resources>
+                                                                        <Style TargetType="{x:Type TextBlock}">
+                                                                            <Setter Property="TextDecorations" Value="Underline" />
+                                                                            <Setter Property="Background" Value="Red"/>
+                                                                        </Style>
+                                                                    </ContentPresenter.Resources>
+                                                                </ContentPresenter>
+                                                            </Border>
+
+                                                        </ControlTemplate>
+                                                    </auto:Intellibox.Template>
+
+                                                    <auto:Intellibox.Columns>
+                                                        <auto:IntelliboxColumn DisplayMemberBinding="{Binding IInvid}"
+            					Header="Investigation ID"  />
+                                                        <auto:IntelliboxColumn DisplayMemberBinding="{Binding VInvName}"
+            					Header="Investigation"  />
+                                                    </auto:Intellibox.Columns>
+                                                </auto:Intellibox>
+
+                                                
+                                            </Grid>
+                                            <DataGrid x:Name="DocInvestigations"    
+                                      SelectionChanged="DocInvestigations_SelectionChanged"
+                        Height="150"
+                    	CanUserReorderColumns="False" 
+                        CanUserResizeColumns="False" 
+                        CanUserResizeRows="False"  
+                    	RowHeaderWidth="0" 
+                        ColumnHeaderHeight="NaN"  
+                        GridLinesVisibility="All"
+                    	AutoGenerateColumns="False"  
+                        Grid.Column="0"  Grid.Row="1"
+                        VerticalAlignment="Top" 
+                        MinHeight="200"  
+                        HorizontalAlignment="Stretch"
+                        IsReadOnly="True"
+                        Focusable="False"
+                    	CanUserAddRows="False" CanUserDeleteRows="False" 
+                                      Style="{StaticResource AzureDataGrid}"
+                        CanUserSortColumns="False" Cursor="Hand">
+
+                                                <DataGrid.Columns>
+
+                                                    <DataGridTemplateColumn Width="140"  CanUserResize="False" Header="Investigations" >
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel>
+                                                                    <TextBlock  Text="{Binding VInvName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource cstmBlock}"/>
+                                                                    <TextBlock Visibility="Hidden" Text="{Binding IDocid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                                                    <TextBlock Visibility="Hidden"  Text="{Binding IDocInvestigationsId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource cstmBlock}"/>
+                                                                    <TextBlock Visibility="Hidden"  Text="{Binding IInvid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                                                    <TextBlock Visibility="Hidden"  Text="{Binding BIsActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn   CanUserResize="False" Header="Charges" >
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock  Text="{Binding IInvCharges, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource cstmBlock}"/>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn  CanUserResize="False" Header="Commission (%)" >
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBox  Text="{Binding IDocCommission, Mode=TwoWay, NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                                                          Width="50" MaxWidth="50" Style="{StaticResource cstmTxtBox}" />
+
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn x:Name="ItemRemove"  Width="35" IsReadOnly="True" CanUserResize="False" >
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+
+                                                                <Button x:Name="btnDelete" Content=" " Click="BtnDelete_Click"  Width="16" Height="16" BorderThickness="0" Cursor="Hand" >
+                                                                    <Button.Background>
+                                                                        <ImageBrush ImageSource="/SublimeCareCloud;component/images/delete.png"></ImageBrush>
+                                                                    </Button.Background>
+                                                                </Button>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+
+                                                    <!--<DataGridTextColumn Header="ID"
+                                  Binding="{Binding IInvid, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="150*"
+                                  dgx:DataGridFilterColumn.Template="{StaticResource IntegerFilter}"
+                                  />
+                                <DataGridTextColumn Header="Name "
+                                  Binding="{Binding VInvName, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="150*"
+                                  />-->
+
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </StackPanel>
+                                    </Expander>
+                                    <!--<Border
+      Background="{DynamicResource MaterialDesignDivider}"
+      Height="1"
+      HorizontalAlignment="Stretch"
+      SnapsToDevicePixels="True" />
+                                    <Expander
+      HorizontalAlignment="Stretch"
+      Header="Lab">
+                                        <StackPanel
+        Orientation="Vertical"
+        TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+        Margin="18,8,18,16">
+                                            <TextBlock
+          Text="Your Content" />
+                                            <TextBlock
+          Opacity=".68"
+          Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          TextWrapping="Wrap" />
+                                        </StackPanel>
+                                    </Expander>-->
+                                    <Border
+      Background="{DynamicResource MaterialDesignDivider}"
+      Height="1"
+      HorizontalAlignment="Stretch"
+      SnapsToDevicePixels="True" />
+                                    <Expander
+      HorizontalAlignment="Stretch"
+      Header="Procedures">
+                                        <StackPanel Orientation="Vertical" 
+                                                    TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                        Margin="15,8,15,16">
+                                            <Grid HorizontalAlignment="Stretch" Margin="0 5 0 10"  VerticalAlignment="Top" 
+                          x:Name="DocProceduresGrid"   >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" MinWidth="50"/>
+                                                    <ColumnDefinition Width="Auto" MinWidth="50"/>
+
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+
+                                                    <RowDefinition Height="40"/>
+
+                                                </Grid.RowDefinitions>
+                                                <Label Content="Investigations *:"  HorizontalAlignment="Left"  
+                                               Grid.Column="0"  Grid.Row="0"   VerticalAlignment="Center" />
+
+                                                <TextBlock Grid.Column="0"  Visibility="Hidden"
+                                       Text="{Binding ElementName=ProceduresList, Path=SelectedValue, Mode=OneWay, NotifyOnTargetUpdated=True}" 
+                                       x:Name="txtIProceduresID"  TargetUpdated="TxtIProceduresID_TargetUpdated" />
+                                                <!--<TextBlock Grid.Row="3" Grid.Column="2" 
+                                       Text="{Binding ElementName=InvestigationList, Path=DisplayTextFromHighlightedItem}" />-->
+
+                                                <auto:Intellibox
+            			x:Name="ProceduresList"
+            			ResultsHeight="150"
+                        HorizontalAlignment="Stretch"  
+            			DisplayedValueBinding="{Binding VProcedureName}"
+            			SelectedValueBinding="{Binding IProcedureId}" 
+                        SelectedItem="{Binding SelectedItem}"
+                         SelectedValue="{Binding SelectedValue}"
+                            
+            			ExplicitlyIncludeColumns="True"
+                            
+            			DataProvider="{Binding dbInvestigation, Mode=TwoWay, 
+                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}" 
+                        KeyUp="ProceduresList_KeyUp"       
+                            TabIndex="7" Grid.Column="1"  Grid.Row="0"
+                
+                             >
+
+                                     <!--PreviewKeyUp="Partylist_PreviewKeyUp"-->
+                                                    <auto:Intellibox.RowColorizer>
+                                                        <auto:IntelliboxAlternateRowColorizer EvenRowBrush="#f2f2f2"  />
+                                                    </auto:Intellibox.RowColorizer>
+                                                    <auto:Intellibox.Template>
+                                                        <ControlTemplate TargetType="{x:Type UserControl}">
+                                                            <Border Height="25" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+            						Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+
+                                                                <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" 
+            							ContentStringFormat="{TemplateBinding ContentStringFormat}"
+            							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+            							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+            							VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                                    <ContentPresenter.Resources>
+                                                                        <Style TargetType="{x:Type TextBlock}">
+                                                                            <Setter Property="TextDecorations" Value="Underline" />
+                                                                            <Setter Property="Background" Value="Red"/>
+                                                                        </Style>
+                                                                    </ContentPresenter.Resources>
+                                                                </ContentPresenter>
+                                                            </Border>
+
+                                                        </ControlTemplate>
+                                                    </auto:Intellibox.Template>
+
+                                         <auto:Intellibox.Columns>
+                                             <auto:IntelliboxColumn DisplayMemberBinding="{Binding IProcedureId}" Header="Procedure ID"  />
+                                             <auto:IntelliboxColumn DisplayMemberBinding="{Binding VProcedureName}" Header="Procedures"  />
+                                          </auto:Intellibox.Columns>
+                                                    
+                                                    
+                                                </auto:Intellibox>
+
+
+                                            </Grid>
+                                            <DataGrid x:Name="DocProcedures"    
+                                      SelectionChanged="DocProcedures_SelectionChanged"
+                        Height="150"
+                    	CanUserReorderColumns="False" 
+                        CanUserResizeColumns="False" 
+                        CanUserResizeRows="False"  
+                    	RowHeaderWidth="0" 
+                        ColumnHeaderHeight="NaN"  
+                        GridLinesVisibility="All"
+                    	AutoGenerateColumns="False"  
+                        Grid.Column="0"  Grid.Row="1"
+                        VerticalAlignment="Top" 
+                        MinHeight="200"  
+                        HorizontalAlignment="Stretch"
+                        IsReadOnly="True"
+                        Focusable="False"
+                    	CanUserAddRows="False" CanUserDeleteRows="False" 
+                                      Style="{StaticResource AzureDataGrid}"
+                        CanUserSortColumns="False" Cursor="Hand">
+
+                                                <DataGrid.Columns>
+
+                                                    <DataGridTemplateColumn Width="140"  CanUserResize="False" Header="Procedure" >
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel>
+                                                                    <TextBlock  Text="{Binding VProcedureName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource cstmBlock}"/>
+                                                                    <TextBlock Visibility="Hidden" Text="{Binding IDocid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                                                    <TextBlock Visibility="Hidden"  Text="{Binding IDocProceduresId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource cstmBlock}"/>
+                                                                    <TextBlock Visibility="Hidden"  Text="{Binding IProcedureId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                                                    <TextBlock Visibility="Hidden"  Text="{Binding BIsActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn   CanUserResize="False" Header="Charges" >
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock  Text="{Binding IProcedureCharges, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource cstmBlock}"/>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn  CanUserResize="False" Header="Commission (%)" >
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBox  Text="{Binding IDocCommission, Mode=TwoWay, NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                                                          Width="50" MaxWidth="50" Style="{StaticResource cstmTxtBox}" />
+
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn x:Name="ProItemRemove"  Width="35" IsReadOnly="True" CanUserResize="False" >
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+
+                                                                <Button x:Name="btnDeleteProc" Content=" " Click="BtnDeleteProc_Click"  Width="16" Height="16" BorderThickness="0" Cursor="Hand" >
+                                                                    <Button.Background>
+                                                                        <ImageBrush ImageSource="/SublimeCareCloud;component/images/delete.png"></ImageBrush>
+                                                                    </Button.Background>
+                                                                </Button>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+
+                                                    <!--<DataGridTextColumn Header="ID"
+                                  Binding="{Binding IInvid, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="150*"
+                                  dgx:DataGridFilterColumn.Template="{StaticResource IntegerFilter}"
+                                  />
+                                <DataGridTextColumn Header="Name "
+                                  Binding="{Binding VInvName, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="150*"
+                                  />-->
+
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </StackPanel>
+                                    </Expander>
+                                    <!--<Border
+      Background="{DynamicResource MaterialDesignDivider}"
+      Height="1"
+      HorizontalAlignment="Stretch"
+      SnapsToDevicePixels="True" />
+                                    <Expander
+      HorizontalAlignment="Stretch"
+      Header="X-Ray">
+                                        <StackPanel
+        Orientation="Vertical"
+        TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+        Margin="18,8,18,16">
+                                            <TextBlock
+          Text="Your Content" />
+                                            <TextBlock
+          Opacity=".68"
+          Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          TextWrapping="Wrap" />
+                                        </StackPanel>
+                                    </Expander>-->
+                                </StackPanel>
+                            </materialDesign:Card>
+
+                            
+                        </DockPanel>
+
+
+
+
+
+
+
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Right" x:Name="AccountInfo" DataContext="{Binding DoctorAccount}">
+                        <GroupBox Grid.Column="1" Header="Account Detial" Margin="10 10" HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Top"  MaxHeight="190">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"  MinWidth="100"/>
+                                    <ColumnDefinition Width="Auto"  MinWidth="150"/>
+
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Account Id :" Grid.Column="0" Grid.Row="1" />
+                                <Label  Grid.Column="1" Grid.Row="1" Content="{Binding IAccountid}" FontWeight="Bold"  />
+
+                                <Label Content="Account No" Grid.Column="0" Grid.Row="2" />
+                                <Label  Grid.Column="1" Grid.Row="2" Content="{Binding VAccountNo}" FontWeight="Bold"   />
+                                <Label Content="Account Name" Grid.Column="0" Grid.Row="3"  />
+                                <Label  Grid.Column="1" Grid.Row="3" Content="{Binding AccountName}" FontWeight="Bold"   />
+                            </Grid>
+                        </GroupBox>
+                    </DockPanel>
+                </DockPanel>
+            </ScrollViewer>
+        </StackPanel>
+
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="SublimeCareCloud.Views.DoctorsView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dgx="clr-namespace:DataGridExtensions;assembly=DataGridExtensions"
+             xmlns:datamodel="clr-namespace:SublimeCareCloud"
+             mc:Ignorable="d" 
+             MinHeight="300" VerticalAlignment="Stretch" MinWidth="900" Loaded="UserControl_Loaded" >
+    <Grid>
+        <StackPanel>
+
+            <Label x:Name="lblErrorMsg" Content="Label" HorizontalAlignment="Left" Margin="10,15,10,0" VerticalAlignment="Top" MinWidth="700"  Height="26" Visibility="Hidden" />
+            <!--<Button x:Name="printit" Content="Print" HorizontalAlignment="Left" Click="Printit_Click" />-->
+            <DataGrid x:Name="DocList"   
+                        VerticalAlignment="Top" MinHeight="200" Margin="10,20,10,0" Height="{Binding Source={x:Static datamodel:WSetting.GridHeight}}"
+                        dgx:DataGridFilter.GlobalFilter="{Binding ExternalFilter}"
+                        dgx:DataGridFilter.IsAutoFilterEnabled="True"
+                        dgx:Tools.ApplyInitialSorting="True"
+                        dgx:DataGridFilter.FilterEvaluationDelay="0:0:0"
+                    	CanUserReorderColumns="False" 
+                        CanUserResizeColumns="False" 
+                        CanUserResizeRows="False"  
+                        CanUserSortColumns="True"
+                    	RowHeaderWidth="0" 
+                        ColumnHeaderHeight="NaN"  
+                        GridLinesVisibility="All"
+                    	AutoGenerateColumns="False"  
+                        MinWidth="900" 
+                        IsReadOnly="True"
+                        Focusable="False"
+                        CanUserAddRows="False" 
+                        CanUserDeleteRows="False"  
+                        Cursor="Hand" 
+                        ItemsSource="{Binding DoctorList}"
+                    	 >
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <EventSetter Event="Control.MouseDoubleClick" Handler="DocList_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Doctor ID"
+                                  Binding="{Binding IDocid, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="15*"
+                                  dgx:DataGridFilterColumn.Template="{StaticResource IntegerFilter}"
+                                  />
+                    <DataGridTextColumn Header="Name  "
+                                  Binding="{Binding VFullName, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="25*"
+                                  />
+                    <DataGridTextColumn Header="Specialization"
+                                  Binding="{Binding VSpecializationName, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="25*"
+                                  />
+                    <DataGridTextColumn Header="Mobile "
+                                  Binding="{Binding VMobile, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="18*"
+                                  />
+            
+                    <DataGridTextColumn Header="Account ID "
+                                  Binding="{Binding IAccountid, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="20*"
+
+                                  />
+                    <DataGridTextColumn Header="Account Name "
+                                  Binding="{Binding AccountName}"
+                                  Width="24*"
+                                  />
+           
+                    <DataGridTextColumn Header="Account #"
+                                  Binding="{Binding VAccountNo, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="20*"
+                                  />
+
+
+                    <DataGridTemplateColumn   CanUserResize="False" 
+                                              dgx:DataGridFilterColumn.IsFilterVisible="False"  Header="On Duty"
+                                               Width="75">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate >
+                                <StackPanel CanHorizontallyScroll="True" >
+                                    <TextBlock   >
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding BActive}" Value="False">
+                                                        <Setter Property="Text" Value="No" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding BActive}" Value="True">
+                                                        <Setter Property="Text" Value="Yes" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                    <!--<TextBlock   Width="50" Text="{Binding IStockOut, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource cstmBlock}"/>-->
+
+
+                    <!--<DataGridTextColumn Header="Joining Date "
+                                  Binding="{Binding DJoiningDate, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                  Width="15*"
+                                  />-->
+                    
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

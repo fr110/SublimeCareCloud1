@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="SublimeCareCloud.Views.AddInvoiceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+             xmlns:local="clr-namespace:SublimeCareCloud.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="700*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="Item_Grid" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="670" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="78*"/>
+                <ColumnDefinition Width="142*"/>
+                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="70*"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28*"/>
+            </Grid.RowDefinitions>
+   
+
+
+
+            <TextBox x:Name="fUnitPrice" HorizontalAlignment="Left"  Margin="25,0,0,0" 
+                         TextWrapping="Wrap" VerticalAlignment="Top" Width="14" Text="{Binding FUnitePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TabIndex="8" Visibility="Hidden"/>
+            <TextBox x:Name="fAmount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="15" Text="{Binding FGrossAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TabIndex="10" Margin="9,0,0,0" Visibility="Hidden" Grid.Column="1"/>
+            <TextBox x:Name="iItemID" HorizontalAlignment="Left"  Margin="4,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Text="{Binding IItemID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Visibility="Hidden" Grid.Column="1"/>
+            <TextBox x:Name="vItemName" HorizontalAlignment="Left"  Margin="44,-2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Text="{Binding VItemName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Visibility="Hidden" Grid.Column="1"/>
+            <TextBox x:Name="iQuantity" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="15" 
+                     Text="{Binding IQuantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TabIndex="9" Margin="4,0,0,0" Visibility="Hidden" Grid.Column="1"/>
+            <TextBox x:Name="StockStatus" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="15" Text="{Binding StockStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  TabIndex="9" Margin="4,0,0,0"  Grid.Column="1" Visibility="Hidden"/>
+            <TextBox x:Name="ICurrantStock" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="15" Text="{Binding ICurrantStock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  TabIndex="9" Margin="4,0,0,0"  Grid.Column="1" Visibility="Hidden"/>
+            <Label Content="Search Item:" 
+                   Width="109" FontWeight="Bold" />
+            <TextBox x:Name="ItemBarCode" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                             Text="" VerticalAlignment="Top" Width="273" PreviewKeyUp="ItemBarCode_PreviewKeyUp"/>
+            <Label Content="Lift Number:" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="75" FontWeight="Bold" Grid.Column="2" />
+            <TextBox Grid.Column="3" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="" 
+                     x:Name="LiftNumber" PreviewKeyUp="LiftNumber_PreviewKeyUp" VerticalAlignment="Top" Width="130"/>
+            <!--<Button x:Name="addItem" Content=" " Grid.Column="4" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="29" Grid.Row="1" Click="addItem_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/images/add.png" Stretch="None"/>
+                    </Button.Background>
+                </Button>-->
+        </Grid>
+        <TabControl Name="tabDynamic" ItemsSource="{Binding}" SelectionChanged="tabDynamic_SelectionChanged" Margin="0,5,0,0" Grid.Row="1">
+            <TabControl.Resources>
+                <DataTemplate x:Key="TabHeader" DataType="TabItem">
+                    <DockPanel >
+                        <Button Name="btnDelete" DockPanel.Dock="Right"  Height="18" Width="18" Padding="0"  Click="btnDelete_Click"
+                                  Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="White" BorderBrush="Transparent"
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=Name}" BorderThickness="0">
+                            <materialDesign:PackIcon Kind="Close" Height="14" Width="14" Foreground="Black"  />
+                        </Button>
+                        <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=TabItem }, Path=Header}" Margin="8,0"  HorizontalAlignment="Left"/>
+                    </DockPanel>
+                </DataTemplate>
+
+            </TabControl.Resources>
+        </TabControl>
+       
+    </Grid>
+</UserControl>

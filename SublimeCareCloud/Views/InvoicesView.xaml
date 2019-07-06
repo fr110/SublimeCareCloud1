@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="SublimeCareCloud.Views.InvoicesView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dgx="clr-namespace:DataGridExtensions;assembly=DataGridExtensions"
+             xmlns:datamodel="clr-namespace:SublimeCareCloud"
+             mc:Ignorable="d" 
+             MinHeight="300" VerticalAlignment="Stretch" MinWidth="900"  Loaded="UserControl_Loaded_1">
+
+    <Grid>
+
+        <StackPanel>
+
+            <Label x:Name="lblErrorMsg" Content="Label" HorizontalAlignment="Left" Margin="10,15,10,0" VerticalAlignment="Top" MinWidth="700"  Height="26" Visibility="Hidden" />
+            <!--<Button x:Name="printit" Content="Print" HorizontalAlignment="Left" Click="Printit_Click" />-->
+            <DataGrid x:Name="Invoice"   VerticalAlignment="Top" MinHeight="200" Margin="10,20,10,0" Height="{Binding Source={x:Static datamodel:WSetting.GridHeight}}"
+                        dgx:DataGridFilter.GlobalFilter="{Binding ExternalFilter}"
+                        dgx:DataGridFilter.IsAutoFilterEnabled="True"
+                        dgx:Tools.ApplyInitialSorting="True"
+                        dgx:DataGridFilter.FilterEvaluationDelay="0:0:0"
+                    	CanUserReorderColumns="False" 
+                        CanUserResizeColumns="False" 
+                        CanUserResizeRows="False"  
+                    	RowHeaderWidth="0" 
+                        ColumnHeaderHeight="NaN"  
+                        GridLinesVisibility="All"
+                    	AutoGenerateColumns="False"  
+                        MinWidth="900" 
+                  
+                        ItemsSource="{Binding Invoices}"
+                        IsReadOnly="True"
+                        Focusable="False"
+                      
+                    	CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False" Cursor="Hand"  >
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <EventSetter Event="Control.MouseDoubleClick" Handler="Invoices_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Invoice #"
+                                  Binding="{Binding ISaleid, Mode=TwoWay, StringFormat=Invoice # {0:#}, UpdateSourceTrigger=PropertyChanged}"
+                                  Width="15*"
+                                  dgx:DataGridFilterColumn.Template="{StaticResource IntegerFilter}"
+                                  />
+                    <DataGridTextColumn Header="Invoice Date"
+                                  Binding="{Binding Ddate, Mode=TwoWay, StringFormat=\{0:d\}, UpdateSourceTrigger=PropertyChanged}" 
+                                  Width="15*"
+                                  />
+                    <DataGridTextColumn Header="Total"
+                                  Binding="{Binding Ftotalamount, Mode=TwoWay, TargetNullValue=0,UpdateSourceTrigger=PropertyChanged}"
+                                  Width="15*"
+                                  />
+                    <DataGridTextColumn  Header="Discount"
+                                  Binding="{Binding IDiscountPersent, Mode=TwoWay, TargetNullValue=0, UpdateSourceTrigger=PropertyChanged}"
+                                  Width="15*"
+                                  />
+                    <DataGridTextColumn  Header="Received"
+                                  Binding="{Binding FAmmountRecived,TargetNullValue=0, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Width="15*"
+                                  />
+                    <DataGridTextColumn  Header="Balance"
+                                  Binding="{Binding FBalance,TargetNullValue=0, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Width="15*"
+                                  />
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

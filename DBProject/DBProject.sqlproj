@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DbProject</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{d1238dfc-b401-4991-b6f2-767d28a919ab}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>DbProject</RootNamespace>
+    <AssemblyName>DbProject</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="StoreProcedures" />
+    <Folder Include="bin" />
+    <Folder Include="bin\Debug" />
+    <Folder Include="Data Generation Plans" />
+    <Folder Include="obj" />
+    <Folder Include="obj\Debug" />
+    <Folder Include="obj\Release" />
+    <Folder Include="Schema Comparisons" />
+    <Folder Include="Schema Objects" />
+    <Folder Include="Schema Objects\Database Level Objects" />
+    <Folder Include="Schema Objects\Database Level Objects\Assemblies" />
+    <Folder Include="Schema Objects\Database Level Objects\Database Triggers" />
+    <Folder Include="Schema Objects\Database Level Objects\Security" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Asymmetric Keys" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Certificates" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Database Audit Specification" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Database Encryption Keys" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Master Keys" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Roles" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Roles\Application Roles" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Roles\Database Roles" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Schemas" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Signatures" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Symmetric Keys" />
+    <Folder Include="Schema Objects\Database Level Objects\Security\Users" />
+    <Folder Include="Schema Objects\Database Level Objects\Service Broker" />
+    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Broker Priorities" />
+    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Contracts" />
+    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Event Notifications" />
+    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Message Types" />
+    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Remote Service Binding" />
+    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Routes" />
+    <Folder Include="Schema Objects\Database Level Objects\Service Broker\Services" />
+    <Folder Include="Schema Objects\Database Level Objects\Storage" />
+    <Folder Include="Schema Objects\Database Level Objects\Storage\Filegroups" />
+    <Folder Include="Schema Objects\Database Level Objects\Storage\Files" />
+    <Folder Include="Schema Objects\Database Level Objects\Storage\Full Text Catalogs" />
+    <Folder Include="Schema Objects\Database Level Objects\Storage\Full Text Stoplists" />
+    <Folder Include="Schema Objects\Database Level Objects\Storage\Partition Functions" />
+    <Folder Include="Schema Objects\Database Level Objects\Storage\Partition Schemes" />
+    <Folder Include="Schema Objects\Schemas" />
+    <Folder Include="Schema Objects\Schemas\dbo" />
+    <Folder Include="Schema Objects\Schemas\dbo\Programmability" />
+    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Defaults" />
+    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Functions" />
+    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Rules" />
+    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures" />
+    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types" />
+    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types\User Defined Data Types" />
+    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types\User Defined Table Types" />
+    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types\User Defined Types CLR" />
+    <Folder Include="Schema Objects\Schemas\dbo\Programmability\Types\XML Schema Collections" />
+    <Folder Include="Schema Objects\Schemas\dbo\Service Broker" />
+    <Folder Include="Schema Objects\Schemas\dbo\Service Broker\Queues" />
+    <Folder Include="Schema Objects\Schemas\dbo\Synonyms" />
+    <Folder Include="Schema Objects\Schemas\dbo\Tables" />
+    <Folder Include="Schema Objects\Schemas\dbo\Tables\Constraints" />
+    <Folder Include="Schema Objects\Schemas\dbo\Tables\Indexes" />
+    <Folder Include="Schema Objects\Schemas\dbo\Tables\Keys" />
+    <Folder Include="Schema Objects\Schemas\dbo\Tables\Statistics" />
+    <Folder Include="Schema Objects\Schemas\dbo\Tables\Triggers" />
+    <Folder Include="Schema Objects\Schemas\dbo\Views" />
+    <Folder Include="Schema Objects\Schemas\dbo\Views\Indexes" />
+    <Folder Include="Schema Objects\Schemas\dbo\Views\Statistics" />
+    <Folder Include="Schema Objects\Schemas\dbo\Views\Triggers" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Post-Deployment" />
+    <Folder Include="Scripts\Pre-Deployment" />
+    <Folder Include="sql" />
+    <Folder Include="sql\debug" />
+    <Folder Include="sql\release" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Database.sqlcmdvars" />
+    <None Include="Properties\Database.sqldeployment" />
+    <None Include="Properties\Database.sqlpermissions" />
+    <None Include="Properties\Database.sqlsettings" />
+    <None Include="DbProject.dbmdl" />
+    <None Include="DBProject.dbproj" />
+    <None Include="DBProject.dbproj.schemaview" />
+    <None Include="DBProject.dbproj.user" />
+    <None Include="DBProject.sqlproj.user" />
+    <None Include="Debug.publish.xml" />
+    <None Include="Debug_1.publish.xml" />
+    <None Include="Release.publish.xml" />
+    <None Include="Release_1.publish.xml" />
+    <None Include="ve-19B9.tmp" />
+    <None Include="obj\Debug\DBProject.dbproj.FileListAbsolute.txt" />
+    <None Include="obj\Debug\DBProject.dbschema" />
+    <None Include="obj\Debug\DBProject.dll" />
+    <None Include="obj\Debug\DBProject.pdb" />
+    <None Include="obj\Debug\DBProject.sqlproj.FileListAbsolute.txt" />
+    <None Include="obj\Debug\DbProject.sqlprojAssemblyReference.cache" />
+    <None Include="sql\debug\DBProject.dacpac" />
+    <None Include="sql\debug\DBProject.dbschema" />
+    <None Include="sql\debug\DBProject.deploymanifest" />
+    <None Include="sql\debug\DBProject.dll" />
+    <None Include="sql\debug\DBProject.pdb" />
+    <None Include="sql\debug\DBProject_Database.sqlcmdvars" />
+    <None Include="sql\debug\DBProject_Database.sqldeployment" />
+    <None Include="sql\debug\DBProject_Database.sqlsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="StoreProcedures\CheckSaleInoviceItem.sql" />
+    <Build Include="StoreProcedures\DDIncomstatment.sql" />
+    <Build Include="StoreProcedures\GetAccountBlance.sql" />
+    <Build Include="StoreProcedures\GetAccounts.sql" />
+    <Build Include="StoreProcedures\GetAccountsReport.sql" />
+    <Build Include="StoreProcedures\GetAppPreference.sql" />
+    <Build Include="StoreProcedures\GetAppUsers.sql" />
+    <Build Include="StoreProcedures\GetCostumer.sql" />
+    <Build Include="StoreProcedures\GetCostumerAlert.sql" />
+    <Build Include="StoreProcedures\GetEmployee.sql" />
+    <Build Include="StoreProcedures\GetFinaceType.sql" />
+    <Build Include="StoreProcedures\GetIncomStatment.sql" />
+    <Build Include="StoreProcedures\GetItems.sql" />
+    <Build Include="StoreProcedures\GetItemStock.sql" />
+    <Build Include="StoreProcedures\GetJournal.sql" />
+    <Build Include="StoreProcedures\GetJournalDetail.sql" />
+    <Build Include="StoreProcedures\GetModule.sql" />
+    <Build Include="StoreProcedures\Getparty.sql" />
+    <Build Include="StoreProcedures\GetPreference.sql" />
+    <Build Include="StoreProcedures\GetProduction.sql" />
+    <Build Include="StoreProcedures\GetPurchase.sql" />
+    <Build Include="StoreProcedures\GetSalary.sql" />
+    <Build Include="StoreProcedures\GetSaleInovice.sql" />
+    <Build Include="StoreProcedures\GetSaleMan.sql" />
+    <Build Include="StoreProcedures\InsertUpdateAccount.sql" />
+    <Build Include="StoreProcedures\InsertUpdateAppPreference.sql" />
+    <Build Include="StoreProcedures\InsertUpdateAppUsers.sql" />
+    <Build Include="StoreProcedures\InsertUpdateCostumer.sql" />
+    <Build Include="StoreProcedures\InsertUpdateEmployee.sql" />
+    <Build Include="StoreProcedures\InsertUpdateItem.sql" />
+    <Build Include="StoreProcedures\InsertUpdateJournal.sql" />
+    <Build Include="StoreProcedures\InsertUpdateJournalDetail.sql" />
+    <Build Include="StoreProcedures\InsertUpdateModule.sql" />
+    <Build Include="StoreProcedures\InsertUpdateParty.sql" />
+    <Build Include="StoreProcedures\InsertUpdatePreference.sql" />
+    <Build Include="StoreProcedures\InsertUpdateProduction.sql" />
+    <Build Include="StoreProcedures\InsertUpdateProductionItem.sql" />
+    <Build Include="StoreProcedures\InsertUpdatePurchase.sql" />
+    <Build Include="StoreProcedures\InsertUpdatePurchaseItem.sql" />
+    <Build Include="StoreProcedures\InsertUpdateSalary.sql" />
+    <Build Include="StoreProcedures\InsertUpdateSaleInovice.sql" />
+    <Build Include="StoreProcedures\InsertUpdateSaleInoviceItem.sql" />
+    <Build Include="StoreProcedures\InsertUpdateStock.sql" />
+    <Build Include="StoreProcedures\listTransections.sql" />
+    <Build Include="StoreProcedures\RemoveSaleInovice.sql" />
+    <Build Include="StoreProcedures\RemoveSaleInoviceItem.sql" />
+    <Build Include="Permissions.sql" />
+    <Build Include="Permissions_1.sql" />
+    <Build Include="Tablesscript.sql" />
+    <Build Include="sql\debug\DBProject.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Script.PostDeployment.sql" />
+    <PostDeploy Include="sql\debug\DBProject_Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Pre-Deployment\Script.PreDeployment.sql" />
+    <PreDeploy Include="sql\debug\DBProject_Script.PreDeployment.sql" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,720 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Module>
+  	<object name="xmlSPName">
+		<action type = "Select" spname="SPName">
+			<args name= "SP Paramerter Name" DataType="type of parameter" AttribMaping="object dataholder property name"/>
+			<args name= "PkID" DataType="DbType.Int32" AttribMaping="sdfdsfsd"/>
+		</action>
+	</object>
+
+  <!-- ******************** Employees ******************** -->
+  <object name="xmlGetEmployee">
+    <action type = "Select" spname="GetEmployee">
+      <args name= "@Empid" DataType="DbType.Int32" AttribMaping="IEmpid"/>
+      <args name= "@iProjid" DataType="DbType.Int32" AttribMaping="IProjid"/>
+      <args name= "@EmpfName" DataType="DbType.String" AttribMaping="VEmpfName"/>
+      <args name= "@EmplName" DataType="DbType.String" AttribMaping="VEmplName"/>
+      <args name= "@EmpIdNo" DataType="DbType.String" AttribMaping="VIdNumber"/>
+    </action>
+  </object>
+  <object name="xmlInsertUpdateEmployee">
+    <action type = "Select" spname="InsertUpdateEmployee">
+      <args name= "@Empid" DataType="DbType.Int32" AttribMaping="IEmpid"/>
+      <args name= "@iProjid" DataType="DbType.Int32" AttribMaping="IProjid"/>
+      <args name= "@Title" DataType="DbType.String" AttribMaping="VTitle"/>
+      <args name= "@EmpfName" DataType="DbType.String" AttribMaping="VEmpfName"/>
+      <args name= "@EmplName" DataType="DbType.String" AttribMaping="VEmplName"/>
+      <args name= "@MaritalStatus" DataType="DbType.String" AttribMaping="VMartialStatus"/>
+      <args name= "@EmpIdNo" DataType="DbType.String" AttribMaping="VIdNumber"/>
+      <args name= "@Passport" DataType="DbType.String" AttribMaping="VPassportNo"/>
+      <args name= "@EmpType" DataType="DbType.String" AttribMaping="VEmployeeType"/>
+      <args name= "@Address" DataType="DbType.String" AttribMaping="VAddress"/>
+      <args name= "@City" DataType="DbType.String" AttribMaping="VCity"/>
+      <args name= "@Nationality" DataType="DbType.String" AttribMaping="VNationality"/>
+      <args name= "@Mobile" DataType="DbType.String" AttribMaping="IMobile"/>
+      <args name= "@Designation" DataType="DbType.String" AttribMaping="VDesignation"/>
+      <args name= "@JoiningDate" DataType="DbType.DateTime" AttribMaping="DDateOfJoining"/>
+      <args name= "@Balance" DataType="DbType.Int32" AttribMaping="IBalance"/>
+      <args name= "@Desc" DataType="DbType.String" AttribMaping="VDescription"/>
+      <args name= "@Active" DataType="DbType.Boolean" AttribMaping="Active"/>
+  <args name= "@IEmpTypeId" DataType="DbType.Int32" AttribMaping="IEmpTypeId"/>
+      <args name= "@BasSal" DataType="DbType.Int32" AttribMaping="IBasicSalary"/>
+      <args name= "@Housing" DataType="DbType.Int32" AttribMaping="IHousing"/>
+      <args name= "@Traveling" DataType="DbType.Int32" AttribMaping="ITraveling"/>
+      <args name= "@Miscellaneous" DataType="DbType.Int32" AttribMaping="IMiscellaneous"/>
+      <args name= "@TotalSal" DataType="DbType.Int32" AttribMaping="ITotalSalary"/>
+      <args name= "@LastSalMonth" DataType="DbType.String" AttribMaping="VLastPaidSalaryMonth"/>
+      <args name= "@LastSalDate" DataType="DbType.DateTime" AttribMaping="DLastPaidSalaryDay"/>
+      <args name= "@HourRate" DataType="DbType.Int32" AttribMaping="IHourlyRate"/>
+      <args name= "@SalDue" DataType="DbType.Int32" AttribMaping="ISalaryDue"/>
+      <args name= "@Deduct" DataType="DbType.Int32" AttribMaping="IDeduction"/>
+      <args name= "@AccNo" DataType="DbType.String" AttribMaping="VAccountNo"/>
+      <args name= "@TransactionID" DataType="DbType.Int32" AttribMaping="ITranid"/>
+      <args name= "@vAccountCode" DataType="DbType.String" AttribMaping="VAccountCode"/>
+      <args name= "@Update" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+    </action>
+  </object>
+
+  <!-- ******************** Salary ******************** -->
+   <object name="xmlGetSalaryMonthlyReportSheet">
+    <action type = "Select" spname="GetSalaryMonthlyReportSheet">
+      <args name= "@SalaryMonth" DataType="DbType.DateTime" AttribMaping="dEndDate"/>
+      <args name= "@iProjid" DataType="DbType.Int32" AttribMaping="IProjid"/>
+    </action>
+  </object>
+  <object name="xmlGetSalarySheetHrEmployee">
+    <action type = "Select" spname="GetSalarySheetHrEmployee">
+      <args name= "@dSrtDate" DataType="DbType.DateTime" AttribMaping="dSrtDate"/>
+      <args name= "@dEndDate" DataType="DbType.DateTime" AttribMaping="dEndDate"/>
+      <args name= "@iProjid" DataType="DbType.Int32" AttribMaping="IProjid"/>
+    </action>
+  </object>
+  <object name="xmlGetSalary">
+    <action type = "Select" spname="GetSalary">
+      <args name= "@iSalId" DataType="DbType.Int32" AttribMaping="iSalId"/>
+      <args name= "@iEmpId" DataType="DbType.Int32" AttribMaping="iEmpId"/>
+      <args name= "@bIsPaid" DataType="DbType.Boolean" AttribMaping="bIsPaid"/>
+      <args name= "@dSrtDate" DataType="DbType.DateTime" AttribMaping="dSrtDate"/>
+      <args name= "@dEndDate" DataType="DbType.DateTime" AttribMaping="dEndDate"/>
+      <args name= "@iDays" DataType="DbType.Int32" AttribMaping="iDays"/>
+      <args name= "@iHours" DataType="DbType.Int32" AttribMaping="iHours"/>
+      <args name= "@iTranId" DataType="DbType.Int32" AttribMaping="iTranId"/>
+      <args name= "@dPaidDate" DataType="DbType.DateTime" AttribMaping="dPaidDate"/>
+      <args name= "@dGenratedDate" DataType="DbType.DateTime" AttribMaping="dGenratedDate"/>
+      <args name= "@iAmount" DataType="DbType.Int32" AttribMaping="iAmount"/>
+      <args name= "@iDeduction" DataType="DbType.Int32" AttribMaping="iDeduction"/>
+      <args name= "@vSortColumn" DataType="DbType.String" AttribMaping="VSortColumn"/>
+      <args name= "@vSortOrder" DataType="DbType.String" AttribMaping="VSortOrder"/>
+    </action>
+  </object>
+  <!-- ***InserUpdate Salay ***-->
+  <object name="xmlInsertUpdateSalary">
+    <action type = "Select" spname="InsertUpdateSalary">
+      <args name= "@iSalId" DataType="DbType.Int32" AttribMaping="iSalId"/>
+      <args name= "@iEmpId" DataType="DbType.Int32" AttribMaping="iEmpId"/>
+      <args name= "@bIsPaid" DataType="DbType.Boolean" AttribMaping="bIsPaid"/>
+      <args name= "@dSrtDate" DataType="DbType.DateTime" AttribMaping="dSrtDate"/>
+      <args name= "@dEndDate" DataType="DbType.DateTime" AttribMaping="dEndDate"/>
+      <args name= "@iDays" DataType="DbType.Int32" AttribMaping="iDays"/>
+      <args name= "@iHours" DataType="DbType.Int32" AttribMaping="iHours"/>
+      <args name= "@iTranId" DataType="DbType.Int32" AttribMaping="iTranId"/>
+      <args name= "@dPaidDate" DataType="DbType.DateTime" AttribMaping="dPaidDate"/>
+      <args name= "@dGenratedDate" DataType="DbType.DateTime" AttribMaping="dGenratedDate"/>
+      <args name= "@iAmount" DataType="DbType.Double" AttribMaping="iAmount"/>
+      <args name= "@iDeduction" DataType="DbType.Double" AttribMaping="iDeduction"/>
+      <args name= "@iAbsentdays" DataType="DbType.Double" AttribMaping="IAbsentdays"/>
+      <args name= "@fOverTime" DataType="DbType.Double" AttribMaping="FOverTime"/>
+      <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+
+
+    </action>
+  </object>
+
+
+ 
+    <!--**** Accounts *****--> 
+  <object name="xmlGetAccountPR">
+    <action type = "Select" spname="GetAccountsReport">
+      <args name= "@IAccountid" DataType="DbType.Int32" AttribMaping="IAccountid"/>
+      <args name= "@vTypeToFilter" DataType="DbType.String" AttribMaping="VTypeToFilter"/>
+      
+    </action>
+  </object>
+  <object name="xmlGetAccounts">
+    <action type = "Select" spname="GetAccounts">
+      <args name= "@IAccountid" DataType="DbType.Int32" AttribMaping="IAccountid"/>
+      <args name= "@VAccountName" DataType="DbType.String" AttribMaping="AccountName"/>
+      <args name= "@VAccountNo" DataType="DbType.String" AttribMaping="VAccountNo"/>
+      <args name= "@VAccountDesc" DataType="DbType.String" AttribMaping="VAccountDesc"/>
+      <args name= "@VAccountComments" DataType="DbType.String" AttribMaping="VAccountComments"/>
+      <args name= "@BEditable" DataType="DbType.Boolean" AttribMaping="BEditable"/>
+      <args name= "@IFinaceType" DataType="DbType.Int32" AttribMaping="IFinaceType"/>
+      <args name= "@IModuleID" DataType="DbType.Int32" AttribMaping="IModuleID"/>
+      <args name= "@IModuleFK_ID" DataType="DbType.Int32" AttribMaping="IModuleFK_ID"/>
+      <args name= "@bNominal" DataType="DbType.Boolean" AttribMaping="BNominal"/>
+    </action>
+  </object>
+  <object name="xmlGetFinaceType">
+    <action type = "Select" spname="GetFinaceType">
+      <!--<args name= "@IAccountid" DataType="DbType.Int32" AttribMaping="IAccountid"/>
+      <args name= "@VAccountName" DataType="DbType.String" AttribMaping="AccountName"/>
+      <args name= "@VAccountNo" DataType="DbType.String" AttribMaping="VAccountNo"/>
+      <args name= "@VAccountDesc" DataType="DbType.String" AttribMaping="VAccountDesc"/>
+      <args name= "@VAccountComments" DataType="DbType.String" AttribMaping="VAccountComments"/>
+      <args name= "@BEditable" DataType="DbType.Boolean" AttribMaping="BEditable"/>
+      <args name= "@IFinaceType" DataType="DbType.Int32" AttribMaping="IFinaceType"/>
+      <args name= "@IModuleID" DataType="DbType.Int32" AttribMaping="IModuleID"/>
+      <args name= "@IModuleFK_ID" DataType="DbType.Int32" AttribMaping="IModuleFK_ID"/>
+      <args name= "@bNominal" DataType="DbType.Boolean" AttribMaping="BNominal"/>-->
+    </action>
+  </object>
+  <object name="xmlInserUpdateAccounts">
+    <action type = "Select" spname="InsertUpdateAccount">
+      <args name= "@IAccountid" DataType="DbType.Int32" AttribMaping="IAccountid"/>
+      <args name= "@AccountName" DataType="DbType.String" AttribMaping="AccountName"/>
+      <args name= "@VAccountNo" DataType="DbType.String" AttribMaping="VAccountNo"/>
+      <args name= "@VAccountDesc" DataType="DbType.String" AttribMaping="VAccountDesc"/>
+      <args name= "@VAccountComments" DataType="DbType.String" AttribMaping="VAccountComments"/>
+      <args name= "@BEditable" DataType="DbType.Boolean" AttribMaping="BEditable"/>
+      <args name= "@iFinaceType" DataType="DbType.Int32" AttribMaping="IFinaceType"/>
+      <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+      <args name= "@bNominal" DataType="DbType.Boolean" AttribMaping="BNominal"/>
+      
+    </action>
+  </object>
+
+  
+	<!--*** Application ***-->
+  <object name="xmlGetModule">
+    <action type = "Select" spname="GetModule">
+      <args name= "@iModuleID" DataType="DbType.Int32" AttribMaping="IModuleID"/>
+      <args name= "@vModuleName" DataType="DbType.String" AttribMaping="VModuleName"/>
+      <args name= "@bIsActive" DataType="DbType.Binary" AttribMaping="BIsActive"/>
+      <args name= "@iModuleParentID" DataType="DbType.Int32" AttribMaping="IModuleParentID"/>
+      <args name= "@vUrlPath" DataType="DbType.String" AttribMaping="VUrlPath"/>
+      <args name= "@UriKind" DataType="DbType.String" AttribMaping="UriKind"/>
+      <args name= "@vDisplayName" DataType="DbType.String" AttribMaping="VDisplayName"/>
+      <args name= "@AllowdModule" DataType="DbType.String" AttribMaping="AllowdModule"/>
+    </action>
+  </object>
+  
+    <object name="xmlInsertUpdateModule">
+    <action type = "Select" spname="InsertUpdateModule">
+      <args name= "@iModuleID" DataType="DbType.Int32" AttribMaping="IModuleID"/>
+      <args name= "@vModuleName" DataType="DbType.String" AttribMaping="VModuleName"/>
+      <args name= "@bIsActive" DataType="DbType.Binary" AttribMaping="BIsActive"/>
+      <args name= "@iModuleParentID" DataType="DbType.Int32" AttribMaping="IModuleParentID"/>
+      <args name= "@vUrlPath" DataType="DbType.String" AttribMaping="VUrlPath"/>
+      <args name= "@UriKind" DataType="DbType.String" AttribMaping="UriKind"/>
+      <args name= "@vDisplayName" DataType="DbType.String" AttribMaping="VDisplayName"/>
+      <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/> 
+      <args name= "@iDisplayOrder" DataType="DbType.Int32" AttribMaping="IDisplayOrder"/>
+    </action>
+  </object>
+	<!-- ******************** Users ******************** -->
+  	<object name="xmlGetAppUser">
+		<action type = "Select" spname="getappusers">
+			<args name= "@vLogin" DataType="DbType.String" AttribMaping="VLogin"/>
+			<args name= "@vPassword" DataType="DbType.String" AttribMaping="VPassword"/>
+			<args name= "@iUserId" DataType="DbType.Int32" AttribMaping="IUserid"/>
+			<args name= "@vUserType" DataType="DbType.String" AttribMaping="VUserType"/>
+			<args name= "@vfName" DataType="DbType.String" AttribMaping="VfName"/>
+			<args name= "@vlName" DataType="DbType.String" AttribMaping="VlName"/>
+			<args name= "@vEmail" DataType="DbType.String" AttribMaping="VEmail"/>
+
+    
+    
+		</action>
+	</object>
+  
+  	<object name="xmlchgPassword">
+		<action type = "Select" spname="chgPassword">
+			<args name= "@iUserid" DataType="DbType.Int32" AttribMaping="IUserid"/>
+			<args name= "@vOldPassword" DataType="DbType.String" AttribMaping="temp_oldpass"/>
+			<args name= "@vNewPassword" DataType="DbType.String" AttribMaping="temp_newpass"/>
+		</action>
+	</object>
+  
+	  <object name="xmlInsertUpdateAppUsers">
+		<action type = "Select" spname="InsertUpdateAppUsers">
+			<args name= "@iUserid" DataType="DbType.Int32" AttribMaping="IUserid"/>
+			<args name= "@dDOB" DataType="DbType.DateTime" AttribMaping="DDOB"/>
+      <args name= "@vLogin" DataType="DbType.String" AttribMaping="VLogin"/>
+      <args name= "@vPassword" DataType="DbType.String" AttribMaping="VPassword"/>
+      <args name= "@vUserType" DataType="DbType.String" AttribMaping="VUserType"/>
+      <args name= "@vfName" DataType="DbType.String" AttribMaping="VfName"/>
+      <args name= "@vlName" DataType="DbType.String" AttribMaping="VlName"/>
+      <args name= "@vEmail" DataType="DbType.String" AttribMaping="VEmail"/>
+			<args name= "@bUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+      <args name= "@AllowdModule" DataType="DbType.String" AttribMaping="VAllowdModule"/>
+      <args name= "@bIsActive" DataType="DbType.Binary" AttribMaping="BIsActive"/>
+      <args name= "@bCanMakeEditAble" DataType="DbType.Binary" AttribMaping="BCanMakeEditAble"/>
+		</action>
+	</object>
+
+  <!--xmlGetCostumer-->
+  <object name="xmlGetCostumer">
+    <action type = "Select" spname="GetCostumer">
+      <args name= "@CostumerID" DataType="DbType.Int32" AttribMaping="CostumerID"/>
+    <args name= "@CostumerName" DataType="DbType.String" AttribMaping="CostumerName"/>
+    <args name= "@CostumerBikeNumber" DataType="DbType.String" AttribMaping="CostumerBikeNumber"/>
+      <args name= "@CostumerMobileNumber" DataType="DbType.String" AttribMaping="CostumerMobileNumber"/>
+    <args name= "@CostumerLastVisit" DataType="DbType.DateTime" AttribMaping="CostumerLastVisit"/>
+    <args name= "@MeterReading" DataType="DbType.String" AttribMaping="MeterReading"/>
+    <args name= "@ModelNumber" DataType="DbType.String" AttribMaping="ModelNumber"/>
+    </action>
+  </object>
+<object name="xmlGetCostumerAlert">
+    <action type = "Select" spname="GetCostumerAlert">
+      <args name= "@dAlertDate" DataType="DbType.DateTime" AttribMaping="DAlertDate"/>
+      <args name= "@CostumerID" DataType="DbType.Int32" AttribMaping="CostumerID"/>
+      <args name= "@CostumerBikeNumber" DataType="DbType.String" AttribMaping="CostumerBikeNumber"/>
+    </action>
+  </object>
+  <object name="xmlInsertUpdateCostumer">
+    <action type = "Select" spname="InsertUpdateCostumer">
+      <args name= "@CostumerID" DataType="DbType.Int32" AttribMaping="CostumerID"/>
+    <args name= "@CostumerName" DataType="DbType.String" AttribMaping="CostumerName"/>
+    <args name= "@CostumerBikeNumber" DataType="DbType.String" AttribMaping="CostumerBikeNumber"/>
+      <args name= "@CostumerMobileNumber" DataType="DbType.String" AttribMaping="CostumerMobileNumber"/>
+    <args name= "@CostumerLastVisit" DataType="DbType.DateTime" AttribMaping="CostumerLastVisit"/>
+    <args name= "@MeterReading" DataType="DbType.String" AttribMaping="MeterReading"/>
+    <args name= "@ModelNumber" DataType="DbType.String" AttribMaping="ModelNumber"/>
+      <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+      <args name= "@dAlertDate" DataType="DbType.DateTime" AttribMaping="DAlertDate"/>
+      <args name= "@dLastInovice" DataType="DbType.DateTime" AttribMaping="DLastInovice"/>
+      <args name= "@bFallowUp" DataType="DbType.Binary" AttribMaping="BFallowUp"/>
+    </action>
+  </object>
+  <!-- ******************** Party ******************** -->
+  	<object name="xmlGetParty">
+		<action type = "Select" spname="Getparty">
+			<args name= "@iPartyID" DataType="DbType.Int64" AttribMaping="IPartyID"/>
+		</action>
+	</object>
+  
+  
+  
+    <object name="xmlInsertUpdateParty">
+		<action type = "Select" spname="InsertUpdateParty">
+			<!--<args name= "@iPartyID" DataType="DbType.long" AttribMaping="IPartyID"/>
+			<args name= "@vPartyName" DataType="DbType.String" AttribMaping="VPartyName"/>
+			<args name= "@vPartyadress" DataType="DbType.String" AttribMaping="VPartyadress"/>
+			<args name= "@vpartyMobile" DataType="DbType.String" AttribMaping="VpartyMobile"/>
+			<args name= "@iSaleManID" DataType="DbType.Int32" AttribMaping="ISaleManID"/>
+			<args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>-->
+
+			<args name= "@iPartyID" DataType="DbType.long" AttribMaping="IPartyID"/>
+			<args name= "@vPartyName" DataType="DbType.String" AttribMaping="VPartyName"/>
+			<args name= "@vPartyadress" DataType="DbType.String" AttribMaping="VPartyadress"/>
+			<args name= "@vpartyMobile" DataType="DbType.String" AttribMaping="VpartyMobile"/>
+			<args name= "@iSaleManID" DataType="DbType.Int32" AttribMaping="ISaleManID"/>
+			<args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+			<args name= "@iCreditLimit" DataType="DbType.Int32" AttribMaping="ICreditLimit"/>
+			<args name= "@vMarket" DataType="DbType.String" AttribMaping="VMarket"/>
+			<args name= "@vArea" DataType="DbType.String" AttribMaping="VArea"/>
+			<args name= "@vDistrict" DataType="DbType.String" AttribMaping="VDistrict"/>
+			<args name= "@VCity" DataType="DbType.String" AttribMaping="VCity"/>
+			<args name= "@vContactPerson" DataType="DbType.String" AttribMaping="VContactPerson"/>
+			<args name= "@vLandlineNumber" DataType="DbType.String" AttribMaping="VLandlineNumber"/>
+
+		</action>
+	</object>
+	
+	<!-- ******************** Sale Man ******************** -->
+  	<object name="xmlGetSaleMan">
+		<action type = "Select" spname="GetSaleMan">
+			<args name= "@iPartyID" DataType="DbType.Int64" AttribMaping="IPartyID"/>
+		</action>
+	</object>
+			
+	<!-- ******************** Items  ******************** -->
+	  <object name="xmlGetItems">
+		<action type = "Select" spname="GetItems">
+			<args name= "@iItemID" DataType="DbType.Int64" AttribMaping="IItemID"/>
+    <args name= "@vItemBarcode" DataType="DbType.String" AttribMaping="VItemBarcode"/>
+    <args name= "@StockStatus" DataType="DbType.String" AttribMaping="StockStatus"/>
+		</action>
+	</object>
+
+  <!--xmlInsertUpdateItem-->
+    <object name="xmlInsertUpdateItem">
+		<action type = "Select" spname="InsertUpdateItem">
+      <args name= "@iItemID" DataType="DbType.Int32" AttribMaping="IItemID"/>
+      <args name= "@vItemName" DataType="DbType.String" AttribMaping="VItemName"/>
+      <args name= "@vDetailName" DataType="DbType.String" AttribMaping="VDetailName"/>
+      <args name= "@bFuzzyDelented" DataType="DbType.Binary" AttribMaping="BFuzzyDelented"/>
+      <args name= "@vCompanyName" DataType="DbType.String" AttribMaping="VCompanyName"/>
+      <args name= "@fUnitePrice" DataType="DbType.Double" AttribMaping="FUnitePrice"/>
+      <args name= "@fMaxDiscountPresent" DataType="DbType.Double" AttribMaping="FMaxDiscountPresent"/>
+      <args name= "@vItemBarcode" DataType="DbType.String" AttribMaping="VItemBarcode"/>
+      <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+      <args name= "@bIsSaleAble" DataType="DbType.Binary" AttribMaping="BIsSaleAble"/>
+     <args name= "@vPackDescription" DataType="DbType.String" AttribMaping="VPackDescription"/>
+       <args name= "@fUnitPurchasePrice" DataType="DbType.Double" AttribMaping="FUnitPurchasePrice"/>
+     <args name= "@vItemType" DataType="DbType.String" AttribMaping="VItemType"/>
+    <args name= "@initialStock" DataType="DbType.Int32" AttribMaping="InitialStock"/>
+    <args name= "@iAlertAmount" DataType="DbType.Int32" AttribMaping="IAlertAmount"/>
+      <args name= "@bIsEditAbleInInvoice" DataType="DbType.Binary" AttribMaping="BIsEditAbleInInvoice"/>
+    </action>
+	</object>
+  
+  <!-- ******************** Purchase  ******************** -->
+    <object name="xmlInsertUpdatePurchase">
+		<action type = "Select" spname="InsertUpdatePurchase">
+			<args name= "@iPurchaseid" DataType="DbType.long" AttribMaping="IPurchaseid"/>
+			<args name= "@ipartyId" DataType="DbType.Int32" AttribMaping="IpartyId"/>
+			<args name= "@ddate" DataType="DbType.DateTime" AttribMaping="Ddate"/>
+
+			<args name= "@ftotalamount" DataType="DbType.Double" AttribMaping="Ftotalamount"/>
+			<args name= "@vPaymentMod" DataType="DbType.String" AttribMaping="VPaymentMod"/>
+			<args name= "@vVehicleNo" DataType="DbType.String" AttribMaping="VVehicleNo"/>
+			<args name= "@vDriverName" DataType="DbType.String" AttribMaping="VDriverName"/>
+			<args name= "@iUserid" DataType="DbType.long" AttribMaping="IUserid"/>
+			<args name= "@vDeliveryExpense" DataType="DbType.String" AttribMaping="VDeliveryExpense"/>
+			<args name= "@vSeason" DataType="DbType.String" AttribMaping="VSeason"/>
+			<args name= "@iDiscountPersent" DataType="DbType.Int32" AttribMaping="IDiscountPersent"/>
+			<args name= "@fPayAbleAmount" DataType="DbType.Double" AttribMaping="FPayAbleAmount"/>
+			<args name= "@fAmmountRecived" DataType="DbType.Double" AttribMaping="FAmmountRecived"/>
+			<args name= "@vReciverName" DataType="DbType.String" AttribMaping="VReciverName"/>
+			<args name= "@iSaleManID" DataType="DbType.long" AttribMaping="ISaleManID"/>
+			<args name= "@fBalance" DataType="DbType.Double" AttribMaping="FBalance"/>
+			<args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+			<args name= "@AmountwithDExpense" DataType="DbType.Double" AttribMaping="AmountwithDExpense"/>
+<args name= "@formnumber" DataType="DbType.String" AttribMaping="Formnumber"/>
+		</action>
+	</object>
+  
+    <object name="xmlInsertUpdatePurchaseItem">
+		<action type = "Select" spname="InsertUpdatePurchaseItem">
+			<args name= "@iPurchaseItemid" DataType="DbType.long" AttribMaping="IPurchaseItemid"/>
+			<args name= "@iPurchaseid" DataType="DbType.long" AttribMaping="IProductionId"/>
+			<args name= "@fUnitePrice" DataType="DbType.Double" AttribMaping="FUnitePrice"/>
+			<args name= "@iQuantity" DataType="DbType.Int32" AttribMaping="IQuantity"/>
+			<args name= "@fGrossAmount" DataType="DbType.Double" AttribMaping="FGrossAmount"/>
+			<args name= "@iItemID" DataType="DbType.Int32" AttribMaping="IItemID"/>
+			<args name= "@iSerialNumber" DataType="DbType.Int32" AttribMaping="ISerialNumber"/>
+			<args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+      <args name= "@iUserId" DataType="DbType.Int32" AttribMaping="IUserId"/>
+	 
+		</action>
+	</object>
+  
+    <object name="xmlGetPurchase">
+		<action type = "Select" spname="GetPurchase">
+			<args name= "@iPurchaseid" DataType="DbType.long" AttribMaping="IPurchaseid"/>
+			<args name= "@ipartyId" DataType="DbType.Int32" AttribMaping="IpartyId"/>
+			<args name= "@ddate" DataType="DbType.DateTime" AttribMaping="Ddate"/>
+			<args name= "@vpartyName" DataType="DbType.String" AttribMaping="VpartyName"/>
+			<args name= "@vpartymobile" DataType="DbType.String" AttribMaping="Vpartymobile"/>
+			<args name= "@ftotalamount" DataType="DbType.Double" AttribMaping="Ftotalamount"/>
+			<args name= "@vPaymentMod" DataType="DbType.String" AttribMaping="VPaymentMod"/>
+			<args name= "@vVehicleNo" DataType="DbType.String" AttribMaping="VVehicleNo"/>
+			<args name= "@vDriverName" DataType="DbType.String" AttribMaping="VDriverName"/>
+
+			<args name= "@vDeliveryExpense" DataType="DbType.String" AttribMaping="VDeliveryExpense"/>
+			<args name= "@vSeason" DataType="DbType.String" AttribMaping="VSeason"/>
+			<args name= "@iDiscountPersent" DataType="DbType.Int32" AttribMaping="IDiscountPersent"/>
+			<args name= "@fPayAbleAmount" DataType="DbType.Double" AttribMaping="FPayAbleAmount"/>
+			<args name= "@fAmmountRecived" DataType="DbType.Double" AttribMaping="FAmmountRecived"/>
+			<args name= "@vReciverName" DataType="DbType.String" AttribMaping="VReciverName"/>
+			<args name= "@iSaleManID" DataType="DbType.long" AttribMaping="ISaleManID"/>
+			<args name= "@fBalance" DataType="DbType.Double" AttribMaping="FBalance"/>
+			<args name= "@dFromDate" DataType="DbType.DateTime" AttribMaping="DFromDate"/>
+			<args name= "@dToDate" DataType="DbType.DateTime" AttribMaping="DToDate"/>
+			
+		</action>
+	</object>
+	
+	<!-- ******************** Inovice  ******************** -->
+    <object name="xmlGetSaleInovice">
+		  <action type = "Select" spname="GetSaleInovice">
+        <args name= "@iSaleid" DataType="DbType.long" AttribMaping="ISaleid"/>
+			  <args name= "@ipartyId" DataType="DbType.Int32" AttribMaping="IpartyId"/>
+			  <args name= "@ddate" DataType="DbType.DateTime" AttribMaping="Ddate"/>
+			  <args name= "@vpartyName" DataType="DbType.String" AttribMaping="VpartyName"/>
+			  <args name= "@vpartymobile" DataType="DbType.String" AttribMaping="Vpartymobile"/>
+			  <args name= "@ftotalamount" DataType="DbType.Double" AttribMaping="Ftotalamount"/>
+			  <args name= "@vPaymentMod" DataType="DbType.String" AttribMaping="VPaymentMod"/>
+			  <args name= "@vVehicleNo" DataType="DbType.String" AttribMaping="VVehicleNo"/>
+			  <args name= "@vDriverName" DataType="DbType.String" AttribMaping="VDriverName"/>
+
+			  <args name= "@vDeliveryExpense" DataType="DbType.String" AttribMaping="VDeliveryExpense"/>
+			  <args name= "@vSeason" DataType="DbType.String" AttribMaping="VSeason"/>
+			  <args name= "@iDiscountPersent" DataType="DbType.Int32" AttribMaping="IDiscountPersent"/>
+			  <args name= "@fPayAbleAmount" DataType="DbType.Double" AttribMaping="FPayAbleAmount"/>
+			  <args name= "@fAmmountRecived" DataType="DbType.Double" AttribMaping="FAmmountRecived"/>
+			  <args name= "@vReciverName" DataType="DbType.String" AttribMaping="VReciverName"/>
+			  <args name= "@iSaleManID" DataType="DbType.long" AttribMaping="ISaleManID"/>
+			  <args name= "@fBalance" DataType="DbType.Double" AttribMaping="FBalance"/>
+			  <args name= "@dFromDate" DataType="DbType.DateTime" AttribMaping="DFromDate"/>
+			  <args name= "@dToDate" DataType="DbType.DateTime" AttribMaping="DToDate"/>
+        <args name= "@ICostumerId" DataType="DbType.Int32" AttribMaping="ICostumerId"/>
+        
+      </action>
+	  </object>
+  
+   <object name="xmlCheckItemInvoiced">
+		  <action type = "Select" spname="CheckItemInvoiced">
+        <args name= "@iSaleid" DataType="DbType.long" AttribMaping="ISaleid"/>
+        <args name= "@ICostumerId" DataType="DbType.Int32" AttribMaping="ICostumerId"/>
+		  </action>
+	  </object>
+    <object name="xmlRemoveSaleInovice">
+		  <action type = "Select" spname="RemoveSaleInovice">
+        <args name= "@iSaleid" DataType="DbType.long" AttribMaping="ISaleid"/>
+		  </action>
+	  </object>
+	  <object name="xmlInsertUpdateSaleInovice">
+		  <action type = "Select" spname="InsertUpdateSaleInovice">
+        <args name= "@iSaleid" DataType="DbType.long" AttribMaping="ISaleid"/>
+        <args name= "@LiftNumber" DataType="DbType.Int32" AttribMaping="LiftNumber"/>
+        <args name= "@ipartyId" DataType="DbType.Int32" AttribMaping="IpartyId"/>
+        <args name= "@ddate" DataType="DbType.DateTime" AttribMaping="Ddate"/>
+        <args name= "@iCostumerId" DataType="DbType.long" AttribMaping="ICostumerId"/>
+        <args name= "@ftotalamount" DataType="DbType.Double" AttribMaping="Ftotalamount"/>
+        <args name= "@vPaymentMod" DataType="DbType.String" AttribMaping="VPaymentMod"/>
+        <args name= "@MeterReading" DataType="DbType.String" AttribMaping="MeterReading"/>
+        <args name= "@vVehicleNo" DataType="DbType.String" AttribMaping="VVehicleNo"/>
+        <args name= "@vDriverName" DataType="DbType.String" AttribMaping="VDriverName"/>
+        <args name= "@iUserid" DataType="DbType.long" AttribMaping="IUserid"/>
+			  <args name= "@vDeliveryExpense" DataType="DbType.String" AttribMaping="VDeliveryExpense"/>
+			  <args name= "@vSeason" DataType="DbType.String" AttribMaping="VSeason"/>
+			  <args name= "@iDiscountPersent" DataType="DbType.Int32" AttribMaping="IDiscountPersent"/>
+			  <args name= "@fPayAbleAmount" DataType="DbType.Double" AttribMaping="FPayAbleAmount"/>
+			  <args name= "@fAmmountRecived" DataType="DbType.Double" AttribMaping="FAmmountRecived"/>
+			  <args name= "@vReciverName" DataType="DbType.String" AttribMaping="VReciverName"/>
+			  <args name= "@iSaleManID" DataType="DbType.long" AttribMaping="ISaleManID"/>
+			  <args name= "@fBalance" DataType="DbType.Double" AttribMaping="FBalance"/>
+			  <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+			  <args name= "@AmountwithDExpense" DataType="DbType.Double" AttribMaping="AmountwithDExpense"/>
+        <args name= "@bReturnInvoice" DataType="DbType.Binary" AttribMaping="BReturnInvoice"/>
+        <args name= "@bCanelDone" DataType="DbType.Binary" AttribMaping="BCanelDone"/>
+        <args name= "@bIsDraft" DataType="DbType.Binary" AttribMaping="BIsDraft"/>
+        <args name= "@bFinalized" DataType="DbType.Binary" AttribMaping="BFinalized"/>
+        <args name= "@vFirstElectricianName" DataType="DbType.String" AttribMaping="VFirstElectricianName"/>
+        <args name= "@vSecElectricianName" DataType="DbType.String" AttribMaping="VSecElectricianName"/>
+      <args name= "@fServices" DataType="DbType.Double" AttribMaping="FServices"/>
+         <args name= "@fGrossPurchasePrice" DataType="DbType.Double" AttribMaping="FGrossPurchasePrice"/>
+      
+    
+      </action>
+	  </object>
+  
+	  <object name="xmlInsertUpdateSaleInoviceItem">
+		  <action type = "Select" spname="InsertUpdateSaleInoviceItem">
+			  <args name= "@iSaleItemid" DataType="DbType.long" AttribMaping="ISaleItemid"/>
+			  <args name= "@iSaleid" DataType="DbType.long" AttribMaping="ISaleid"/>
+			  <args name= "@fUnitePrice" DataType="DbType.Double" AttribMaping="FUnitePrice"/>
+			  <args name= "@iQuantity" DataType="DbType.Int32" AttribMaping="IQuantity"/>
+			  <args name= "@fGrossAmount" DataType="DbType.Double" AttribMaping="FGrossAmount"/>
+			  <args name= "@iItemID" DataType="DbType.Int32" AttribMaping="IItemID"/>
+			  <args name= "@iSerialNumber" DataType="DbType.Int32" AttribMaping="ISerialNumber"/>
+			  <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+        <args name= "@iUserId" DataType="DbType.Int32" AttribMaping="IUserId"/>
+	 
+		  </action>
+	  </object>
+    <object name="xmlRemoveSaleInoviceItem">
+		  <action type = "Select" spname="RemoveSaleInoviceItem">
+			  <args name= "@iSaleItemid" DataType="DbType.long" AttribMaping="ISaleItemid"/> 
+        <args name= "@bIsDraft" DataType="DbType.Binary" AttribMaping="BIsDraft"/>
+			  <!--<args name= "@iSaleid" DataType="DbType.long" AttribMaping="ISaleid"/>
+			  <args name= "@fUnitePrice" DataType="DbType.Double" AttribMaping="FUnitePrice"/>
+			  <args name= "@iQuantity" DataType="DbType.Int32" AttribMaping="IQuantity"/>
+			  <args name= "@fGrossAmount" DataType="DbType.Double" AttribMaping="FGrossAmount"/>
+			  <args name= "@iItemID" DataType="DbType.Int32" AttribMaping="IItemID"/>
+			  <args name= "@iSerialNumber" DataType="DbType.Int32" AttribMaping="ISerialNumber"/>
+			  <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+        <args name= "@iUserId" DataType="DbType.Int32" AttribMaping="IUserId"/>-->
+	 
+		  </action>
+	  </object>
+    <object name="xmlGetItemStock">
+		  <action type = "Select" spname="GetItemStock">
+			  <!--<args name= "@iSaleItemid" DataType="DbType.long" AttribMaping="ISaleItemid"/>
+			  <args name= "@iSaleid" DataType="DbType.long" AttribMaping="ISaleid"/>
+			  <args name= "@fUnitePrice" DataType="DbType.Double" AttribMaping="FUnitePrice"/>
+			  <args name= "@iQuantity" DataType="DbType.Int32" AttribMaping="IQuantity"/>
+			  <args name= "@fGrossAmount" DataType="DbType.Double" AttribMaping="FGrossAmount"/>
+			  <args name= "@iItemID" DataType="DbType.Int32" AttribMaping="IItemID"/>
+			  <args name= "@iSerialNumber" DataType="DbType.Int32" AttribMaping="ISerialNumber"/>
+			  <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+        <args name= "@iUserId" DataType="DbType.Int32" AttribMaping="IUserId"/>-->
+ 	   <args name= "@dFromDate" DataType="DbType.DateTime" AttribMaping="DFromDate"/>
+			  <args name= "@dToDate" DataType="DbType.DateTime" AttribMaping="DToDate"/>
+      <args name= "@iItemID" DataType="DbType.Int32" AttribMaping="IItemID"/>
+		  </action>
+	  </object>
+  
+    <object name="xmlInsertUpdateStock">
+      <action type = "Select" spname="InsertUpdateStock">
+        <args name= "@iStokId" DataType="DbType.long" AttribMaping="IStokId"/>
+        <args name= "@iItemID" DataType="DbType.Int32" AttribMaping="IItemID"/>
+        <args name= "@iCurrantStock" DataType="DbType.Int32" AttribMaping="ICurrantStock"/>
+        <args name= "@iUserId" DataType="DbType.Int32" AttribMaping="IUserId"/>
+        <args name= "@iStockIn" DataType="DbType.Int32" AttribMaping="IStockIn"/>
+        <args name= "@iStockOut" DataType="DbType.Int32" AttribMaping="IStockOut"/>
+        <args name= "@iSaleId" DataType="FALSE" AttribMaping="ISaleId"/>
+        <args name= "@iProductionId" DataType="DbType.Int32" AttribMaping="IProductionId"/>
+        <args name= "@dDate" DataType="DbType.DateTime" AttribMaping="DDate"/>
+        <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+        <args name= "@bitReturn" DataType="DbType.Int32" AttribMaping="BitReturn"/>
+        <args name= "@vAction" DataType="DbType.String" AttribMaping="VAction"/>
+      </action>
+    </object>
+  
+    <object name="xmlInsertUpdateProduction">
+		  <action type = "Select" spname="InsertUpdateProduction">
+        <args name= "@iProductionId" DataType="DbType.long" AttribMaping="IProductionId"/>
+        <args name= "@dDate" DataType="DbType.DateTime" AttribMaping="DDate"/>
+        <args name= "@vLocation" DataType="DbType.String" AttribMaping="VLocation"/>
+        <args name= "@vPurchaseManager" DataType="DbType.String" AttribMaping="VPurchaseManager"/>
+        <args name= "@vProductionUnit" DataType="DbType.String" AttribMaping="VProductionUnit"/>
+        <args name= "@fProductionCast" DataType="DbType.Double" AttribMaping="FProductionCast"/>
+        <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+      </action>
+	  </object>
+  
+    <object name="xmlInsertUpdateProductionItem">
+		  <action type = "Select" spname="InsertUpdateProductionItem">
+        <args name= "@iProductionItemid" DataType="DbType.long" AttribMaping="IProductionItemid"/>
+        <args name= "@iProductionid" DataType="DbType.long" AttribMaping="IProductionId"/>
+			  <args name= "@fUnitePrice" DataType="DbType.Double" AttribMaping="FUnitePrice"/>
+			  <args name= "@iQuantity" DataType="DbType.Int32" AttribMaping="IQuantity"/>
+			  <args name= "@fGrossAmount" DataType="DbType.Double" AttribMaping="FGrossAmount"/>
+			  <args name= "@iItemID" DataType="DbType.Int32" AttribMaping="IItemID"/>
+			  <args name= "@iSerialNumber" DataType="DbType.Int32" AttribMaping="ISerialNumber"/>
+			  <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+        <args name= "@iUserId" DataType="DbType.Int32" AttribMaping="IUserId"/>
+       <args name= "@iProductionItemType" DataType="DbType.Int32" AttribMaping="IProductionItemid"/>
+     <args name= "@dDate" DataType="DbType.DateTime" AttribMaping="DDate"/>
+		  </action>
+	  </object> 
+    
+    <object name="xmlGetProduction">
+		  <action type = "Select" spname="GetProduction">
+		       <args name= "@iProductionid" DataType="DbType.long" AttribMaping="IProductionId"/>
+       <args name= "@dFromDate" DataType="DbType.DateTime" AttribMaping="DFromDate"/>
+			  <args name= "@dToDate" DataType="DbType.DateTime" AttribMaping="DToDate"/>
+		  </action>
+	  </object>
+  
+    <object name="xmlGetPreference">
+		  <action type = "Select" spname="GetPreference">
+		  </action>
+	  </object>
+  
+      <object name="xmlGetAppPreference">
+		  <action type = "Select" spname="GetAppPreference">
+		  </action>
+	  </object>
+    <object name="xmlInsertUpdatePreference">
+		    <action type = "Select" spname="InsertUpdatePreference">
+          
+          <args name= "@iCompanyID" DataType="DbType.Int32" AttribMaping="ICompanyID"/>
+          <args name= "@imLogoImage" DataType="DbType.Binary" AttribMaping="ImLogoImage"/>
+          <args name= "@vHeaderText" DataType="DbType.String" AttribMaping="VHeaderText"/>
+          <args name= "@bIsActive" DataType="DbType.Binary" AttribMaping="BIsActive"/>
+          <args name= "@vDateFormat" DataType="DbType.String" AttribMaping="vDateFormat"/>
+          <args name= "@bStockOverRide" DataType="DbType.Binary" AttribMaping="BStockOverRide"/>
+          <args name= "@vSaleType" DataType="DbType.String" AttribMaping="VSaleType"/>
+          <args name= "@bDefaultCustomer" DataType="DbType.Binary" AttribMaping="BDefaultCustomer"/>
+          <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+          <args name= "@iSalaryDays" DataType="DbType.Int32" AttribMaping="ISalaryDays"/>
+          <args name= "@bDurationReturnOnly" DataType="DbType.Binary" AttribMaping="BDurationReturnOnly"/>
+          <args name= "@iAllowedBackDays" DataType="DbType.Int32" AttribMaping="IAllowedBackDays"/>
+          <args name= "@bShowPartyDetail" DataType="DbType.Binary" AttribMaping="BShowPartyDetail"/>
+          <args name= "@bShowDeliveryDetail" DataType="DbType.Binary" AttribMaping="BShowDeliveryDetail"/>
+          <args name= "@bShowStockStatus" DataType="DbType.Binary" AttribMaping="BShowStockStatus"/>
+          <args name= "@bCashierID" DataType="DbType.Int32" AttribMaping="BCashierID"/>
+      
+		    </action>
+	    </object> 
+   <object name="xmlInsertUpdateAppPreference">
+		    <action type = "Select" spname="InsertUpdateAppPreference">
+
+          <args name= "@iApplicationID" DataType="DbType.Int32" AttribMaping="IApplicationID"/>
+          <args name= "@vApplicationName" DataType="DbType.String" AttribMaping="VApplicationName"/>
+          <args name= "@imgCompanyLogo" DataType="DbType.Binary" AttribMaping="ImgCompanyLogo"/>
+          <args name= "@vCompanyName" DataType="DbType.String" AttribMaping="VCompanyName"/>
+          <args name= "@vEnableModules" DataType="DbType.String" AttribMaping="VEnableModules"/>
+          <args name= "@vHeaderAdress" DataType="DbType.String" AttribMaping="VHeaderAdress"/>
+          <args name= "@vCompanyMobile" DataType="DbType.String" AttribMaping="VCompanyMobile"/>
+          <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+
+        </action>
+	    </object> 
+
+  <object name="xmlInsertUpdateJournal">
+		  <action type = "Select" spname="InsertUpdateJournal">
+		    <args name= "@iJournalId" DataType="DbType.Int32" AttribMaping="IJournalId"/>
+        <args name= "@fAmount" DataType="DbType.Double" AttribMaping="FAmount"/>
+        <args name= "@vTranTitle" DataType="DbType.String" AttribMaping="VTranTitle"/>
+        <args name= "@dSystemEntryDateTime" DataType="DbType.DateTime" AttribMaping="DSystemEntryDateTime"/>
+        <args name= "@dTransactionDate" DataType="DbType.DateTime" AttribMaping="DTransactionDate"/>
+        <args name= "@iUserId" DataType="DbType.Int32" AttribMaping="IUserId"/>
+        <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+      </action>
+	  </object> 
+   <object name="xmlGetTransactionsList">
+    <action type="Select" spname="listTransaction">
+      <args name= "@iAccountID" DataType="DbType.Int32" AttribMaping="IAccountID"/>
+      <args name= "@iJournalId" DataType="DbType.Int32" AttribMaping="IJournalId"/>
+      <args name= "@dTransactionFromDate" DataType="DbType.DateTime" AttribMaping="DTransactionFromDate"/>
+      <args name= "@dTransactionToDate" DataType="DbType.DateTime" AttribMaping="DTransactionToDate"/>
+      <args name= "@dTransactionDate" DataType="DbType.DateTime" AttribMaping="DTransactionDate"/>
+      <args name= "@vVoucherNo" DataType="DbType.String" AttribMaping="VVoucherNo"/>
+      <args name= "@bShowBlance" DataType="DbType.Boolean" AttribMaping="BShowBlance"/>
+    </action>
+  </object> 
+     <object name="xmlGetAccountBlance">
+    <action type="Select" spname="GetAccountBlance">
+      <args name= "@iAccountID" DataType="DbType.Int32" AttribMaping="IAccountID"/>
+      <args name= "@dTransactionFromDate" DataType="DbType.DateTime" AttribMaping="DTransactionFromDate"/>
+      <args name= "@dTransactionToDate" DataType="DbType.DateTime" AttribMaping="DTransactionToDate"/>
+      <args name= "@IFinaceType" DataType="DbType.Int32" AttribMaping="IFinaceType"/>
+    </action>
+  </object> 
+     <object name="xmlGetDailyIncom">
+    <action type="Select" spname="DDIncomstatment">
+      <args name= "@dFromDate" DataType="DbType.DateTime" AttribMaping="DTransactionFromDate"/>
+      <args name= "@dToDate" DataType="DbType.DateTime" AttribMaping="DTransactionToDate"/>
+    </action>
+  </object> 
+    <object name="xmlGetJournal">
+		  <action type = "Select" spname="GetJournal">
+		    <args name= "@iJournalId" DataType="DbType.Int32" AttribMaping="IJournalId"/>
+        <args name= "@fAmount" DataType="DbType.Double" AttribMaping="FAmount"/>
+        <args name= "@vTranTitle" DataType="DbType.String" AttribMaping="VTranTitle"/>
+        <args name= "@dSystemEntryDateTime" DataType="DbType.DateTime" AttribMaping="DSystemEntryDateTime"/>
+        <args name= "@dTransactionDate" DataType="DbType.DateTime" AttribMaping="DTransactionDate"/>
+        <args name= "@iUserId" DataType="DbType.Int32" AttribMaping="IUserId"/>
+        <args name= "@dTransactionFromDate" DataType="DbType.DateTime" AttribMaping="DTransactionFromDate"/>
+        <args name= "@dTransactionToDate" DataType="DbType.DateTime" AttribMaping="DTransactionToDate"/>
+      
+      </action>
+	  </object>
+    <object name="xmlInsertUpdateJournalDetail">
+		  <action type = "Select" spname="InsertUpdateJournalDetail">
+        <args name= "@iJournalDetailId" DataType="DbType.Int32" AttribMaping="IJournalDetailId"/>
+        <args name= "@iJournalId" DataType="DbType.Int32" AttribMaping="IJournalId"/>
+        <args name= "@vTransactionType" DataType="DbType.String" AttribMaping="VTransactionType"/>
+        <args name= "@iAccountID" DataType="DbType.Int32" AttribMaping="IAccountID"/>
+        <args name= "@fAmount" DataType="DbType.Double" AttribMaping="FAmount"/>
+        <args name= "@dEntryDateTime" DataType="DbType.DateTime" AttribMaping="DEntryDateTime"/>
+        <args name= "@vReceivedBy" DataType="DbType.String" AttribMaping="VReceivedBy"/>
+        <args name= "@vVoucherNo" DataType="DbType.String" AttribMaping="VVoucherNo"/>
+        <args name= "@vdescription" DataType="DbType.String" AttribMaping="Vdescription"/>
+        <args name= "@iChequeNumber" DataType="DbType.Int32" AttribMaping="IChequeNumber"/>
+        <args name= "@vBankAccountNumber" DataType="DbType.String" AttribMaping="VBankAccountNumber"/>
+        <args name= "@vPaymentMode" DataType="DbType.String" AttribMaping="VPaymentMode"/>
+        <args name= "@vModuleFK_Table" DataType="DbType.String" AttribMaping="VModuleFK_Table"/>
+        <args name= "@vModuleFK_Name" DataType="DbType.String" AttribMaping="VModuleFK_Name"/>
+        <args name= "@iModuleFK_ID" DataType="DbType.Int32" AttribMaping="IModuleFK_ID"/>
+        <args name= "@iUpdate" DataType="DbType.Int32" AttribMaping="IUpdate"/>
+
+      </action>
+	  </object>
+    <object name="xmlGetJournalDetail">
+		  <action type = "Select" spname="GetJournalDetail">
+        <args name= "@iJournalDetailId" DataType="DbType.Int32" AttribMaping="IJournalDetailId"/>
+        <args name= "@iJournalId" DataType="DbType.Int32" AttribMaping="IJournalId"/>
+        <args name= "@vTransactionType" DataType="DbType.String" AttribMaping="VTransactionType"/>
+        <args name= "@iAccountID" DataType="DbType.Int32" AttribMaping="IAccountID"/>
+        <args name= "@fAmount" DataType="DbType.Double" AttribMaping="FAmount"/>
+        <args name= "@dEntryDateTime" DataType="DbType.DateTime" AttribMaping="DEntryDateTime"/>
+        <args name= "@vReceivedBy" DataType="DbType.String" AttribMaping="VReceivedBy"/>
+        <args name= "@vVoucherNo" DataType="DbType.String" AttribMaping="VVoucherNo"/>
+        <args name= "@vdescription" DataType="DbType.String" AttribMaping="Vdescription"/>
+        <args name= "@iChequeNumber" DataType="DbType.Int32" AttribMaping="IChequeNumber"/>
+        <args name= "@vBankAccountNumber" DataType="DbType.String" AttribMaping="VBankAccountNumber"/>
+        <args name= "@vPaymentMode" DataType="DbType.String" AttribMaping="VPaymentMode"/>
+        <args name= "@vModuleFK_Table" DataType="DbType.String" AttribMaping="VModuleFK_Table"/>
+        <args name= "@vModuleFK_Name" DataType="DbType.String" AttribMaping="VModuleFK_Name"/>
+        <args name= "@iModuleFK_ID" DataType="DbType.Int32" AttribMaping="IModuleFK_ID"/>
+      </action>
+	  </object>
+  
+</Module>

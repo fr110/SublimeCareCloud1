@@ -1,0 +1,9 @@
+﻿<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:local="clr-namespace:SublimeCareCloud.Templates"
+              xmlns:xrd="clr-namespace:CodeReason.Reports.Document;assembly=CodeReason.Reports" 
+               PageHeight="21.0cm" PageWidth="15cm" ColumnWidth="15cm">
+    <Paragraph>
+        Powered By:  Euro i Technologies  -  Cell: 0321-7619596
+    </Paragraph>
+   
+</FlowDocument>
