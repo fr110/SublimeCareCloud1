@@ -155,7 +155,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                //  Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                //  Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
 
         }
@@ -195,7 +195,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                //  Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                //  Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
 
         }

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DataHolders
 {
-    public class dhJournalDetail: INotifyPropertyChanged
+    public class dhJournalDetail : INotifyPropertyChanged
     {
         private int _iJournalDetailId;
 
@@ -40,7 +35,7 @@ namespace DataHolders
             get { return _iAccountID; }
             set { _iAccountID = value; OnPropertyChanged("IAccountID"); }
         }
-       
+
         private System.Nullable<double> _fAmount;
 
         public System.Nullable<double> FAmount
@@ -152,7 +147,9 @@ namespace DataHolders
             get { return _iUpdate; }
             set { _iUpdate = value; OnPropertyChanged("IUpdate"); }
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

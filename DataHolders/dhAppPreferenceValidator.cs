@@ -1,13 +1,8 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataHolders
 {
-   public class dhAppPreferenceValidator : AbstractValidator<dhAppPreference>
+    public class dhAppPreferenceValidator : AbstractValidator<dhAppPreference>
     {
         public dhAppPreferenceValidator()
         {

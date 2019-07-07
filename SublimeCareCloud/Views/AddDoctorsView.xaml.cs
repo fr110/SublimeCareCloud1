@@ -115,7 +115,7 @@ namespace SublimeCareCloud.Views
                           MyViewModel.db.Accounts.Add(objAccount);
                     //  need to set for doc proc
                     this.AddEditDocProcedures();
-                          Globalized.SetMsg("DOC01", CustomClasses.MsgType.Info);
+                          Globalized.SetMsg("DOC01", DataHolders.MsgType.Info);
                 }
                 // if update flag is set 
                 if(objNewDoctor.IUpdate == 1)
@@ -160,7 +160,7 @@ namespace SublimeCareCloud.Views
                     //  need to set for doc proc
                     this.AddEditDocProcedures();
 
-                    Globalized.SetMsg("DOC02", CustomClasses.MsgType.Info);
+                    Globalized.SetMsg("DOC02", DataHolders.MsgType.Info);
                     
 
                 }
@@ -187,7 +187,7 @@ namespace SublimeCareCloud.Views
             catch (Exception ex)
             {
 
-                Globalized.SetMsg(ex.Message, CustomClasses.MsgType.Error);
+                Globalized.SetMsg(ex.Message, MsgType.Error);
                 Globalized.ShowMsg(lblErrorMsg);
             }
              
@@ -300,7 +300,7 @@ namespace SublimeCareCloud.Views
                     }
                 }
                     MyViewModel.ObjNewDoctor.DocInvestigations = MyViewModel.GetActiveDocInvestigations();
-                    Globalized.SetMsg("DOC03", CustomClasses.MsgType.Info);
+                    Globalized.SetMsg("DOC03", DataHolders.MsgType.Info);
                     Globalized.ShowMsg(lblErrorMsg);
                 }
 
@@ -391,7 +391,7 @@ namespace SublimeCareCloud.Views
                         }
                     }
                     MyViewModel.ObjNewDoctor.DocProcedures = MyViewModel.GetDocProcedures();
-                    Globalized.SetMsg("DOC04", CustomClasses.MsgType.Info);
+                    Globalized.SetMsg("DOC04", DataHolders.MsgType.Info);
                     Globalized.ShowMsg(lblErrorMsg);
                 }
 

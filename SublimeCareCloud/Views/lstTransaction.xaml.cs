@@ -69,7 +69,7 @@ namespace SublimeCareCloud.Views
             if (ShowResultCount)
             {
                 string msg = String.Format("  {0} Search Results Found", Stock.Items.Count);
-                Globalized.setException(msg, lblErrorMsg, CustomClasses.MsgType.Info);
+                Globalized.setException(msg, lblErrorMsg, DataHolders.MsgType.Info);
             }
         }
 

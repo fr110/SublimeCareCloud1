@@ -77,7 +77,7 @@ namespace SublimeCareCloud.Views
                 //bNominalCheckBox.IsEnabled = false;
                 AccountDt.IsEnabled = false;
                 this.btnSaveAcc.IsEnabled = false;
-                Globalized.SetMsg("This is non-editable account.", CustomClasses.MsgType.Info);
+                Globalized.SetMsg("This is non-editable account.", MsgType.Info);
                 Globalized.ShowMsg(lblErrorMsg);
             }
             else
@@ -99,7 +99,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -132,15 +132,15 @@ namespace SublimeCareCloud.Views
                     if (objInsert.IUpdate == 1)
                     {
                         string msg = "Account  '" + objInsert.AccountName + "' information is updated successfully.";
-                        Globalized.setException(msg, lblErrorMsg, CustomClasses.MsgType.Info);
-                        //Globalized.SetMsg(msg, CustomClasses.MsgType.Info);
+                        Globalized.setException(msg, lblErrorMsg, DataHolders.MsgType.Info);
+                        //Globalized.SetMsg(msg, DataHolders.MsgType.Info);
                         //Globalized.ShowMsg(lblErrorMsg);
                     }
                     else
                     {
                         System.Media.SystemSounds.Beep.Play();
                         lblErrorMsg.Visibility = Visibility.Hidden;
-                        Globalized.SetMsg("New Acount '" + objInsert.AccountName + "' is added successfully.", CustomClasses.MsgType.Info);
+                        Globalized.SetMsg("New Acount '" + objInsert.AccountName + "' is added successfully.", DataHolders.MsgType.Info);
                         objTodisplay.IUpdate = 1;
                         this.DataContext = objTodisplay;
                         Globalized.ShowMsg(lblErrorMsg);

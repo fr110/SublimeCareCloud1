@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace DataHolders
 {
-  public  class dhEmployeeValidator: AbstractValidator<dhEmployee>
+    public class dhEmployeeValidator : AbstractValidator<dhEmployee>
     {
-        public dhEmployeeValidator() {
+        public dhEmployeeValidator()
+        {
             RuleFor(emp => emp.VTitle).NotNull().WithMessage("Please Enter Employee Title i.e. Mr.");
             RuleFor(emp => emp.DDateOfJoining).NotNull().WithMessage("Please Enter the Employee Joining Date");
             RuleFor(emp => emp.VEmpfName).NotNull().WithMessage("Please Enter the Employee Name.");
@@ -21,4 +17,3 @@ namespace DataHolders
         }
     }
 }
-

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DataHolders
 {
@@ -16,6 +11,7 @@ namespace DataHolders
             get { return _time; }
             set { _time = value; OnPropertyChanged("tTime"); }
         }
+
         private System.Nullable<System.DateTime> _dFromDate;
 
         public System.Nullable<System.DateTime> DFromDate
@@ -23,6 +19,7 @@ namespace DataHolders
             get { return _dFromDate; }
             set { _dFromDate = value; OnPropertyChanged("DFromDate"); }
         }
+
         private System.Nullable<System.DateTime> _dToDate;
 
         public System.Nullable<System.DateTime> DToDate
@@ -33,6 +30,7 @@ namespace DataHolders
 
         private string _vItemName;
         private string _vDetailName;
+
         public string VItemName
         {
             get { return _vItemName; }
@@ -44,6 +42,7 @@ namespace DataHolders
             get { return _vDetailName; }
             set { _vDetailName = value; OnPropertyChanged("VDetailName"); }
         }
+
         //public override string StockStatus
         //{
         //    get { return _stockStatus; }
@@ -66,6 +65,7 @@ namespace DataHolders
         //    set { _iStokId = value; }
         //}
         private System.Nullable<int> _iItemID;
+
         public override System.Nullable<int> IItemID
         {
             get { return _iItemID; }
@@ -110,8 +110,9 @@ namespace DataHolders
         //    set { _iUserId = value; }
         //}
 
-        public new  event PropertyChangedEventHandler PropertyChanged;
-        protected  new void OnPropertyChanged(string name)
+        public new event PropertyChangedEventHandler PropertyChanged;
+
+        protected new void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
@@ -119,8 +120,5 @@ namespace DataHolders
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-
-
-
     }
 }

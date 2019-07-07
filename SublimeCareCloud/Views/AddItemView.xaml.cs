@@ -71,7 +71,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
 
         }
@@ -86,11 +86,11 @@ namespace SublimeCareCloud.Views
                         {
                                 if (objInsert.IUpdate == 1)
                                 {
-                                     Globalized.SetMsg("I02", CustomClasses.MsgType.Info);
+                                     Globalized.SetMsg("I02", DataHolders.MsgType.Info);
                                 }
                                 else
                                 {
-                                     Globalized.SetMsg("I01", CustomClasses.MsgType.Info);
+                                     Globalized.SetMsg("I01", DataHolders.MsgType.Info);
                                      objInsert.IUpdate = 1;
                                }
                                AddItemViewModel ObjSetToEdit = new AddItemViewModel(objInsert);
@@ -98,7 +98,7 @@ namespace SublimeCareCloud.Views
                     }
                     else{
       
-                             Globalized.SetMsg("I013", CustomClasses.MsgType.Error);
+                             Globalized.SetMsg("I013", MsgType.Error);
                              Globalized.ShowMsg(lblErrorMsg);
                     }
                 }
@@ -119,7 +119,7 @@ namespace SublimeCareCloud.Views
             catch (Exception ex)
             {
 
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 

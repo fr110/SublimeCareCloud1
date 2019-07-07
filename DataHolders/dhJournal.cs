@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DataHolders
 {
@@ -16,6 +11,7 @@ namespace DataHolders
             get { return _iJournalId; }
             set { _iJournalId = value; OnPropertyChanged("IJournalId"); }
         }
+
         private System.Nullable<double> _fAmount;
 
         public System.Nullable<double> FAmount
@@ -31,6 +27,7 @@ namespace DataHolders
             get { return _dTransactionFromDate; }
             set { _dTransactionFromDate = value; OnPropertyChanged("DTransactionFromDate"); }
         }
+
         private System.Nullable<System.DateTime> _dTransactionToDate;
 
         public System.Nullable<System.DateTime> DTransactionToDate
@@ -38,6 +35,7 @@ namespace DataHolders
             get { return _dTransactionToDate; }
             set { _dTransactionToDate = value; OnPropertyChanged("DTransactionToDate"); }
         }
+
         private string _vTranTitle;
 
         public string VTranTitle
@@ -56,7 +54,6 @@ namespace DataHolders
 
         private System.Nullable<System.DateTime> _dTransactionDate;
 
-
         public System.Nullable<System.DateTime> DTransactionDate
         {
             get { return _dTransactionDate; }
@@ -68,7 +65,7 @@ namespace DataHolders
         public System.Nullable<int> IUserId
         {
             get { return _iUserId; }
-            set { _iUserId = value; OnPropertyChanged("IUserId");}
+            set { _iUserId = value; OnPropertyChanged("IUserId"); }
         }
 
         private System.Nullable<int> _iUpdate;
@@ -79,7 +76,6 @@ namespace DataHolders
             set { _iUpdate = value; OnPropertyChanged("IUpdate"); }
         }
 
-        
         private JournalDetailList _drList;
 
         public JournalDetailList DrList
@@ -97,6 +93,7 @@ namespace DataHolders
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -105,9 +102,5 @@ namespace DataHolders
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-
-
     }
-
-
 }

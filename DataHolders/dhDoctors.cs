@@ -4,13 +4,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataHolders
 {
-
     [Table("scc_Doctors")]
     public class dhDoctors : INotifyPropertyChanged
     {
@@ -20,10 +16,11 @@ namespace DataHolders
             this.SuffixList.Add("Mr", "Mr");
             this.SuffixList.Add("Mrs", "Mrs");
         }
+
         private long _iDocid;
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
         public long IDocid
         {
             get { return _iDocid; }
@@ -39,46 +36,42 @@ namespace DataHolders
             set { _iUpdate = value; OnPropertyChanged("IUpdate"); }
         }
 
-
         private string _vTitle;
+
         public string VTitle
         {
             get { return _vTitle; }
             set { _vTitle = value; OnPropertyChanged("VTitle"); }
         }
 
-
         [NotMapped]
         public Dictionary<string, string> SuffixList;
 
-
         private string _vSuffix;
+
         public string VSuffix
         {
             get { return _vSuffix; }
             set { _vSuffix = value; OnPropertyChanged("VSuffix"); }
         }
 
-
-
         private string _vfName;
+
         public string VfName
         {
             get { return _vfName; }
             set { _vfName = value; OnPropertyChanged("VfName"); }
         }
 
-
         private string _vlName;
+
         public string VlName
         {
             get { return _vlName; }
             set { _vlName = value; OnPropertyChanged("VlName"); }
         }
 
-
         private string _fullName;
-
 
         [NotMapped]
         public string FullName
@@ -89,11 +82,9 @@ namespace DataHolders
             }
             //set
             //{
-            //    this._fullName = this.VfName + " " + this.VlName;  
+            //    this._fullName = this.VfName + " " + this.VlName;
             //}
         }
-
-
 
         private ObservableCollection<dhSpecialization> _Specialization;
 
@@ -104,12 +95,14 @@ namespace DataHolders
             set;
             //OnPropertyChanged("Specialization");
         }
+
         private int? _iSpecializationId;
-        public int? ISpecializationId {
+
+        public int? ISpecializationId
+        {
             get { return _iSpecializationId; }
             set { _iSpecializationId = value; OnPropertyChanged("ISpecializationId"); }
         }
-
 
         private string _vQualification;
 
@@ -119,7 +112,6 @@ namespace DataHolders
             set { _vQualification = value; OnPropertyChanged("VQualification"); }
         }
 
-
         private Nullable<DateTime> _dJoiningDate;
 
         public Nullable<DateTime> DJoiningDate
@@ -128,7 +120,6 @@ namespace DataHolders
             set { _dJoiningDate = value; OnPropertyChanged("DJoiningDate"); }
         }
 
-
         private Nullable<DateTime> _dDOB;
 
         public Nullable<DateTime> DDOB
@@ -136,6 +127,7 @@ namespace DataHolders
             get { return _dDOB; }
             set { _dDOB = value; OnPropertyChanged("DDOB"); }
         }
+
         private string _vMartialStatus;
 
         public string VMartialStatus
@@ -143,6 +135,7 @@ namespace DataHolders
             get { return _vMartialStatus; }
             set { _vMartialStatus = value; OnPropertyChanged("VMartialStatus"); }
         }
+
         private string _vGender;
 
         public string VGender
@@ -150,6 +143,7 @@ namespace DataHolders
             get { return _vGender; }
             set { _vGender = value; OnPropertyChanged("VGender"); }
         }
+
         private string _vFatherName;
 
         public string VFatherName
@@ -157,6 +151,7 @@ namespace DataHolders
             get { return _vFatherName; }
             set { _vFatherName = value; OnPropertyChanged("VFatherName"); }
         }
+
         private string _vSSN;
 
         public string VSSN
@@ -164,6 +159,7 @@ namespace DataHolders
             get { return _vSSN; }
             set { _vSSN = value; OnPropertyChanged("VSSN"); }
         }
+
         private string _vNPI;
 
         public string VNPI
@@ -171,6 +167,7 @@ namespace DataHolders
             get { return _vNPI; }
             set { _vNPI = value; OnPropertyChanged("VNPI"); }
         }
+
         private string _vDEA;
 
         public string VDEA
@@ -178,6 +175,7 @@ namespace DataHolders
             get { return _vDEA; }
             set { _vDEA = value; OnPropertyChanged("VDEA"); }
         }
+
         private string _vLicNumber;
 
         public string VLicNumber
@@ -185,6 +183,7 @@ namespace DataHolders
             get { return _vLicNumber; }
             set { _vLicNumber = value; OnPropertyChanged("VLicNumber"); }
         }
+
         private string _vLicState;
 
         public string VLicState
@@ -192,6 +191,7 @@ namespace DataHolders
             get { return _vLicState; }
             set { _vLicState = value; OnPropertyChanged("VLicState"); }
         }
+
         //private string _vTaxType;
 
         //public string VTaxType
@@ -213,6 +213,7 @@ namespace DataHolders
             get { return _vAddress1; }
             set { _vAddress1 = value; OnPropertyChanged("VAddress1"); }
         }
+
         private string _vAddress2;
 
         public string VAddress2
@@ -220,6 +221,7 @@ namespace DataHolders
             get { return _vAddress2; }
             set { _vAddress2 = value; OnPropertyChanged("VAddress2"); }
         }
+
         //private string _vCity;
 
         //public string VCity
@@ -255,6 +257,7 @@ namespace DataHolders
             get { return _vHomePhone; }
             set { _vHomePhone = value; OnPropertyChanged("VHomePhone"); }
         }
+
         private string _vWorkPhone;
 
         public string VWorkPhone
@@ -262,6 +265,7 @@ namespace DataHolders
             get { return _vWorkPhone; }
             set { _vWorkPhone = value; OnPropertyChanged("VWorkPhone"); }
         }
+
         private string _vMobile;
 
         public string VMobile
@@ -269,6 +273,7 @@ namespace DataHolders
             get { return _vMobile; }
             set { _vMobile = value; OnPropertyChanged("VMobile"); }
         }
+
         private string _vHospital;
 
         public string VHospital
@@ -284,6 +289,7 @@ namespace DataHolders
             get { return _vEmail; }
             set { _vEmail = value; OnPropertyChanged("VEmail"); }
         }
+
         private Nullable<Boolean> _bActive = false;
 
         public Nullable<Boolean> BActive
@@ -291,6 +297,7 @@ namespace DataHolders
             get { return _bActive; }
             set { _bActive = value; OnPropertyChanged("BActive"); }
         }
+
         private Nullable<Boolean> _bRendering = false;
 
         public Nullable<Boolean> BRendering
@@ -298,6 +305,7 @@ namespace DataHolders
             get { return _bRendering; }
             set { _bRendering = value; OnPropertyChanged("BRendering"); }
         }
+
         private Nullable<Boolean> _bBilling = false;
 
         public Nullable<Boolean> BBilling
@@ -305,6 +313,7 @@ namespace DataHolders
             get { return _bBilling; }
             set { _bBilling = value; OnPropertyChanged("BBilling"); }
         }
+
         private Nullable<Boolean> _bPay_to_Provider = false;
 
         public Nullable<Boolean> BPay_to_Provider
@@ -312,6 +321,7 @@ namespace DataHolders
             get { return _bPay_to_Provider; }
             set { _bPay_to_Provider = value; OnPropertyChanged("BPay_to_Provider"); }
         }
+
         private Nullable<Boolean> _bSupervising = false;
 
         public Nullable<Boolean> BSupervising
@@ -319,6 +329,7 @@ namespace DataHolders
             get { return _bSupervising; }
             set { _bSupervising = value; OnPropertyChanged("BSupervising"); }
         }
+
         private Nullable<Boolean> _bPysician_Assitant = false;
 
         public Nullable<Boolean> BPysician_Assitant
@@ -326,6 +337,7 @@ namespace DataHolders
             get { return _bPysician_Assitant; }
             set { _bPysician_Assitant = value; OnPropertyChanged("BPysician_Assitant"); }
         }
+
         private Nullable<Boolean> _bOperating = false;
 
         public Nullable<Boolean> BOperating
@@ -333,6 +345,7 @@ namespace DataHolders
             get { return _bOperating; }
             set { _bOperating = value; OnPropertyChanged("BOperating"); }
         }
+
         private Nullable<Boolean> _bAssitant_Surgeon = false;
 
         public Nullable<Boolean> BAssitant_Surgeon
@@ -340,6 +353,7 @@ namespace DataHolders
             get { return _bAssitant_Surgeon; }
             set { _bAssitant_Surgeon = value; OnPropertyChanged("BAssitant_Surgeon"); }
         }
+
         private Nullable<Boolean> _bPurchaed_Services = false;
 
         public Nullable<Boolean> BPurchaed_Services
@@ -347,6 +361,7 @@ namespace DataHolders
             get { return _bPurchaed_Services; }
             set { _bPurchaed_Services = value; OnPropertyChanged("BPurchaed_Services"); }
         }
+
         private Nullable<Boolean> _bPAtteding = false;
 
         public Nullable<Boolean> BPAtteding
@@ -354,6 +369,7 @@ namespace DataHolders
             get { return _bPAtteding; }
             set { _bPAtteding = value; OnPropertyChanged("BPAtteding"); }
         }
+
         private Nullable<int> _iPracID;
 
         public Nullable<int> IPracID
@@ -369,6 +385,7 @@ namespace DataHolders
             get { return _vMediCare_Doctor_Type; }
             set { _vMediCare_Doctor_Type = value; OnPropertyChanged("VMediCare_Doctor_Type"); }
         }
+
         private string _vEvening_Time_Start;
 
         public string VEvening_Time_Start
@@ -376,6 +393,7 @@ namespace DataHolders
             get { return _vEvening_Time_Start; }
             set { _vEvening_Time_Start = value; OnPropertyChanged("VEvening_Time_Start"); }
         }
+
         private string _vEvening_Time_End;
 
         public string VEvening_Time_End
@@ -383,6 +401,7 @@ namespace DataHolders
             get { return _vEvening_Time_End; }
             set { _vEvening_Time_End = value; OnPropertyChanged("VEvening_Time_End"); }
         }
+
         private string _vMorning_Time_Start;
 
         public string VMorning_Time_Start
@@ -390,6 +409,7 @@ namespace DataHolders
             get { return _vMorning_Time_Start; }
             set { _vMorning_Time_Start = value; OnPropertyChanged("VMorning_Time_Start"); }
         }
+
         private string _vMorning_Time_End;
 
         public string VMorning_Time_End
@@ -397,6 +417,7 @@ namespace DataHolders
             get { return _vMorning_Time_End; }
             set { _vMorning_Time_End = value; OnPropertyChanged("VMorning_Time_End"); }
         }
+
         private Nullable<int> _iHospital_Charges;
 
         public Nullable<int> IHospital_Charges
@@ -404,6 +425,7 @@ namespace DataHolders
             get { return _iHospital_Charges; }
             set { _iHospital_Charges = value; OnPropertyChanged("IHospital_Charges"); }
         }
+
         private Nullable<int> _iPatient_Fee;
 
         public Nullable<int> IPatient_Fee
@@ -427,24 +449,27 @@ namespace DataHolders
             get { return _iPatient_Token_Limit; }
             set { _iPatient_Token_Limit = value; OnPropertyChanged("IPatient_Token_Limit"); }
         }
+
         private long _iBasicSalary;
 
         public long IBasicSalary
         {
             get { return _iBasicSalary; }
 
-            set { _iBasicSalary = value; OnPropertyChanged("IBasicSalary"); 
-
+            set
+            {
+                _iBasicSalary = value; OnPropertyChanged("IBasicSalary");
             }
-           
-         }
+        }
 
         private long? _iAccountid;
+
         public long? IAccountid
         {
             get { return _iAccountid; }
             set { _iAccountid = value; OnPropertyChanged("IAccountid"); }
         }
+
         private string _vUsers;
 
         public string VUsers
@@ -460,6 +485,7 @@ namespace DataHolders
             get { return _vSureScriptid; }
             set { _vSureScriptid = value; OnPropertyChanged("VSureScriptid"); }
         }
+
         private string _vAssistantDocIDs;
 
         public string VAssistantDocIDs
@@ -467,20 +493,22 @@ namespace DataHolders
             get { return _vAssistantDocIDs; }
             set { _vAssistantDocIDs = value; OnPropertyChanged("VAssistantDocIDs"); }
         }
-        // creating relations with other entities 
 
+        // creating relations with other entities
 
         private string _TokenStart;
+
         public string TokenStart
         {
             get { return _TokenStart; }
             set { _TokenStart = value; OnPropertyChanged("TokenStart"); }
         }
+
         [NotMapped]
         public ObservableCollection<DocInvestigations> DocInvestigations { get; set; }
+
         //[NotMapped]
         // public dhAccount DocAccount { get; set; }
-
 
         [NotMapped]
         public ObservableCollection<Investigations> Investigations { get; set; }
@@ -492,6 +520,7 @@ namespace DataHolders
         public ObservableCollection<dhDocProcedures> DocProcedures { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

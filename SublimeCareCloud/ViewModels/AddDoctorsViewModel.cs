@@ -2,17 +2,11 @@
 using DAL;
 using DataHolders;
 using DataHolders.Interfaces;
-using FeserWard.Controls;
-using iFacedeLayer;
-using SublimeCareCloud.CustomClasses;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SublimeCareCloud.ViewModels
 {

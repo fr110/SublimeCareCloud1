@@ -104,7 +104,7 @@ namespace SublimeCareCloud.Views
                 }
                 else
                 {
-                    Globalized.SetMsg("Application is Not Initialized Properly please contact support team. ", CustomClasses.MsgType.Error);
+                    Globalized.SetMsg("Application is Not Initialized Properly please contact support team. ", MsgType.Error);
                    // lblErrorMsg.Visibility = System.Windows.Visibility.Visible;
                   //  Globalized.ShowMsg(lblErrorMsg);
                   

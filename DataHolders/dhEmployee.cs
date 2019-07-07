@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataHolders
 {
-    // using existing name 
+    // using existing name
     [Table("posEmployee")]
     public class dhEmployee : INotifyPropertyChanged
     {
-
         private int _iEmpid;
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IEmpid
@@ -38,6 +33,7 @@ namespace DataHolders
             get { return _vEmpfName; }
             set { _vEmpfName = value; OnPropertyChanged("VEmpfName"); }
         }
+
         private string _vEmpFatherName;
 
         public string VEmpFatherName
@@ -85,7 +81,7 @@ namespace DataHolders
             get { return _vAddress; }
             set { _vAddress = value; OnPropertyChanged("VAddress"); }
         }
-        
+
         private string _vCity;
 
         public string VCity
@@ -95,6 +91,7 @@ namespace DataHolders
         }
 
         private string _vEmployeeType;
+
         public string VEmployeeType
         {
             get { return _vEmployeeType; }
@@ -106,37 +103,40 @@ namespace DataHolders
         //iMiscellaneous
 
         private int _iMiscellaneous;
+
         public int IMiscellaneous
         {
             get { return _iMiscellaneous; }
             set { _iMiscellaneous = value; }
         }
+
         //iHourlyRate
         private int _iHourlyRate;
+
         public int IHourlyRate
         {
             get { return _iHourlyRate; }
             set { _iHourlyRate = value; }
         }
 
-
         //iDeduction
         private int _iDeduction;
+
         public int IDeduction
         {
             get { return _iDeduction; }
             set { _iDeduction = value; }
         }
+
         //iTranid
         private int _iTranid;
+
         public int ITranid
         {
             get { return _iTranid; }
             set { _iTranid = value; }
         }
-        
-        
-        
+
         private string _vNationality;
 
         public string VNationality
@@ -187,8 +187,6 @@ namespace DataHolders
 
         private System.Nullable<double> _iBasicSalary;
 
-
-
         public System.Nullable<double> IBasicSalary
         {
             get { return _iBasicSalary; }
@@ -218,7 +216,6 @@ namespace DataHolders
             get { return _iTotalSalary; }
             set { _iTotalSalary = value; OnPropertyChanged("ITotalSalary"); }
         }
-
 
         private string _vLastPaidSalaryMonth;
 
@@ -259,22 +256,26 @@ namespace DataHolders
             get { return _iEmpTypeId; }
             set { _iEmpTypeId = value; OnPropertyChanged("IEmpTypeId"); }
         }
+
         private int _iUpdate;
+
         [NotMapped]
         public int IUpdate
         {
             get { return _iUpdate; }
             set { _iUpdate = value; OnPropertyChanged("IUpdate"); }
         }
+
         private System.Nullable<int> iAccountid;
         private string _vAccountNo;
-    //    [NotMapped]
+        //    [NotMapped]
 
         public string VAccountNo
         {
             get { return _vAccountNo; }
             set { _vAccountNo = value; OnPropertyChanged("VAccountNo"); }
         }
+
         //[NotMapped]
         public System.Nullable<int> IAccountid
         {
@@ -283,6 +284,7 @@ namespace DataHolders
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -293,7 +295,8 @@ namespace DataHolders
         }
 
         private string _vEmployeeInfo;
-    //    [NotMapped]
+
+        //    [NotMapped]
         public string VEmployeeInfo
         {
             get { return _vEmployeeInfo; }
@@ -301,4 +304,3 @@ namespace DataHolders
         }
     }
 }
-    

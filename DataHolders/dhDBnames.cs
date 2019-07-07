@@ -4,10 +4,6 @@
 // Create Date      <12-Aug-2011>
 // Modify Date      <Date>
 // ----------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace DataHolders
 {
@@ -20,6 +16,7 @@ namespace DataHolders
             //DBPassword = "ammar";  // change here
             Control_DB = "ePractice";
         }
+
         public string ServerName;
         public string Default_DB_Name;
         public string Control_DB;
@@ -32,4 +29,3 @@ namespace DataHolders
         public string ExecutingPath;
     }
 }
-

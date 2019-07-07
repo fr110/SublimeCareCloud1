@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace SublimeCareCloud.CustomClasses
+namespace DataHolders
 {
     public class AppMassage
     {
@@ -18,13 +14,15 @@ namespace SublimeCareCloud.CustomClasses
             get { return _msg; }
             set { _msg = value; }
         }
+
         private MsgType _msgTypeProperty;
 
-        internal MsgType MsgTypeProperty
+        public MsgType MsgTypeProperty
         {
             get { return _msgTypeProperty; }
             set { _msgTypeProperty = value; }
         }
+
         public void ShowMsg(Label lblErrorMsg)
         {
             if (Msg != null)
@@ -41,23 +39,24 @@ namespace SublimeCareCloud.CustomClasses
                     lblErrorMsg.Content = Msg;
                 }
 
-                if (MsgTypeProperty == MsgType.Info)
+                if (MsgTypeProperty == DataHolders.MsgType.Info)
                 {
                     lblErrorMsg.Visibility = System.Windows.Visibility.Visible;
                     lblErrorMsg.Foreground = Brushes.Green;
                     lblErrorMsg.Content = Msg;
                 }
             }
-            else {
+            else
+            {
                 lblErrorMsg.Visibility = System.Windows.Visibility.Hidden;
             }
         }
-    } 
-    
-     public enum MsgType
-        {
-            Error,
-            Info,
-            Warning
-        }
+    }
+
+    public enum MsgType
+    {
+        Error,
+        Info,
+        Warning
+    }
 }

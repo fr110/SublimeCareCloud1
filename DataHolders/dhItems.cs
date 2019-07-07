@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataHolders;
+
 namespace DataHolders
 {
     public class dhItems : dhStock, INotifyPropertyChanged, IDataErrorInfo
     {
-
         private readonly dhItemsValidator _dhItemsValidator;
+
         public dhItems()
         {
             this._dhItemsValidator = new dhItemsValidator();
             IUpdate = 0;
         }
+
         //public dhItems()
         //{
         //    //FUnitePrice = 10;
@@ -23,11 +21,13 @@ namespace DataHolders
         //    IUpdate = 0;
         //}
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
+
         public string this[string columnName]
         {
             get
@@ -48,11 +48,10 @@ namespace DataHolders
                 }
                 // return _dhPartyValidator != null ? firstOrDefault.ErrorMessage : CanSave = String.Empty;
 
-
-
                 //return "";
             }
         }
+
         public string Error
         {
             get
@@ -69,21 +68,23 @@ namespace DataHolders
                 return string.Empty;
             }
         }
+
         private bool canSave;
+
         public bool CanSave
         {
             get { return canSave; }
             set { canSave = value; OnPropertyChanged("CanSave"); }
         }
 
-
-      
         private System.Nullable<int> _sr;
+
         public System.Nullable<int> SR
         {
             get { return _sr; }
             set { _sr = value; }
         }
+
         private System.Nullable<int> _iItemID;
         private string _vItemName;
         private string _vDetailName;
@@ -112,12 +113,12 @@ namespace DataHolders
             get { return _iAlertAmount; }
             set { _iAlertAmount = value; }
         }
+
         public System.Nullable<int> InitialStock
         {
             get { return _initialStock; }
             set { _initialStock = value; }
         }
-
 
         private System.Nullable<double> _fUnitPurchasePrice;
 
@@ -126,6 +127,7 @@ namespace DataHolders
             get { return _fUnitPurchasePrice; }
             set { _fUnitPurchasePrice = value; OnPropertyChanged("FUnitPurchasePrice"); }
         }
+
         private string _vItemType;
 
         public string VItemType
@@ -133,7 +135,6 @@ namespace DataHolders
             get { return _vItemType; }
             set { _vItemType = value; }
         }
-
 
         public string VPackDescription
         {
@@ -156,8 +157,9 @@ namespace DataHolders
         public System.Nullable<double> Ammount
         {
             get { return _ammount; }
-            set { 
-               _ammount = value; 
+            set
+            {
+                _ammount = value;
                 OnPropertyChanged("Ammount");
             }
         }
@@ -165,9 +167,11 @@ namespace DataHolders
         public override System.Nullable<int> IItemID
         {
             get { return _iItemID; }
-            set { _iItemID = value;
-            OnPropertyChanged("IItemID");
-                }
+            set
+            {
+                _iItemID = value;
+                OnPropertyChanged("IItemID");
+            }
         }
 
         public string VItemName
@@ -203,28 +207,29 @@ namespace DataHolders
                 OnPropertyChanged("FUnitePrice");
             }
         }
-        
+
         public System.Nullable<double> FMaxDiscountPresent
         {
             get { return _fMaxDiscountPresent; }
             set { _fMaxDiscountPresent = value; OnPropertyChanged("FMaxDiscountPresent"); }
         }
-        
 
         public string VItemBarcode
         {
             get { return _vItemBarcode; }
             set { _vItemBarcode = value; OnPropertyChanged("VItemBarcode"); }
         }
+
         public System.Nullable<int> IQuantity
         {
             get { return _iQuantity; }
-            set {
+            set
+            {
                 _iQuantity = value;
-                OnPropertyChanged("IQuantity"); //OnPropertyChanged("Ammount"); 
-                
+                OnPropertyChanged("IQuantity"); //OnPropertyChanged("Ammount");
             }
         }
+
         private Boolean _bIsEditAbleInInvoice;
 
         public Boolean BIsEditAbleInInvoice
@@ -240,6 +245,5 @@ namespace DataHolders
             get { return _BIsEditAbleInInvoice2; }
             set { _BIsEditAbleInInvoice2 = value; OnPropertyChanged("BIsEditAbleInInvoice2"); }
         }
-       
     }
 }

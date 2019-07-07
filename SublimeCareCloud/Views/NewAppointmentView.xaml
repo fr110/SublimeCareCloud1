@@ -345,6 +345,7 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
 
 
                                 </Grid.RowDefinitions>
@@ -380,7 +381,8 @@
                                 </ComboBox>
 
                                 <Label Content="Due Payment" Grid.Row="3" Grid.Column="0" />
-                                <TextBox TabIndex="2" x:Name="IPayment_Due"  HorizontalAlignment="Stretch"  Grid.Row="3" Grid.Column="1"  
+                                <TextBox TabIndex="2" x:Name="IPayment_Due"  HorizontalAlignment="Stretch"  Grid.Row="3" Grid.Column="1"
+                                         IsReadOnly="True"
                          Text="{Binding IPayment_Due, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
                              VerticalAlignment="Center"  />
 
@@ -396,13 +398,28 @@
 
 
 
-                                <Label Content="Appointment ID" Grid.Row="6" Grid.Column="0" />
+                                <Label Content="Token Number" Grid.Row="6" Grid.Column="0" />
 
-                                <TextBlock x:Name="IAppid"  HorizontalAlignment="Stretch"  Grid.Row="6" Grid.Column="1"  
-                         Text="{Binding IAppid, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                                <TextBlock x:Name="IToken_Number"  HorizontalAlignment="Stretch"  Grid.Row="6" Grid.Column="1"  
+                         Text="{Binding IToken_Number, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center"  />
+
+                                <Label Content="Token Number" Grid.Row="7" Grid.Column="0" />
+
+                                <TextBlock x:Name="FormatedTokenNumber"  HorizontalAlignment="Stretch"  Grid.Row="7" Grid.Column="1"  
+                         Text="{Binding FormatedTokenNumber, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
                              VerticalAlignment="Center"  />
 
 
+
+                                <Label Content="Patient ID" Grid.Row="8" Grid.Column="0" />
+
+                                <TextBlock x:Name="PatientID"  HorizontalAlignment="Stretch"  Grid.Row="8" Grid.Column="1"  
+                         Text="{Binding IPatid, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true,ValidatesOnDataErrors=True}" 
+                             VerticalAlignment="Center"  />
+                                
+                                
+                                
                             </Grid>
 
 
@@ -411,7 +428,7 @@
 
                         </GroupBox>
 
-                        <GroupBox Header="Printing" Grid.Column="0"  Grid.Row="3" 
+                        <!--<GroupBox Header="Printing" Grid.Column="0"  Grid.Row="3" 
                                   x:Name="Printing" >
                             <Grid HorizontalAlignment="Left"    >
                                 <Grid.ColumnDefinitions>
@@ -443,7 +460,7 @@
 
 
 
-                        </GroupBox>
+                        </GroupBox>-->
 
 
 

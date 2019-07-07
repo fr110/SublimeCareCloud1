@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataHolders
 {
@@ -49,7 +45,6 @@ namespace DataHolders
             set { _CostumerLastVisit = value; OnPropertyChanged("CostumerLastVisit"); }
         }
 
-
         private string _CostumerInfo;
 
         public string CostumerInfo
@@ -57,6 +52,7 @@ namespace DataHolders
             get { return _CostumerInfo; }
             set { _CostumerInfo = value; OnPropertyChanged("CostumerLastVisit"); }
         }
+
         private string _MeterReading;
 
         public string MeterReading
@@ -64,6 +60,7 @@ namespace DataHolders
             get { return _MeterReading; }
             set { _MeterReading = value; OnPropertyChanged("CostumerLastVisit"); }
         }
+
         private string _ModelNumber;
 
         public string ModelNumber
@@ -73,6 +70,7 @@ namespace DataHolders
         }
 
         private System.Nullable<int> _iUpdate;
+
         public System.Nullable<int> IUpdate
         {
             get { return _iUpdate; }
@@ -86,21 +84,23 @@ namespace DataHolders
             get { return _bFallowUp; }
             set { _bFallowUp = value; OnPropertyChanged("BFallowUp"); }
         }
+
         private System.Nullable<System.DateTime> _dLastInovice;
 
         public System.Nullable<System.DateTime> DLastInovice
         {
             get { return _dLastInovice; }
-            set { 
-                _dLastInovice = value; 
+            set
+            {
+                _dLastInovice = value;
                 OnPropertyChanged("DLastInovice");
                 //if(value != null)
                 //{
                 //    DAlertDate = ((DateTime)value).AddDays(40);
                 //}
-             
             }
         }
+
         private System.Nullable<System.DateTime> _dAlertDate;
 
         public System.Nullable<System.DateTime> DAlertDate
@@ -109,16 +109,15 @@ namespace DataHolders
             set { _dAlertDate = value; OnPropertyChanged("DAlertDate"); }
         }
 
-
         public event PropertyChangedEventHandler PropertyChanged;
 
-    protected void OnPropertyChanged(string name)
-    {
-        PropertyChangedEventHandler handler = PropertyChanged;
-        if (handler != null)
+        protected void OnPropertyChanged(string name)
         {
-            handler(this, new PropertyChangedEventArgs(name));
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
         }
-    }
     }
 }

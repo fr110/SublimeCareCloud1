@@ -1,6 +1,7 @@
 ﻿using BL;
 using DataHolders;
 using FeserWard.Controls;
+using iFacedeLayer;
 using SublimeCareCloud.CustomClasses;
 using SublimeCareCloud.ViewModels;
 using System;
@@ -26,6 +27,10 @@ namespace SublimeCareCloud.Views
         public IIntelliboxResultsProvider dbPatientSearch { get; private set; }
         //  public IIntelliboxResultsProvider dbProcedure { get; private set; }
 
+            
+
+             
+
         public NewAppointmentView()
         {
             InitializeComponent();
@@ -38,6 +43,7 @@ namespace SublimeCareCloud.Views
             try
             {
                 blAppointment objBlAppointment = new blAppointment();
+                
                 dhAppointment ObjNewAppointment = (dhAppointment)this.AppointmentInfo.DataContext;
                 // cehck for patient
                 dhPatient ObjPatient = (dhPatient)this.PatientInformationGrid.DataContext;
@@ -50,9 +56,11 @@ namespace SublimeCareCloud.Views
                 }
                 if (ObjPatient.iPatid == 0 || ObjPatient.iPatid < 0)
                 {
+                    BlPatient objBl = new BlPatient();
+                    objBl.AddNewPatient(ObjPatient);
                     // need to save the patient first
-                    MyViewModel.db.Patients.Add(ObjPatient);
-                    MyViewModel.db.SaveChanges();
+                    //MyViewModel.db.Patients.Add(ObjPatient);
+                    //MyViewModel.db.SaveChanges();
                     // set for patatient id
                     ObjNewAppointment.IPatid = ObjPatient.iPatid;
                 }
@@ -69,12 +77,12 @@ namespace SublimeCareCloud.Views
                 }
 
                 this.AppointmentInfo.DataContext = ObjNewAppointment;
-                Globalized.SetMsg("AOC01", CustomClasses.MsgType.Info);
+                Globalized.SetMsg("AOC01", DataHolders.MsgType.Info);
                 Globalized.ShowMsg(lblErrorMsg);
             }
             catch (Exception ex)
             {
-                Globalized.SetMsg(ex.Message, CustomClasses.MsgType.Error);
+                Globalized.SetMsg(ex.Message, MsgType.Error);
                 Globalized.ShowMsg(lblErrorMsg);
             }
         }

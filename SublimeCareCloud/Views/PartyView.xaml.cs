@@ -45,7 +45,7 @@ namespace SublimeCareCloud.Views
             //{
             //    String msg = String.Format("  {0}  Search Results Found", sequence.Count);
             ////    pageControl.ReLoad();
-            //    Globalized.setException(msg, lblErrorMsg, CustomClasses.MsgType.Info);
+            //    Globalized.setException(msg, lblErrorMsg, DataHolders.MsgType.Info);
             //}
 
         }
@@ -100,7 +100,7 @@ namespace SublimeCareCloud.Views
             else
             {
                 string msg = "There is not enough data to generate the report.";
-                Globalized.setException(msg, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(msg, lblErrorMsg, MsgType.Error);
             }
 
             // MessageBox.Show(tmptb.Rows.Count.ToString());

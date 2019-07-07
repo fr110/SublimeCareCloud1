@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataHolders
 {
     [Table("scc_Investigations")]
-   public class Investigations
+    public class Investigations
     {
         private long _iInvid;
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
         public long IInvid
         {
             get { return _iInvid; }
@@ -47,14 +43,12 @@ namespace DataHolders
 
         public Boolean bIsActive { get; set; }
         private int _iUpdate;
+
         [NotMapped]
         public int IUpdate
         {
             get { return _iUpdate; }
             set { _iUpdate = value; }
         }
-
-
-       
     }
 }

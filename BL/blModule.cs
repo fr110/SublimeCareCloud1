@@ -63,6 +63,24 @@ namespace BL
             }
         }
 
+        public int GetModuleId(string ModuleName, int? IModuleParentID = 0)
+        {
+            if (ModuleName == "")
+            {
+                return 0;
+            }
+
+            if (IModuleParentID > 0)
+            {
+                return this.db.Modules.Where(x => x.VModuleName == ModuleName && x.IModuleParentID == IModuleParentID).FirstOrDefault().IModuleID;
+            }
+            else
+            {
+                return this.db.Modules.Where(x => x.VModuleName == ModuleName).FirstOrDefault().IModuleID;
+            }
+
+        }
+
         public dsGeneral.dtPosModuleDataTable GetModule(dhDBnames objDBNames, dhModule ObjModule)
         {
             dsGeneral.dtPosModuleDataTable dt = objDALGeneral.GetModule(objDBNames, ObjModule);

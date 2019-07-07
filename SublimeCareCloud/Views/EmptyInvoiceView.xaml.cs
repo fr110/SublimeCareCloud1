@@ -84,7 +84,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -202,14 +202,14 @@ namespace SublimeCareCloud.Views
                 //if ((GlobalobjInvoice.BCanelDone == true) && (GlobalobjInvoice.BReturnInvoice != true))
                 //{
                 //    btnCnclInvoice.Visibility = System.Windows.Visibility.Hidden;
-                //    Globalized.SetMsg("This Invoice is canceled.", MsgType.Info);
+                //    Globalized.SetMsg("This Invoice is canceled.", DataHolders.MsgType.Info);
                 //    Globalized.ShowMsg(lblErrorMsg);
                 //}
 
                 //if ((GlobalobjInvoice.BCanelDone != true) && (GlobalobjInvoice.BReturnInvoice == true))
                 //{
                 //    btnCnclInvoice.Visibility = System.Windows.Visibility.Hidden;
-                //    Globalized.SetMsg("This is Return Invoice. ", MsgType.Info);
+                //    Globalized.SetMsg("This is Return Invoice. ", DataHolders.MsgType.Info);
                 //    Globalized.ShowMsg(lblErrorMsg);
                 //}
 
@@ -231,7 +231,7 @@ namespace SublimeCareCloud.Views
                         btnCancel.Visibility = System.Windows.Visibility.Hidden;
                         btnSave.Visibility = System.Windows.Visibility.Hidden;
                         btnPrint.Visibility = System.Windows.Visibility.Hidden;
-                        Globalized.SetMsg("This is Return Invoice. ", MsgType.Info);
+                        Globalized.SetMsg("This is Return Invoice. ", DataHolders.MsgType.Info);
                         Globalized.ShowMsg(lblErrorMsg);
                     }
 
@@ -242,7 +242,7 @@ namespace SublimeCareCloud.Views
                         btnCancel.Visibility = System.Windows.Visibility.Hidden;
                         btnSave.Visibility = System.Windows.Visibility.Hidden;
                         btnPrint.Visibility = System.Windows.Visibility.Hidden;
-                        //Globalized.SetMsg("This is Return Invoice. ", MsgType.Info);
+                        //Globalized.SetMsg("This is Return Invoice. ", DataHolders.MsgType.Info);
                         //Globalized.ShowMsg(lblErrorMsg);
                     }
                 }
@@ -325,7 +325,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -348,7 +348,7 @@ namespace SublimeCareCloud.Views
             catch (Exception ex)
             {
 
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -374,7 +374,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -389,7 +389,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -401,7 +401,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -416,7 +416,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -430,7 +430,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -446,7 +446,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -462,7 +462,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -475,7 +475,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -501,7 +501,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
 
         }
@@ -520,7 +520,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -532,7 +532,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
 
         }
@@ -545,7 +545,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -562,7 +562,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -579,7 +579,7 @@ namespace SublimeCareCloud.Views
             catch (Exception ex)
             {
 
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -619,7 +619,7 @@ namespace SublimeCareCloud.Views
                         {
                             DataSet ds = iFacede.RemoveSaleInovice(Globalized.ObjDbName, objInvoice);
                             this.IsEnabled = false;
-                            Globalized.SetMsg("Invoice is deleted ", CustomClasses.MsgType.Info);
+                            Globalized.SetMsg("Invoice is deleted ", DataHolders.MsgType.Info);
                             Globalized.ShowMsg(lblErrorMsg);
                         }
 
@@ -633,7 +633,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
 
         }
@@ -648,7 +648,7 @@ namespace SublimeCareCloud.Views
             //}
             //catch (Exception ex)
             //{
-            //    Globalized.setException(ex, lblErrorMsg,  CustomClasses.MsgType.Error);
+            //    Globalized.setException(ex, lblErrorMsg,  MsgType.Error);
             //}
         }
 
@@ -663,7 +663,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -678,7 +678,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -694,7 +694,7 @@ namespace SublimeCareCloud.Views
             catch (Exception ex)
             {
                 e.Handled = true;
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -709,7 +709,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -1135,7 +1135,7 @@ namespace SublimeCareCloud.Views
                 ItemBarCode.Focus();
                 ItemBarCode.SelectAll();
                 //     throw new ApplicationException("Item is Already Added to emp.");
-                Globalized.setException("Item is Already Added to invoice.", lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException("Item is Already Added to invoice.", lblErrorMsg, MsgType.Error);
 
             }
         }
@@ -1170,7 +1170,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -1248,7 +1248,7 @@ namespace SublimeCareCloud.Views
                     objInvoice.ISaleid = Convert.ToInt32(ds.Tables[0].Rows[0]["iSaleid"].ToString());
                     dsr = iFacede.GetSaleInovice(Globalized.ObjDbName, objInvoice);
                     PrintUtilities.printDoc("CancelInvoice.xaml", dsr, "Invoice", true);
-                    Globalized.SetMsg("Return Invoice # " + objInvoice.ISaleid.ToString() + " is Generated Successfully for Costumer . Check Invoice List.", MsgType.Info);
+                    Globalized.SetMsg("Return Invoice # " + objInvoice.ISaleid.ToString() + " is Generated Successfully for Costumer . Check Invoice List.", DataHolders.MsgType.Info);
                     Globalized.ShowMsg(lblErrorMsg);
                     this.GlobalobjInvoice.BReturnInvoice = false; // as this emp which is loaded is not returnd actualy 
                     //  LoadData();
@@ -1284,7 +1284,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -1310,7 +1310,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -1336,7 +1336,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -1408,13 +1408,13 @@ namespace SublimeCareCloud.Views
                 //    this.GlobalobjInvoice = (dhInvoice)Obj[0];
                 //}
                 this.GlobalobjInvoice.ItemsOfInvoice = new ItemsList().AddRange(list); //(ItemsList)list;
-                Globalized.SetMsg("Invoice is saved as Draft you can Edit Draft Invoice any time.", MsgType.Info);
+                Globalized.SetMsg("Invoice is saved as Draft you can Edit Draft Invoice any time.", DataHolders.MsgType.Info);
 
                 //   lblErrorMsg.Visibility = System.Windows.Visibility.Visible;
                 //
                 LoadData();
                 // PrintUtilities.printDoc("Invoice.xaml", dsr, "Invoice", true);
-                //Globalized.SetMsg("Invoice # " + objInvoice.ISaleid.ToString() + " is Generated Successfully to Costumer '" + objInvoice.VCostumerName + "'", MsgType.Info);
+                //Globalized.SetMsg("Invoice # " + objInvoice.ISaleid.ToString() + " is Generated Successfully to Costumer '" + objInvoice.VCostumerName + "'", DataHolders.MsgType.Info);
 
                 //ModernWindow Obj = (ModernWindow)Application.Current.MainWindow;
                 //Obj.ContentSource = new Uri("/Pages/Invoice/ListInvoices.xaml", UriKind.Relative);
@@ -1457,7 +1457,7 @@ namespace SublimeCareCloud.Views
             //}
             //catch (Exception ex)
             //{
-            //    Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+            //    Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             //}
         }
 
@@ -1479,7 +1479,7 @@ namespace SublimeCareCloud.Views
             //}
             //catch (Exception ex)
             //{
-            //    Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+            //    Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             //}
         }
 
@@ -1503,7 +1503,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
 
         }
@@ -1523,7 +1523,7 @@ namespace SublimeCareCloud.Views
             //}
             //catch (Exception ex)
             //{
-            //    Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+            //    Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             //}
         }
 
@@ -1602,7 +1602,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
 
 
@@ -1619,7 +1619,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -1634,7 +1634,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -1650,7 +1650,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -1663,7 +1663,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -1696,7 +1696,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
     }

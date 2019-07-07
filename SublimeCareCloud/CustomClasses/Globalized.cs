@@ -90,8 +90,8 @@ namespace SublimeCareCloud
     }
     public static class Something<T>
     {
-       // public static Something CreatNew(Class<T> type) { };
-       
+        // public static Something CreatNew(Class<T> type) { };
+
     }
     public static class MsgTextCollection
     {
@@ -112,10 +112,7 @@ namespace SublimeCareCloud
             // for account user of doctor
 
             {"M_D01DEC","Account Created By System for Doctor." },
-            {"M_D02DEC","Account Created By System for Doctor." },
-            // for appointment
-            {"AOC01", "Appointment Created By System for Doctor." }
-
+            {"M_D02DEC","Account Created By System for Doctor." }
 
         };
     }
@@ -139,17 +136,17 @@ namespace SublimeCareCloud
         public static PackIconMaterial GetCloseButtonIcon()
         {
             PackIconMaterial packIconMaterial = new PackIconMaterial()
-                 {
-                    Kind = PackIconMaterialKind.Close,
-                    Margin = new Thickness(2, 2, 2, 2),
-                    Width = 14,
-                    Height = 14,
-                    Foreground = new SolidColorBrush(Colors.Black),
-                    Background = new SolidColorBrush(Colors.White)
-                };
+            {
+                Kind = PackIconMaterialKind.Close,
+                Margin = new Thickness(2, 2, 2, 2),
+                Width = 14,
+                Height = 14,
+                Foreground = new SolidColorBrush(Colors.Black),
+                Background = new SolidColorBrush(Colors.White)
+            };
 
             return packIconMaterial;
-    }
+        }
 
         //  public static Boolean BLoadDoc = false;
         // changes after mahaaaps 
@@ -159,10 +156,10 @@ namespace SublimeCareCloud
         public static void AccountListOptimizated()
         {
             if (listAccount == null) { listAccount = new ObservableCollection<dhAccount>(); }
-           // objAccount.BCloseAccount = true;//(bool)IncClosedAccount;
+            // objAccount.BCloseAccount = true;//(bool)IncClosedAccount;
             //objAccount.VFilterOperator = "==";
             //objAccount.Balance = 0.0;
-          //  objAccount.BIncludeNull = true;
+            //  objAccount.BIncludeNull = true;
             dsGeneral.dtPosAccountsDataTable dt = iFacede.GetAccount(Globalized.ObjDbName, objAccount);
             listAccount.Clear();
             listAccount = ReflectionUtility.DataTableToObservableCollection<dhAccount>(dt);
@@ -174,11 +171,11 @@ namespace SublimeCareCloud
         {
             GlobalMsg = new AppMassage();
             GlobalMsg.MsgTypeProperty = type;
-            GlobalMsg.Msg = MsgTextCollection.MsgsList.Where(xx=> xx.Key == stringmsg).FirstOrDefault().Value;
+            GlobalMsg.Msg = MsgTextCollection.MsgsList.Where(xx => xx.Key == stringmsg).FirstOrDefault().Value;
             if (GlobalMsg.Msg == null && stringmsg.Length > 6)
             {
                 GlobalMsg.Msg = stringmsg;
-                
+
             }
         }
 
@@ -197,12 +194,12 @@ namespace SublimeCareCloud
                 GlobalMsg = null;
             }
         }
-        public static void setException(Exception ex, Label lblErrorMsg, MsgType Type , object ObjectToFocus = null)
+        public static void setException(Exception ex, Label lblErrorMsg, MsgType Type, object ObjectToFocus = null)
         {
-            if (GlobalMsg == null) { GlobalMsg = new AppMassage(); GlobalMsg.MsgTypeProperty =  Type; }
-             GlobalMsg.Msg = ex.Message.ToString();
-              GlobalMsg.ShowMsg(lblErrorMsg);
-                GlobalMsg = null;
+            if (GlobalMsg == null) { GlobalMsg = new AppMassage(); GlobalMsg.MsgTypeProperty = Type; }
+            GlobalMsg.Msg = ex.Message.ToString();
+            GlobalMsg.ShowMsg(lblErrorMsg);
+            GlobalMsg = null;
         }
         public static void setException(String msg, Label lblErrorMsg, MsgType Type, object ObjectToFocus = null)
         {
@@ -224,7 +221,7 @@ namespace SublimeCareCloud
 
         internal static ObservableCollection<dhModule> LoadSubMenus(dhModule objdhModule)
         {
-            ObservableCollection<dhModule> dtMenu = iFacede.GetUserSubMenu(Globalized.ObjDbName, Globalized.objAppPreference, Globalized.ObjCurrentUser , objdhModule);
+            ObservableCollection<dhModule> dtMenu = iFacede.GetUserSubMenu(Globalized.ObjDbName, Globalized.objAppPreference, Globalized.ObjCurrentUser, objdhModule);
             //  throw new NotImplementedException();
 
             return dtMenu;
@@ -266,7 +263,7 @@ namespace SublimeCareCloud
             TextBlock VShortDescription = (TextBlock)Objw.FindName("ShortDescription");
             VShortDescription.Text = Discription;
         }
-        public static DataTable ToDataTable<T>(this IEnumerable<T> list,string dtName = "")
+        public static DataTable ToDataTable<T>(this IEnumerable<T> list, string dtName = "")
         {
             var entityType = typeof(T);
             string DataTableName;
@@ -297,7 +294,7 @@ namespace SublimeCareCloud
             }
             else if (entityType.BaseType == typeof(Enum))
             {
-                
+
                 var dataTable = new DataTable(DataTableName);
                 dataTable.Columns.Add(DataTableName);
 
@@ -388,7 +385,7 @@ namespace SublimeCareCloud
             }
         }
 
-        public static  dhAccount GetAccountByMdule(AppDbContext db, int IModuleFK_ID, int IModuleID)
+        public static dhAccount GetAccountByMdule(AppDbContext db, int IModuleFK_ID, int IModuleID)
         {
             dhAccount objReturn = new dhAccount();
             objReturn = db.Accounts.AsNoTracking().Where(x => x.IModuleFK_ID == IModuleFK_ID && x.IModuleID == IModuleID).FirstOrDefault();

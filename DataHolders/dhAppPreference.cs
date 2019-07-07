@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DataHolders
 {
@@ -16,6 +11,7 @@ namespace DataHolders
             get { return _iUpdate; }
             set { _iUpdate = value; }
         }
+
         private int _iApplicationID;
 
         public int IApplicationID
@@ -31,6 +27,7 @@ namespace DataHolders
             get { return _vPID; }
             set { _vPID = value; OnPropertyChanged("VPID"); }
         }
+
         private string _vApplicationName;
 
         public string VApplicationName
@@ -54,6 +51,7 @@ namespace DataHolders
             get { return _vCompanyName; }
             set { _vCompanyName = value; OnPropertyChanged("VCompanyName"); }
         }
+
         private string _vEnableModules;
 
         public string VEnableModules
@@ -70,7 +68,6 @@ namespace DataHolders
             set { _vHeaderAdress = value; OnPropertyChanged("VHeaderAdress"); }
         }
 
-
         private string _vCompanyMobile;
 
         public string VCompanyMobile
@@ -80,6 +77,7 @@ namespace DataHolders
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -88,8 +86,7 @@ namespace DataHolders
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-      
 
-     //  public event PropertyChangedEventHandler PropertyChanged;
+        //  public event PropertyChangedEventHandler PropertyChanged;
     }
 }

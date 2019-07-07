@@ -1,13 +1,8 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataHolders
 {
-   public class dhJournalDetailValidator : AbstractValidator<dhJournalDetail>
+    public class dhJournalDetailValidator : AbstractValidator<dhJournalDetail>
     {
         public dhJournalDetailValidator()
         {
@@ -18,6 +13,6 @@ namespace DataHolders
             //RuleFor(JrDetail => JrDetail.VBankAccountNumber).NotEmpty().WithMessage("Please Enter Bank Account Number.");
             //RuleFor(JrDetail => JrDetail.IChequeNumber).NotEmpty().WithMessage("Please Enter Check Number.");
             //RuleFor(JrDetail => JrDetail.).NotEmpty().WithMessage("Please Enter Party Name.");
-       }
+        }
     }
 }

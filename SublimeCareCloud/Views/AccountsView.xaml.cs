@@ -307,7 +307,7 @@ namespace SublimeCareCloud.Views
             {
                 String msg = String.Format("  {0}  Search Results Found", sequence.Count);
                 //pageControl.ReLoad();
-                Globalized.setException(msg, lblErrorMsg, CustomClasses.MsgType.Info);
+                Globalized.setException(msg, lblErrorMsg, DataHolders.MsgType.Info);
                 Globalized.ShowMsg(lblErrorMsg);
             }
             else
@@ -315,7 +315,7 @@ namespace SublimeCareCloud.Views
                 if (sequence == null)
                 {
                     String msg = String.Format("  {0}  Search Results Found", 0);
-                    Globalized.setException(msg, lblErrorMsg, CustomClasses.MsgType.Info);
+                    Globalized.setException(msg, lblErrorMsg, DataHolders.MsgType.Info);
                     Globalized.ShowMsg(lblErrorMsg);
                 }
 
@@ -339,7 +339,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
 
         }
@@ -355,7 +355,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -371,7 +371,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
         ////#region IPageControlContract Members

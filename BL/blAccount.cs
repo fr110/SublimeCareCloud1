@@ -13,7 +13,7 @@ namespace BL
 {
     public  class blAccount
     {
-         dalGeneral objDALGeneral;
+        dalGeneral objDALGeneral;
         blModule MyModuleObj;
         string MyModuleName;
         public dhModule MyActiveModule { get; set; }
@@ -38,6 +38,68 @@ namespace BL
             return new dhAccount();
 
         }
+        public dhAccount AddNewAccount(string ModuleName , int iModuleId,int IModuleFK_ID, int? IModuleParentID = 0,
+            string AccountName = "",string VAccountDesc = "",string AccountNoStart = "A-")
+        {
+
+            dhAccount ObjAccount = new dhAccount();
+            // dhModule objModule = this.db.Modules.AsNoTracking().Where(x => x.VModuleName == "ModuleName").First();
+
+            //if (objModule != null)
+            //{
+            if (db.Accounts.Count() == 0)
+            {
+                ObjAccount = new dhAccount();
+                ObjAccount.IModuleFK_ID = IModuleFK_ID;
+                ObjAccount.IModuleID = iModuleId;
+                ObjAccount.AccountName = AccountName;
+                ObjAccount.VAccountDesc = VAccountDesc; // MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D01DEC").FirstOrDefault().Value;
+                ObjAccount.VAccountComments = VAccountDesc;//MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D02DEC").FirstOrDefault().Value;
+                ObjAccount.VAccountNo = AccountNoStart + DateTime.Now.ToString("ddmmyy") + "-" + IModuleFK_ID; // D-For DOC and  DMY  - Day month year and Doc Id
+                ObjAccount.IFinaceType = 3;
+                ObjAccount.BNominal = false;
+                ObjAccount.BEditable = false;
+
+                // db.Accounts.Add(ObjAccount);
+                return ObjAccount;
+
+
+            }
+
+            //    ObjAccount = db.Accounts.Where(x => x.IModuleID == objModule.IModuleID && x.IModuleFK_ID == ObjDoctor.IDocid).FirstOrDefault();
+            //    if (ObjAccount == null)
+            //    {
+            //        ObjAccount = new dhAccount();
+            //        // create the account
+            //        ObjAccount.IModuleFK_ID = ObjDoctor.IDocid;
+            //        ObjAccount.IModuleID = objModule.IModuleID;
+            //        ObjAccount.AccountName = ObjDoctor.VfName + " " + ObjDoctor.VlName;
+            //        ObjAccount.VAccountDesc = MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D01DEC").FirstOrDefault().Value;
+            //        ObjAccount.VAccountComments = MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D02DEC").FirstOrDefault().Value;
+            //        ObjAccount.VAccountNo = "D-" + DateTime.Now.ToString("ddMMyy") + "-" + ObjDoctor.IDocid; // D-For DOC and  DMY  - Day month year and Doc Id
+            //        ObjAccount.IFinaceType = 3;
+            //        ObjAccount.BNominal = false;
+            //        ObjAccount.BEditable = false;
+            //        return ObjAccount;
+            //        //  db.Accounts.Add(ObjAccount);
+            //    }
+            //    else
+            //    {
+            //        // update existing acccount account title if needed 
+            //        ObjAccount.AccountName = ObjDoctor.VfName + " " + ObjDoctor.VlName;
+            //    }
+            //}
+
+            //if (ObjNewAccount == null)
+            //{
+            //    return new dhAccount();
+            //}
+            //this.db.Accounts.Add(ObjNewAccount);
+            //this.db.SaveChanges();
+            return new dhAccount();
+
+        }
+
         public dsGeneral.dtPosAccountsDataTable GetAccounts(dhDBnames objDBNames,  dhAccount objAccounts)
         {
             dsGeneral.dtPosAccountsDataTable dt = objDALGeneral.GetAccounts(objDBNames, objAccounts);

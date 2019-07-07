@@ -127,7 +127,7 @@ namespace SublimeCareCloud.Views
                         //lblErrorMsg.Visibility = Visibility.Visible;
                         //lblErrorMsg.Foreground = Brushes.Green;
                         //lblErrorMsg.Content = "Employee ' " + objEmployee.VEmployeeName + " ' Information is Updated Successfully";
-                        Globalized.SetMsg("Employee ' " + objEmployee.VEmpfName + " ' Information is Updated Successfully", CustomClasses.MsgType.Info);
+                        Globalized.SetMsg("Employee ' " + objEmployee.VEmpfName + " ' Information is Updated Successfully", DataHolders.MsgType.Info);
                        // Globalized.ShowMsg(lblErrorMsg);
                         GlobalObjEmployee = objEmployee;
                         // We need to get data from database to bind it back
@@ -137,7 +137,7 @@ namespace SublimeCareCloud.Views
                     }
                     else
                     {
-                        Globalized.SetMsg("Employee ' " + objEmployee.VEmpfName + " ' Information is Saved Successfully", CustomClasses.MsgType.Info);
+                        Globalized.SetMsg("Employee ' " + objEmployee.VEmpfName + " ' Information is Saved Successfully", DataHolders.MsgType.Info);
                         objEmployee.IUpdate = 1;
                         GlobalObjEmployee = objEmployee;
                         // We need to get data from database to bind it back
@@ -161,7 +161,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
         static DataTable GetEmType()
@@ -278,7 +278,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -306,7 +306,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -364,7 +364,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -432,7 +432,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
         private void CalculateDays()
@@ -555,7 +555,7 @@ namespace SublimeCareCloud.Views
             //   }
             CalculateSallary();
             gnrtSalary.Content = "Save";
-            Globalized.setException("Salary is calculated for the period click to Save to save.", lblSalarymsg, CustomClasses.MsgType.Info);
+            Globalized.setException("Salary is calculated for the period click to Save to save.", lblSalarymsg, DataHolders.MsgType.Info);
         }
         private void BindSalary()
         {
@@ -587,7 +587,7 @@ namespace SublimeCareCloud.Views
             {
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    Globalized.setException("Select Salary is Marked As Paid.", lblSalarymsg, CustomClasses.MsgType.Info);
+                    Globalized.setException("Select Salary is Marked As Paid.", lblSalarymsg, DataHolders.MsgType.Info);
                     return;
                 }
             }
@@ -652,7 +652,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -666,7 +666,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -680,7 +680,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -697,7 +697,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
 
         }
@@ -710,7 +710,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
         dhSalary SelectedSalary = new dhSalary();
@@ -723,7 +723,7 @@ namespace SublimeCareCloud.Views
         //    }
         //    catch (Exception ex)
         //    {
-        //        Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+        //        Globalized.setException(ex, lblErrorMsg, MsgType.Error);
         //    }
         //}
 
@@ -754,7 +754,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -784,7 +784,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
 
@@ -808,7 +808,7 @@ namespace SublimeCareCloud.Views
             }
             catch (Exception ex)
             {
-                Globalized.setException(ex, lblErrorMsg, CustomClasses.MsgType.Error);
+                Globalized.setException(ex, lblErrorMsg, MsgType.Error);
             }
         }
     }

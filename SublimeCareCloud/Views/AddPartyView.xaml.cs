@@ -137,11 +137,11 @@ namespace SublimeCareCloud.Views
 
                     if (((dhParty)grid1.DataContext).IUpdate == 1)
                 {
-                    Globalized.SetMsg("P02", CustomClasses.MsgType.Info);
+                    Globalized.SetMsg("P02", DataHolders.MsgType.Info);
                 }
                 else
                 {
-                    Globalized.SetMsg("P01", CustomClasses.MsgType.Info);
+                    Globalized.SetMsg("P01", DataHolders.MsgType.Info);
                     objParty.IUpdate = 1;
                     AddPartyViewModel ObjSetToEdit = new AddPartyViewModel(objParty);
                     Globalized.LoadThisObject(ObjSetToEdit, "Edit Party '" + objParty.VPartyName + "'", Globalized.AppModuleList.Where(xx => xx.VDisplayName == "Party").FirstOrDefault().VShortDescription);
@@ -154,7 +154,7 @@ namespace SublimeCareCloud.Views
             catch (Exception ex)
             {
                 Globalized.GlobalMsg = null;
-                Globalized.SetMsg(ex.Message, CustomClasses.MsgType.Error);
+                Globalized.SetMsg(ex.Message, MsgType.Error);
                 Globalized.ShowMsg(lblErrorMsg);
             }
 

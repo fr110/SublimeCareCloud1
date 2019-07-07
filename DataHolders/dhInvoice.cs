@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataHolders
 {
@@ -48,6 +44,7 @@ namespace DataHolders
             get { return _fServices; }
             set { _fServices = value; OnPropertyChanged("FServices"); }
         }
+
         private string _vFirstElectricianName;
 
         public string VFirstElectricianName
@@ -55,6 +52,7 @@ namespace DataHolders
             get { return _vFirstElectricianName; }
             set { _vFirstElectricianName = value; OnPropertyChanged("VFirstElectricianName"); }
         }
+
         private string _vSecElectricianName;
 
         public string VSecElectricianName
@@ -68,6 +66,7 @@ namespace DataHolders
             get { return _liftnumber; }
             set { _liftnumber = value; OnPropertyChanged("Liftnumber"); }
         }
+
         private System.Nullable<Boolean> _bIsDraft;
 
         public System.Nullable<Boolean> BIsDraft
@@ -75,7 +74,7 @@ namespace DataHolders
             get { return _bIsDraft; }
             set { _bIsDraft = value; OnPropertyChanged("BIsDraft"); }
         }
-        
+
         private System.Nullable<Boolean> _bFinalized;
 
         public System.Nullable<Boolean> BFinalized
@@ -91,6 +90,7 @@ namespace DataHolders
             get { return _bCanelDone; }
             set { _bCanelDone = value; OnPropertyChanged("BCanelDone"); }
         }
+
         private System.Nullable<bool> _bReturnInvoice;
 
         public System.Nullable<bool> BReturnInvoice
@@ -99,12 +99,12 @@ namespace DataHolders
             set { _bReturnInvoice = value; OnPropertyChanged("BReturnInvoice"); }
         }
 
-
         public System.Nullable<System.DateTime> DFromDate
         {
             get { return _dFromDate; }
             set { _dFromDate = value; OnPropertyChanged("DFromDate"); }
         }
+
         private System.Nullable<System.DateTime> _dToDate;
 
         public System.Nullable<System.DateTime> DToDate
@@ -125,7 +125,6 @@ namespace DataHolders
             set { _vpartyAddress = value; OnPropertyChanged("VpartyAddress"); }
         }
 
-
         public ItemsList ItemsOfInvoice
         {
             get { return _ItemsOfInvoice; }
@@ -138,6 +137,7 @@ namespace DataHolders
             //  IDiscountPersent = 1;
             Ddate = DateTime.Now;
         }
+
         public dhInvoice(dhUsers objCurrentUser)
         {
             //   IUpdate = 0;
@@ -152,8 +152,6 @@ namespace DataHolders
             set { _iSaleid = value; OnPropertyChanged("ISaleid"); }
         }
 
-
-
         public System.Nullable<long> IpartyId
         {
             get { return _ipartyId; }
@@ -163,8 +161,6 @@ namespace DataHolders
                 OnPropertyChanged("IpartyId");
             }
         }
-
-
 
         public System.Nullable<System.DateTime> Ddate
         {
@@ -181,12 +177,10 @@ namespace DataHolders
             get { return _vpartyName; }
             set
             {
-                
                 _vpartyName = value;
                 OnPropertyChanged("VpartyName");
             }
         }
-
 
         public string Vpartymobile
         {
@@ -198,8 +192,6 @@ namespace DataHolders
             }
         }
 
-
-
         public System.Nullable<double> Ftotalamount
         {
             get { return _ftotalamount; }
@@ -210,7 +202,6 @@ namespace DataHolders
             }
         }
 
-
         public string VPaymentMod
         {
             get { return _vPaymentMod; }
@@ -219,9 +210,7 @@ namespace DataHolders
                 _vPaymentMod = value;
                 OnPropertyChanged("VPaymentMod");
             }
-
         }
-
 
         public string VVehicleNo
         {
@@ -233,8 +222,6 @@ namespace DataHolders
             }
         }
 
-
-
         public string VDriverName
         {
             get { return _vDriverName; }
@@ -244,7 +231,6 @@ namespace DataHolders
                 OnPropertyChanged("VDriverName");
             }
         }
-
 
         public System.Nullable<long> IUserid
         {
@@ -256,7 +242,6 @@ namespace DataHolders
             }
         }
 
-
         public string VDeliveryExpense
         {
             get { return _vDeliveryExpense; }
@@ -267,7 +252,6 @@ namespace DataHolders
             }
         }
 
-
         public string VSeason
         {
             get { return _vSeason; }
@@ -277,7 +261,6 @@ namespace DataHolders
                 OnPropertyChanged("VSeason");
             }
         }
-
 
         public System.Nullable<int> IDiscountPersent
         {
@@ -309,7 +292,6 @@ namespace DataHolders
             }
         }
 
-
         public string VReciverName
         {
             get { return _vReciverName; }
@@ -319,7 +301,6 @@ namespace DataHolders
                 OnPropertyChanged("VReciverName");
             }
         }
-
 
         public System.Nullable<long> ISaleManID
         {
@@ -340,6 +321,7 @@ namespace DataHolders
                 OnPropertyChanged("FBalance");
             }
         }
+
         public System.Nullable<int> IUpdate
         {
             get { return _iUpdate; }
@@ -392,7 +374,6 @@ namespace DataHolders
             set { _CostumerLastVisit = value; OnPropertyChanged("CostumerLastVisit"); }
         }
 
-
         private string _CostumerInfo;
 
         public string CostumerInfo
@@ -400,6 +381,7 @@ namespace DataHolders
             get { return _CostumerInfo; }
             set { _CostumerInfo = value; OnPropertyChanged("CostumerLastVisit"); }
         }
+
         private string _MeterReading;
 
         public string MeterReading
@@ -407,6 +389,7 @@ namespace DataHolders
             get { return _MeterReading; }
             set { _MeterReading = value; OnPropertyChanged("CostumerLastVisit"); }
         }
+
         private string _ModelNumber;
 
         public string ModelNumber
@@ -416,6 +399,7 @@ namespace DataHolders
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -424,6 +408,5 @@ namespace DataHolders
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-        
     }
 }
