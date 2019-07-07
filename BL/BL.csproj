@@ -165,6 +165,10 @@
       <Project>{EAE3D372-6246-475D-BC14-327EE02559A1}</Project>
       <Name>DataHolders</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MsgCollectionLayer\MsgCollectionLayer.csproj">
+      <Project>{de701647-894e-49d9-b1eb-3d6760aeb99f}</Project>
+      <Name>MsgCollectionLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

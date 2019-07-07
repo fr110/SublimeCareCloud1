@@ -2,7 +2,7 @@
 using System.Linq;
 using DataHolders;
 using DAL;
-
+using MsgCollectionLayer;
 
 namespace BL
 {
@@ -41,7 +41,7 @@ namespace BL
         {
             blAccount objAccount =  new blAccount();
             string AccountName = this.MyPatient.vFullName;
-           // string Desc = MsgTextCollection.MsgsList.Where(xx => xx.Key == "P_A001").FirstOrDefault().Value;
+            string Desc = MsgTextCollection.MsgsList.Where(xx => xx.Key == "P_A001").FirstOrDefault().Value;
             return objAccount.AddNewAccount(MyModuleName, MyActiveModule.IModuleID, Convert.ToInt32( MyPatient.iPatid), 0, AccountName, "jjj", "P-");
            // return new dhAccount();
         }

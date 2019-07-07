@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SublimeCareCloud.CustomClasses
+namespace MsgCollectionLayer
 {
     public static class MsgTextCollection
     {
@@ -28,9 +28,7 @@ namespace SublimeCareCloud.CustomClasses
             {"M_D02DEC","Account Created By System for Doctor." },
             // for appointment
             {"AOC01", "Appointment Created By System for Doctor." },
-            {"P_A001", "Patient Account Is Created By System" + DateTime.Now .ToShortDateString()},
-            // Patient
-            //{"AOC01" , "A" }
+            {"P_A001", "Patient Account Is Created By System" + DateTime.Now .ToShortDateString()}
 
 
         };
