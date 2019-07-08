@@ -42,8 +42,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelliBox", "IntelliBox\IntelliBox.csproj", "{1005DE71-8B98-4C78-8EE4-C577F1A64361}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsgCollectionLayer", "MsgCollectionLayer\MsgCollectionLayer.csproj", "{DE701647-894E-49D9-B1EB-3D6760AEB99F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,10 +72,6 @@ Global
 		{1005DE71-8B98-4C78-8EE4-C577F1A64361}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1005DE71-8B98-4C78-8EE4-C577F1A64361}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1005DE71-8B98-4C78-8EE4-C577F1A64361}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE701647-894E-49D9-B1EB-3D6760AEB99F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE701647-894E-49D9-B1EB-3D6760AEB99F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE701647-894E-49D9-B1EB-3D6760AEB99F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE701647-894E-49D9-B1EB-3D6760AEB99F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

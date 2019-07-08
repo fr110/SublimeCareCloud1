@@ -2,7 +2,6 @@
 using System.Linq;
 using DataHolders;
 using DAL;
-using MsgCollectionLayer;
 
 namespace BL
 {
@@ -31,19 +30,23 @@ namespace BL
             {
                 return new dhPatient();
             }
-            this.db.Patients.Add(ObjNewPatient);
-            this.db.SaveChanges();
-            this.MyPatient = ObjNewPatient;
-            InsertUpdatePatientAccount();
+            db.Patients.Add(ObjNewPatient);
+            db.SaveChanges();
+            MyPatient = ObjNewPatient;
+            long? AccountID =  InsertUpdatePatientAccount();
+            ObjNewPatient.IAccountid = Convert.ToInt64(AccountID);
+            // db.Patients.Attach(ObjNewPatient);
+            db.SaveChanges();
             return ObjNewPatient;
         }
-        public dhAccount InsertUpdatePatientAccount()
+        public long? InsertUpdatePatientAccount()
         {
-            blAccount objAccount =  new blAccount();
+            blAccount objBlAccount =  new blAccount();
             string AccountName = this.MyPatient.vFullName;
             string Desc = MsgTextCollection.MsgsList.Where(xx => xx.Key == "P_A001").FirstOrDefault().Value;
-            return objAccount.AddNewAccount(MyModuleName, MyActiveModule.IModuleID, Convert.ToInt32( MyPatient.iPatid), 0, AccountName, "jjj", "P-");
-           // return new dhAccount();
+            dhAccount objAccount = objBlAccount.AddNewAccount(MyModuleName, MyActiveModule.IModuleID, Convert.ToInt32( MyPatient.iPatid), 0, AccountName, "jjj", "P-");
+            // return new dhAccount();
+            return objAccount.IAccountid;
         }
 
         //public dhAccount InsertUpdateAccount(dhDoctors ObjDoctor)

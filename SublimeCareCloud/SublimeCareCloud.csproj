@@ -138,7 +138,6 @@
     <Compile Include="CustomClasses\blDoctorSearch.cs" />
     <Compile Include="CustomClasses\blPatSearch.cs" />
     <Compile Include="CustomClasses\InvestigationSearch.cs" />
-    <Compile Include="CustomClasses\MsgTextCollection.cs" />
     <Compile Include="CustomClasses\ProcedureSearch.cs" />
     <Compile Include="CustomClasses\SublimeMenu.cs" />
     <Compile Include="CustomClasses\AlignStackPanel.cs" />

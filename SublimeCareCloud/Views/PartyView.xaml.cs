@@ -94,7 +94,7 @@ namespace SublimeCareCloud.Views
             ds.Tables.Add(SelectedParties);
             if ((ds.Tables.Count > 0) && (ds.Tables[0].Rows.Count > 0))
             {
-                string ReportDisc = MsgTextCollection.MsgsList.Where(x => x.Key == "DP01").FirstOrDefault().Value;
+                string ReportDisc = BL.MsgTextCollection.MsgsList.Where(x => x.Key == "DP01").FirstOrDefault().Value;
                 PrintUtilities.printDoc("Parties.xaml", ds, "Parties Report", true, ReportDisc);
             }
             else

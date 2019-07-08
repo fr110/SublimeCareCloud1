@@ -147,6 +147,7 @@
     <Compile Include="blUtil.cs" />
     <Compile Include="iFacede.cs" />
     <Compile Include="InvoicesCollection.cs" />
+    <Compile Include="MsgTextCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -164,10 +165,6 @@
     <ProjectReference Include="..\DataHolders\DataHolders.csproj">
       <Project>{EAE3D372-6246-475D-BC14-327EE02559A1}</Project>
       <Name>DataHolders</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MsgCollectionLayer\MsgCollectionLayer.csproj">
-      <Project>{de701647-894e-49d9-b1eb-3d6760aeb99f}</Project>
-      <Name>MsgCollectionLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

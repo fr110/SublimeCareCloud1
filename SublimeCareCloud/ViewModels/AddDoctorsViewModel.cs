@@ -195,8 +195,8 @@ namespace SublimeCareCloud.ViewModels
                     ObjAccount.IModuleFK_ID = ObjDoctor.IDocid;
                     ObjAccount.IModuleID = objModule.IModuleID;
                     ObjAccount.AccountName = ObjDoctor.VfName + " " + ObjDoctor.VlName;
-                    ObjAccount.VAccountDesc = MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D01DEC").FirstOrDefault().Value;
-                    ObjAccount.VAccountComments = MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D02DEC").FirstOrDefault().Value;
+                    ObjAccount.VAccountDesc = BL.MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D01DEC").FirstOrDefault().Value;
+                    ObjAccount.VAccountComments = BL.MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D02DEC").FirstOrDefault().Value;
                     ObjAccount.VAccountNo = "D-" + DateTime.Now.ToString("ddmmyy") + "-" + ObjDoctor.IDocid; // D-For DOC and  DMY  - Day month year and Doc Id
                     ObjAccount.IFinaceType = 3;
                     ObjAccount.BNominal = false;
@@ -216,8 +216,8 @@ namespace SublimeCareCloud.ViewModels
                     ObjAccount.IModuleFK_ID = ObjDoctor.IDocid;
                     ObjAccount.IModuleID = objModule.IModuleID;
                     ObjAccount.AccountName = ObjDoctor.VfName + " " + ObjDoctor.VlName;
-                    ObjAccount.VAccountDesc = MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D01DEC").FirstOrDefault().Value;
-                    ObjAccount.VAccountComments = MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D02DEC").FirstOrDefault().Value;
+                    ObjAccount.VAccountDesc = BL.MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D01DEC").FirstOrDefault().Value;
+                    ObjAccount.VAccountComments = BL.MsgTextCollection.MsgsList.Where(xx => xx.Key == "M_D02DEC").FirstOrDefault().Value;
                     ObjAccount.VAccountNo = "D-" + DateTime.Now.ToString("ddMMyy") + "-" + ObjDoctor.IDocid; // D-For DOC and  DMY  - Day month year and Doc Id
                     ObjAccount.IFinaceType = 3;
                     ObjAccount.BNominal = false;
