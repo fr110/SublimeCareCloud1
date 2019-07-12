@@ -14,82 +14,107 @@ namespace SublimeCareCloud.CustomClasses
 {
    public static class cstmUtilities
     {
+        public static void LoadImage(byte[] imgebytdata, Image img_)
+        {
+            if (imgebytdata != null)
+            {
+                byte[] blob = imgebytdata;
+                MemoryStream stream = new MemoryStream();
+                stream.Write(blob, 0, blob.Length);
+                stream.Position = 0;
 
-       ////public static void LoadImage(byte[] imgebytdata, Image img_)
-       ////{
-       ////    if (imgebytdata != null)
-       ////    {
-       ////        byte[] blob = imgebytdata;
-       ////        MemoryStream stream = new MemoryStream();
-       ////        stream.Write(blob, 0, blob.Length);
-       ////        stream.Position = 0;
+                System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
+                BitmapImage bi = new BitmapImage();
+                bi.BeginInit();
 
-       ////        System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
-       ////        BitmapImage bi = new BitmapImage();
-       ////        bi.BeginInit();
+                MemoryStream ms = new MemoryStream();
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                ms.Seek(0, SeekOrigin.Begin);
+                bi.StreamSource = ms;
+                bi.EndInit();
+                img_.Source = bi;
+            }
+            else
+            {
+                img_.Source = null;
+            }
+        }
 
-       ////        MemoryStream ms = new MemoryStream();
-       ////        img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-       ////        ms.Seek(0, SeekOrigin.Begin);
-       ////        bi.StreamSource = ms;
-       ////        bi.EndInit();
-       ////        img_.Source = bi;
-       ////    }
-       ////    else
-       ////    {
-       ////        img_.Source = null;
-       ////    }
-       ////}
+        ////public static void LoadImage(byte[] imgebytdata, Image img_)
+        ////{
+        ////    if (imgebytdata != null)
+        ////    {
+        ////        byte[] blob = imgebytdata;
+        ////        MemoryStream stream = new MemoryStream();
+        ////        stream.Write(blob, 0, blob.Length);
+        ////        stream.Position = 0;
 
-       //public static void GetBindingSourcesRecursive(string propertyName, DependencyObject root, List<object> sources)
-       //{
-       //    List<BindingBase> bindings = DependencyObjectHelper.GetBindingObjects(root);
-       //    Predicate<Binding> condition =
-       //        (b) =>
-       //        {
-       //            return (b.Path is PropertyPath)
-       //                && (((PropertyPath)b.Path).Path == propertyName)
-       //                && (!sources.Contains(root));
-       //        };
+        ////        System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
+        ////        BitmapImage bi = new BitmapImage();
+        ////        bi.BeginInit();
 
-       //    foreach (BindingBase bindingBase in bindings)
-       //    {
-       //        if (bindingBase is Binding)
-       //        {
-       //            if (condition(bindingBase as Binding))
-       //                sources.Add(root);
-       //        }
-       //        else if (bindingBase is MultiBinding)
-       //        {
-       //            MultiBinding mb = bindingBase as MultiBinding;
-       //            foreach (Binding b in mb.Bindings)
-       //            {
-       //                if (condition(bindingBase as Binding))
-       //                    sources.Add(root);
-       //            }
-       //        }
-       //        else if (bindingBase is PriorityBinding)
-       //        {
-       //            PriorityBinding pb = bindingBase as PriorityBinding;
-       //            foreach (Binding b in pb.Bindings)
-       //            {
-       //                if (condition(bindingBase as Binding))
-       //                    sources.Add(root);
-       //            }
-       //        }
-       //    }
+        ////        MemoryStream ms = new MemoryStream();
+        ////        img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+        ////        ms.Seek(0, SeekOrigin.Begin);
+        ////        bi.StreamSource = ms;
+        ////        bi.EndInit();
+        ////        img_.Source = bi;
+        ////    }
+        ////    else
+        ////    {
+        ////        img_.Source = null;
+        ////    }
+        ////}
 
-       //    int childrenCount = VisualTreeHelper.GetChildrenCount(root);
-       //    if (childrenCount > 0)
-       //    {
-       //        for (int i = 0; i < childrenCount; i++)
-       //        {
-       //            DependencyObject child = VisualTreeHelper.GetChild(root, i);
-       //            GetBindingSourcesRecursive(propertyName, child, sources);
-       //        }
-       //    }
-       //}
-       private static List<object> lstChildren;
+        //public static void GetBindingSourcesRecursive(string propertyName, DependencyObject root, List<object> sources)
+        //{
+        //    List<BindingBase> bindings = DependencyObjectHelper.GetBindingObjects(root);
+        //    Predicate<Binding> condition =
+        //        (b) =>
+        //        {
+        //            return (b.Path is PropertyPath)
+        //                && (((PropertyPath)b.Path).Path == propertyName)
+        //                && (!sources.Contains(root));
+        //        };
+
+        //    foreach (BindingBase bindingBase in bindings)
+        //    {
+        //        if (bindingBase is Binding)
+        //        {
+        //            if (condition(bindingBase as Binding))
+        //                sources.Add(root);
+        //        }
+        //        else if (bindingBase is MultiBinding)
+        //        {
+        //            MultiBinding mb = bindingBase as MultiBinding;
+        //            foreach (Binding b in mb.Bindings)
+        //            {
+        //                if (condition(bindingBase as Binding))
+        //                    sources.Add(root);
+        //            }
+        //        }
+        //        else if (bindingBase is PriorityBinding)
+        //        {
+        //            PriorityBinding pb = bindingBase as PriorityBinding;
+        //            foreach (Binding b in pb.Bindings)
+        //            {
+        //                if (condition(bindingBase as Binding))
+        //                    sources.Add(root);
+        //            }
+        //        }
+        //    }
+
+        //    int childrenCount = VisualTreeHelper.GetChildrenCount(root);
+        //    if (childrenCount > 0)
+        //    {
+        //        for (int i = 0; i < childrenCount; i++)
+        //        {
+        //            DependencyObject child = VisualTreeHelper.GetChild(root, i);
+        //            GetBindingSourcesRecursive(propertyName, child, sources);
+        //        }
+        //    }
+        //}
+        private static List<object> lstChildren;
 
        public static List<object> GetChildren(Visual p_vParent, int p_nLevel)
        {
